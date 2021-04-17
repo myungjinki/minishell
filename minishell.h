@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:32:25 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 16:54:07 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct			s_mini
 	t_d_list			*history;
 	t_d_list			*head;
 	t_envp_list			*env;
+	t_envp_list			*env_temp;
 
 	int					c;
 	char				*str;
@@ -52,9 +53,11 @@ typedef struct			s_mini
 int			ft_strcmp(char *s1, char *s2);
 void		ft_pwd(t_envp_list *lst);
 void		ft_cd(t_envp_list *lst, char *str);
-t_envp_list	*ft_find_path(t_envp_list *lst, char *key);
+t_envp_list	*ft_find_env(t_envp_list *lst, char *key);
 void		ft_envp_lstinit(t_envp_list **lst, char *envp[]);
 void		ft_envp_lstadd(t_envp_list **lst, char *str);
+void		ft_envp_lstclear(t_envp_list **lst);
+void		ft_envp_lstdelone(t_envp_list *lst, char *str);
 void		term_set(void);
 int			ft_stoi(char *str);
 void		ft_d_lstadd(t_d_list **lst);
@@ -67,5 +70,7 @@ void		arrow(t_d_list **lst, int flag);
 void		enter(t_mini *mini, char *envp[]);
 void		mini_init(t_mini *mini, char *envp[]);
 void		free_split(char **str);
+void		ft_env(t_mini mini, char *str);
+void		ft_exit(t_mini *mini, char *temp);
 
 #endif

@@ -6,22 +6,61 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/13 17:33:35 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 16:39:09 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_cd(t_envp_list *lst, char *str)
+static void	ft_pwd_set(t_envp_list *lst)
+{
+	char	*temp;
+	char	str[256];
+
+	ft_envp_lstdelone(lst, "OLDPWD");
+	lst = ft_find_env(lst, "PWD");
+	temp = ft_strjoin("OLDPWD=", lst->value);
+	ft_envp_lstadd(&lst, temp);
+	free(lst->value);
+	free(temp);
+	getcwd(str, 256);
+	lst->value = ft_strdup(str);
+}
+
+static void	ft_cd_hyphen(t_envp_list *lst, char **str)
+{
+	t_envp_list *lst_temp;
+
+	lst_temp = ft_find_env(lst, "OLDPWD");
+	if (lst_temp)
+	{
+		*str = lst_temp->value;
+		printf("%s\n", *str);
+	}
+	else
+	{
+		printf("cd: OLDPWD not set\n");
+		return ;
+	}
+}
+
+void		ft_cd(t_envp_list *lst, char *str)
 {
 	char		*path;
-	char		temp[256];
+	int			boolean;
+	t_envp_list	*lst_temp;
 
 	path = ft_strtrim(str, " ");
-	chdir(str);
-	lst = ft_find_path(lst, "PWD");
-	free(lst->value);
-	getcwd(temp, 256);
-	lst->value = ft_strdup(temp);
+	if (*str == '-')
+		ft_cd_hyphen(lst, &str);
+	else if (*str == 0)
+	{
+		lst_temp = ft_find_env(lst, "HOME");
+		str = lst_temp->value;
+	}
+	boolean = chdir(str);
+	if (boolean == -1)
+		printf("cd: no such file or directory: %s\n", str);
+	ft_pwd_set(lst);
 	free(path);
 }

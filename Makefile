@@ -6,7 +6,7 @@
 #    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/17 12:27:47 by sehan            ###   ########.fr        #
+#    Updated: 2021/04/17 16:36:47 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FILES =	main \
 		srcs/ft_strcmp \
 		srcs/ft_pwd \
 		srcs/ft_cd \
-		srcs/ft_find_path \
+		srcs/ft_find_env \
 		srcs/ft_envp_list \
 		srcs/terminal_setting \
 		srcs/ft_stoi \
@@ -35,7 +35,9 @@ FILES =	main \
 		srcs/delete \
 		srcs/enter \
 		srcs/mini_init \
-		srcs/ft_split_free
+		srcs/ft_split_free \
+		srcs/ft_env \
+		srcs/ft_exit
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 15:51:43 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 15:23:00 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/17 14:26:28 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/17 16:55:58 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_pwd(t_envp_list *lst)
+void	ft_env(t_mini mini, char *str)
 {
-	lst = ft_find_env(lst, "PWD");
-	printf("%s\n", lst->value);
+	if (ft_strcmp(str, "env") == 0)
+		while (mini.env)
+		{
+			printf("%s=%s\n", mini.env->key, mini.env->value);
+			mini.env = mini.env->next;
+		}
+	else
+	{
+		while (mini.env)
+		{
+			if (ft_strcmp(mini.env->value, ""))
+				printf("%s=\"%s\"\n", mini.env->key, mini.env->value);
+			mini.env = mini.env->next;
+		}
+	}
 }
