@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:10:50 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 13:25:09 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	main(int argc, char *argv[], char *envp[])
 	argv = 0;
 	argc = 0;
 
+	int i;
+
+	i = -1;
 	mini_init(&mini, envp);
 	while (read(0, mini.str, 4) > 0)
 	{

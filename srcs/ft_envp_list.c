@@ -6,11 +6,23 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:51:42 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 14:41:08 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	ft_envp_lstclear(t_envp_list **lst)
+{
+	t_envp_list *temp;
+
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
+	}
+}
 
 void	ft_envp_lstadd(t_envp_list **lst, char *str)
 {
