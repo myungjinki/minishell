@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:06:01 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 12:32:25 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <termios.h>
 # include <termcap.h>
 # include <sys/types.h>
-# include "./get_next_line/get_next_line.h"
 # include "./libft/libft.h"
 
 typedef struct			s_envp_list
@@ -67,5 +66,6 @@ void		ft_d_lstcopy(t_d_list **src, t_d_list *dst);
 void		arrow(t_d_list **lst, int flag);
 void		enter(t_mini *mini, char *envp[]);
 void		mini_init(t_mini *mini, char *envp[]);
+void		free_split(char **str);
 
 #endif

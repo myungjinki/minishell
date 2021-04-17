@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:05:43 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 12:34:48 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	builtin(t_mini *mini, char *envp[])
 		}
 		else
 			wait(NULL);
+
 		free(path);
 	}
 	free(temp);
