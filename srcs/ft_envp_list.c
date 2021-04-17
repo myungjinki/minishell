@@ -6,25 +6,11 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:29:50 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 12:51:42 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-//
-//void	free_split(char **str)
-//{
-//	int i;
-//
-//	i = 0;
-//	while (str[i])
-//	{
-//		free(str[i]);
-//		i++;
-//	}
-//	free(str[i]);
-//	free(str);
-//}
 
 void	ft_envp_lstadd(t_envp_list **lst, char *str)
 {
