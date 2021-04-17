@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 14:41:08 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/17 16:29:09 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,28 @@ void	ft_envp_lstadd(t_envp_list **lst, char *str)
 	free_split(split);
 }
 
+void	ft_envp_lstdelone(t_envp_list *lst, char *str)
+{
+	t_envp_list	*temp;
+
+	while (lst->next)
+	{
+		if (ft_strcmp(lst->next->key, str) == 0)
+			break ;
+		lst = lst->next;
+	}
+	if (!lst->next)
+		return ;
+	free(lst->next->key);
+	free(lst->next->value);
+	temp = lst->next;
+	lst->next = lst->next->next;
+	free(temp);
+}
+
 void	ft_envp_lstinit(t_envp_list **lst, char *envp[])
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (envp[i])
@@ -55,4 +74,5 @@ void	ft_envp_lstinit(t_envp_list **lst, char *envp[])
 		ft_envp_lstadd(lst, envp[i]);
 		i++;
 	}
+	ft_envp_lstdelone(*lst, "OLDPWD");
 }
