@@ -6,7 +6,7 @@
 #    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/17 11:00:51 by sehan            ###   ########.fr        #
+#    Updated: 2021/04/17 12:27:47 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ FILES =	main \
 		srcs/ft_d_lstcopy \
 		srcs/delete \
 		srcs/enter \
-		srcs/mini_init
+		srcs/mini_init \
+		srcs/ft_split_free
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_split_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 20:17:15 by sehan             #+#    #+#             */
-/*   Updated: 2020/10/13 20:19:51 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/17 12:24:34 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/17 12:43:38 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-char	*ft_strchr(const char *s, int c)
+void	free_split(char **str)
 {
-	while (*s != (unsigned char)c && *s)
-		s++;
-	if (!*s && c != 0)
-		return (NULL);
-	return ((char *)s);
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str[i]);
+	free(str);
 }
