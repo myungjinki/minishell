@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 17:29:31 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/18 16:34:36 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,24 @@ static void	not_builtin(t_mini *mini, char *envp[], char *temp)
 		free(temp2);
 		i++;
 	}
+	mini->env_temp = ft_find_env(mini->env, "PWD");
+	path = ft_strjoin(mini->env_temp->value, "/");
+	temp2 = ft_strjoin(path, argv[0]);
+
+	signal(SIGQUIT, sig);
+
+	execve(temp2, argv, envp);
+	free(path);
 	free_split(split);
 	printf("command not found: %s\n", temp);
-	exit(1);
+	exit(0);
 }
 
 static void	builtin(t_mini *mini, char *envp[])
 {
 	char	*temp;
-	pid_t	pid;
 
 	temp = ft_strtrim(mini->lst_temp->content, " ");
-	printf("%s\n", temp);
 	if (ft_strcmp(temp, "pwd") == 0)
 		ft_pwd(mini->env);
 	else if (ft_strncmp(temp, "cd ", 3) == 0 ||
@@ -54,17 +60,20 @@ static void	builtin(t_mini *mini, char *envp[])
 		ft_cd(mini->env, temp + 3);
 	else if (ft_strcmp(temp, "env") == 0 || ft_strcmp(temp, "export") == 0)
 		ft_env(*mini, temp);
-//	else if (ft_strncmp(temp, "export ", 7) == 0)
-//		ft_add_export(mini, temp);
+	else if (ft_strncmp(temp, "export ", 7) == 0)
+		ft_add_export(mini, temp);
 	else if (ft_strcmp(temp, "exit") == 0)
 		ft_exit(mini, temp);
+	else if (ft_strncmp(temp, "unset ", 6) == 0)
+		ft_envp_lstdelone(mini->env, ft_strtrim(temp + 6, " "));
 	else
 	{
-		pid = fork();
-		if (pid == 0)
+		mini->pid = fork();
+		if (mini->pid == 0)
 			not_builtin(mini, envp, temp);
 		else
 			wait(NULL);
+		mini->pid = 0;
 	}
 	free(temp);
 }

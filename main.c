@@ -6,42 +6,48 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 16:41:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/18 16:33:33 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+t_mini	g_mini;
+
 int	main(int argc, char *argv[], char *envp[])
 {
-	t_mini	mini;
 	int i;
 
 	argv = 0;
 	argc = 0;
 	i = -1;
-	mini_init(&mini, envp);
-	while (read(0, mini.str, 4) > 0)
+	g_mini.pid = 0;
+	mini_init(&g_mini, envp);
+	signal(SIGINT, (void *)sig);
+	signal(SIGQUIT, sig);
+	while (read(0, g_mini.str, 4) > 0)
 	{
-		mini.c = ft_stoi(mini.str);
-		if (mini.c == ARROW_UP || mini.c == ARROW_DOWN)
-			arrow(&mini.lst_temp, mini.c);
-		else if (mini.c == 10)
-			enter(&mini, envp);
-		else if (mini.c == DELETE)
+		g_mini.c = ft_stoi(g_mini.str);
+		if (g_mini.c == ARROW_UP || g_mini.c == ARROW_DOWN)
+			arrow(&g_mini.lst_temp, g_mini.c);
+		else if (g_mini.c == 10)
+			enter(&g_mini, envp);
+		else if (g_mini.c == DELETE)
 		{
 			delete_end(0);
-			if (ft_strlen(mini.lst_temp->content))
-				mini.lst_temp->content[ft_strlen(mini.lst_temp->content) - 1] = 0;
+			if (ft_strlen(g_mini.lst_temp->content))
+				g_mini.lst_temp->content[ft_strlen(g_mini.lst_temp->content) - 1] = 0;
 		}
+		else if (g_mini.c == CTRL_D)
+			control_d(&g_mini);
 		else
 		{
-			mini.temp = mini.lst_temp->content;
-			mini.lst_temp->content = ft_strjoin(mini.lst_temp->content, mini.str);
-			free(mini.temp);
-			write(1, mini.str, 1);
+			g_mini.temp = g_mini.lst_temp->content;
+			g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
+			free(g_mini.temp);
+			write(1, g_mini.str, 1);
 		}
-		ft_memset(mini.str, 0, 5);
+		ft_memset(g_mini.str, 0, 5);
 	}
 	return (0);
 }
