@@ -6,7 +6,7 @@
 #    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/17 16:36:47 by sehan            ###   ########.fr        #
+#    Updated: 2021/04/18 13:08:38 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,12 @@ FILES =	main \
 		srcs/delete \
 		srcs/enter \
 		srcs/mini_init \
-		srcs/ft_split_free \
+		srcs/ft_free_split \
 		srcs/ft_env \
-		srcs/ft_exit
+		srcs/ft_exit \
+		srcs/ft_add_export \
+		srcs/ft_envp_lstadd \
+		srcs/control
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

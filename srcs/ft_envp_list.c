@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 16:29:09 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/18 12:50:35 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,10 @@ void	ft_envp_lstclear(t_envp_list **lst)
 	{
 		temp = *lst;
 		*lst = (*lst)->next;
+		free(temp->key);
+		free(temp->value);
 		free(temp);
 	}
-}
-
-void	ft_envp_lstadd(t_envp_list **lst, char *str)
-{
-	t_envp_list	*path;
-	char		**split;
-
-	path = (t_envp_list *)malloc(sizeof(t_envp_list));
-	if (!*lst)
-		*lst = path;
-	else
-	{
-		while ((*lst)->next)
-			lst = &((*lst)->next);
-		(*lst)->next = path;
-	}
-	split = ft_split(str, '=');
-	path->next = NULL;
-	path->key = ft_strdup(split[0]);
-	path->value = ft_strdup(split[1]);
-	free_split(split);
 }
 
 void	ft_envp_lstdelone(t_envp_list *lst, char *str)
@@ -56,11 +37,15 @@ void	ft_envp_lstdelone(t_envp_list *lst, char *str)
 		lst = lst->next;
 	}
 	if (!lst->next)
+	{
+		free(str);
 		return ;
+	}
 	free(lst->next->key);
 	free(lst->next->value);
 	temp = lst->next;
 	lst->next = lst->next->next;
+	free(str);
 	free(temp);
 }
 
@@ -74,5 +59,5 @@ void	ft_envp_lstinit(t_envp_list **lst, char *envp[])
 		ft_envp_lstadd(lst, envp[i]);
 		i++;
 	}
-	ft_envp_lstdelone(*lst, "OLDPWD");
+	ft_envp_lstdelone(*lst, ft_strdup("OLDPWD"));
 }

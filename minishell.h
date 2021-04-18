@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 16:54:07 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/18 16:31:08 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 # define ARROW_DOWN 4348699
 # define DELETE 127
 # define ENTER 10
+# define CTRL_D 4
 # include <stdio.h>
 # include <termios.h>
 # include <termcap.h>
 # include <sys/types.h>
 # include "./libft/libft.h"
+# include <signal.h>
+
 
 typedef struct			s_envp_list
 {
@@ -48,7 +51,10 @@ typedef struct			s_mini
 	int					c;
 	char				*str;
 	char				*temp;
+	pid_t				pid;
 }						t_mini;
+
+extern t_mini g_mini;
 
 int			ft_strcmp(char *s1, char *s2);
 void		ft_pwd(t_envp_list *lst);
@@ -72,5 +78,9 @@ void		mini_init(t_mini *mini, char *envp[]);
 void		free_split(char **str);
 void		ft_env(t_mini mini, char *str);
 void		ft_exit(t_mini *mini, char *temp);
+void		ft_add_export(t_mini *mini, char *temp);
+void		control_d(t_mini *mini);
+
+void		sig(int signo);
 
 #endif

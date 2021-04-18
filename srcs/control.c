@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_export.c                                    :+:      :+:    :+:   */
+/*   control.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 16:59:01 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/18 15:13:08 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/18 13:08:08 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/18 16:33:52 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_add_export(t_mini *mini, char *temp)
+void	control_d(t_mini *mini)
 {
-	char	**split;
-	int		i;
-
-	split = ft_split(temp, ' ');
-	i = 1;
-	while (split[i])
+	if (ft_strcmp(mini->lst_temp->content, "") == 0)
 	{
-		ft_envp_lstadd(&mini->env, split[i]);
-		i++;
+		printf("exit\n");
+		ft_exit(mini, NULL);
 	}
-	free_split(split);
+}
+
+void	sig(int signo)
+{
+	if (signo == SIGINT)
+	{
+		signo = 0;
+		ft_d_lstclear(&g_mini.lst_temp);
+		ft_d_lstcopy(&g_mini.lst_temp, g_mini.history);
+		g_mini.head = g_mini.lst_temp;
+		ft_putstr_fd("\n>", 1);
+	}
+	else if (signo == SIGQUIT && g_mini.pid != 0)
+	{
+		printf("^\\Quit: 3\n");
+	}
 }
