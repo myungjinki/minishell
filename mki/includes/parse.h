@@ -6,12 +6,17 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:06:59 by mki               #+#    #+#             */
-/*   Updated: 2021/04/21 20:09:01 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 21:16:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
+
+typedef struct  s_line
+{
+    char        *line;
+}               t_line;
 
 void    get_line(void);
 

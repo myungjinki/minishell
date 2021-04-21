@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 20:11:07 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 22:21:42 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ ENV_O		=	$(addprefix $(ENV_D), $(addsuffix .o, $(ENV_F)))
 
 PARSE_F		=	executor\
 				expander\
-				get_line\
 				lexer\
 				parser
 PARSE_D		=	srcs/parse/
