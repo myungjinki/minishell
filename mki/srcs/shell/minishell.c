@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 16:23:58 by mki               #+#    #+#             */
-/*   Updated: 2021/04/21 20:04:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 22:40:19 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    minishell(char **envp[])
 
 	i = -1;
 	g_mini.pid = 0;
-	tcgetattr(STDIN_FILENO, &g_mini.term);
+	// tcgetattr(STDIN_FILENO, &g_mini.term);
 	mini_init(&g_mini, *envp);
 	signal(SIGINT, (void *)sig);
 	signal(SIGQUIT, sig);
