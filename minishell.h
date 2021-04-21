@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/18 16:31:08 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/19 16:56:24 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct			s_mini
 	char				*str;
 	char				*temp;
 	pid_t				pid;
+	struct termios		term;
+	int					fd[2];
+	int					std_fd[2];
 }						t_mini;
 
 extern t_mini g_mini;
@@ -81,6 +84,7 @@ void		ft_exit(t_mini *mini, char *temp);
 void		ft_add_export(t_mini *mini, char *temp);
 void		control_d(t_mini *mini);
 
+void		backup_term(t_mini *mini);
 void		sig(int signo);
 
 #endif
