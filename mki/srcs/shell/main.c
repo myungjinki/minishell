@@ -6,16 +6,20 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 19:39:39 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 20:10:22 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+t_mini	g_mini;
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	argv = 0;
 	argc = 0;
-	minishell(&envp);
+	envp = 0;
+	get_line();
+//	minishell(&envp);
 	return (0);
 }

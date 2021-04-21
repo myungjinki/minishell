@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:57:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 20:02:53 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <termcap.h>
 # include <sys/types.h>
 # include "../lib/libft/libft.h"
+# include "parse.h"
 # include <signal.h>
 
 typedef struct			s_envp_list
