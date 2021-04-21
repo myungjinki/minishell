@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 17:29:07 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 17:36:48 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		=	minishell
 CC			=	gcc
 CFLAGS_FT	=	-Wall -Wextra -Werror 
 CFLAGS_ASAN	=	-fsanitize=address -g2
+CFLAGS		=	$(CFLAGS_FT) $(CFLAGS_ASAN)
 LFLAGS		=	-Llib/libft -lft -lncurses
 AR			=	ar
 ARFLAGS		=	rcs
@@ -50,31 +51,32 @@ LIST_F		=	ft_d_lstadd_back\
 				ft_d_lstclear\
 				ft_d_lstcopy\
 				ft_d_lstnew
-
-LIST_D		=	lib/list/
-
+LIST_D		=	lib/d_list/
 LIST_C		=	$(addprefix $(LIST_D), $(addsuffix .c, $(LIST_F)))
 LIST_O		=	$(addprefix $(LIST_D), $(addsuffix .o, $(LIST_F)))
 
 INC_D		=	includes/
 
+LIBFT_D		=	lib/libft
+LIBFT_A		=	$(LIBFT_D)/libft.a
+
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(SRCS_O) $(ETC_O) $(LIST_O)
-	make -C lib/libft
-	make bonus -C lib/libft
+	make -C $(LIBFT_D)
+	make bonus -C $(LIBFT_D)
 	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS_O) $(ETC_O) $(LIST_O) -o $@
 
 all: $(NAME)
 
 clean:
 	$(RM) $(SRCS_O) $(ETC_O) $(LIST_O)
-	make clean -C lib/libft
+	make clean -C $(LIBFT_D)
 
 fclean: clean
 	$(RM) $(NAME)
-	rm lib/libft/libft.a
+	rm $(LIBFT_A)
 
 re: clean all
 

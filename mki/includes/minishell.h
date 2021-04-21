@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:18:10 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 17:34:43 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void		ft_env(t_mini mini, char *str);
 void		ft_exit(t_mini *mini, char *temp);
 void		ft_add_export(t_mini *mini, char *temp);
 void		control_d(t_mini *mini);
-
 void		backup_term(t_mini *mini);
 void		sig(int signo);
 
