@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:55:27 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:57:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void		t_f_lstclear(t_f_list **lst);
 void		is_pipe(t_mini *mini, char *envp[], char **split);
 void		not_builtin(t_mini *mini, char *envp[], char *temp);
 void		is_not_pipe(t_mini *mini, char *envp[], char *str);
+void		minishell(char ***);
 
 #endif

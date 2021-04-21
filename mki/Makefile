@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 18:52:31 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 19:00:30 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,8 @@ SHELL_F		=	control\
 				enter\
 				main\
 				mini_init\
+				minishell\
 				terminal_setting
-#				minishell
 SHELL_D		=	srcs/shell/
 SHELL_C		=	$(addprefix $(SHELL_D), $(addsuffix .c, $(SHELL_F)))
 SHELL_O		=	$(addprefix $(SHELL_D), $(addsuffix .o, $(SHELL_F)))
@@ -93,6 +93,8 @@ $(NAME): $(OBJS)
 	make -C $(LIBFT_D)
 	make bonus -C $(LIBFT_D)
 	$(CC) $(CFLAGS) $(LFLAGS) $^ -o $@
+	make clean
+	rm $(LIBFT_A)
 
 all: $(NAME)
 
