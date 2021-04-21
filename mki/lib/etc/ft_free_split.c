@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:17:10 by mki              ###   ########.fr       */
+/*   Created: 2021/04/17 12:24:34 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:24:40 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_exit(t_mini *mini, char *temp)
+void	free_split(char **str)
 {
-	ft_d_lstclear(&mini->head);
-	ft_d_lstclear(&mini->history);
-	ft_envp_lstclear(&mini->env);
-	free(mini->str);
-	free(temp);
-	exit(0);
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str[i]);
+	free(str);
 }

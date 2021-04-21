@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_d_lstadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:17:10 by mki              ###   ########.fr       */
+/*   Created: 2021/04/14 16:05:57 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:21:36 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_exit(t_mini *mini, char *temp)
+void	ft_d_lstadd_back(t_d_list **lst, t_d_list *new)
 {
-	ft_d_lstclear(&mini->head);
-	ft_d_lstclear(&mini->history);
-	ft_envp_lstclear(&mini->env);
-	free(mini->str);
-	free(temp);
-	exit(0);
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		while ((*lst)->next)
+			lst = &((*lst)->next);
+		(*lst)->next = new;
+		new->prev = *lst;
+	}
 }

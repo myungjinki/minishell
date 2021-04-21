@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_export.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:59:01 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/18 15:13:08 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:17:28 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_add_export(t_mini *mini, char *temp)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/19 16:56:24 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:18:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <termios.h>
 # include <termcap.h>
 # include <sys/types.h>
-# include "./libft/libft.h"
+# include "../lib/libft/libft.h"
 # include <signal.h>
 
 

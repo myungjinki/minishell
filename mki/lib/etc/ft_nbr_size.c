@@ -1,27 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   ft_nbr_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 12:24:34 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 12:43:38 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/21 17:21:55 by mki               #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:09 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-void	free_split(char **str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str[i]);
-	free(str);
-}
+#include "../../includes/minishell.h"

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_lstclear.c                                    :+:      :+:    :+:   */
+/*   ft_stoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 16:02:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 17:21:53 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/14 12:59:52 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:14 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_d_lstclear(t_d_list **lst)
+int	ft_stoi(char *str)
 {
-	t_d_list *temp;
+	int result;
+	int len;
 
-	while (*lst)
+	len = ft_strlen(str) - 1;
+	result = 0;
+	while (len >= 0)
 	{
-		temp = *lst;
-		*lst = (*lst)->next;
-		free(temp->content);
-		free(temp);
+		result = result * 256 + str[len];
+		len--;
 	}
+	return (result);
 }

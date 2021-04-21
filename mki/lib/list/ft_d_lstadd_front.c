@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_lstadd_back.c                                 :+:      :+:    :+:   */
+/*   ft_d_lstadd_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 16:05:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 17:24:36 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/14 13:25:38 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:26 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_d_lstadd_back(t_d_list **lst, t_d_list *new)
+void	ft_d_lstadd(t_d_list **lst)
 {
-	if (!*lst)
+	t_d_list *new;
+
+	new = ft_d_lstnew(ft_strdup(""));
+	if (!(*lst))
 		*lst = new;
 	else
 	{
-		while ((*lst)->next)
-			lst = &((*lst)->next);
-		(*lst)->next = new;
-		new->prev = *lst;
+		(*lst)->prev = new;
+		new->next = *lst;
+		*lst = new;
 	}
 }

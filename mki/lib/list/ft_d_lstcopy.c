@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_lstadd_front.c                                :+:      :+:    :+:   */
+/*   ft_d_lstcopy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 13:25:38 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 16:56:54 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/14 16:09:40 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:37 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_d_lstadd(t_d_list **lst)
+void	ft_d_lstcopy(t_d_list **src, t_d_list *dst)
 {
-	t_d_list *new;
-
-	new = ft_d_lstnew(ft_strdup(""));
-	if (!(*lst))
-		*lst = new;
-	else
+	*src = ft_d_lstnew(ft_strdup(dst->content));
+	dst = dst->next;
+	while (dst)
 	{
-		(*lst)->prev = new;
-		new->next = *lst;
-		*lst = new;
+		ft_d_lstadd_back(src, ft_d_lstnew(ft_strdup(dst->content)));
+		dst = dst->next;
 	}
 }

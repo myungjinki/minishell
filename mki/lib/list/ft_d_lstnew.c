@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stoi.c                                          :+:      :+:    :+:   */
+/*   ft_d_lstnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 12:59:52 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 13:04:56 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/14 13:22:29 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:42 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../includes/minishell.h"
 
-int	ft_stoi(char *str)
+t_d_list	*ft_d_lstnew(void *content)
 {
-	int result;
-	int len;
+	t_d_list *result;
 
-	len = ft_strlen(str) - 1;
-	result = 0;
-	while (len >= 0)
-	{
-		result = result * 256 + str[len];
-		len--;
-	}
+	result = (t_d_list *)malloc(sizeof(t_d_list));
+	if (!result)
+		return (result);
+	result->content = content;
+	result->next = 0;
+	result->prev = 0;
 	return (result);
 }

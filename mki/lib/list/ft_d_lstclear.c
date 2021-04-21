@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d_lstnew.c                                      :+:      :+:    :+:   */
+/*   ft_d_lstclear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 13:22:29 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 13:25:23 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/14 16:02:32 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 17:22:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../includes/minishell.h"
 
-t_d_list	*ft_d_lstnew(void *content)
+void	ft_d_lstclear(t_d_list **lst)
 {
-	t_d_list *result;
+	t_d_list *temp;
 
-	result = (t_d_list *)malloc(sizeof(t_d_list));
-	if (!result)
-		return (result);
-	result->content = content;
-	result->next = 0;
-	result->prev = 0;
-	return (result);
+	while (*lst)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp->content);
+		free(temp);
+	}
 }

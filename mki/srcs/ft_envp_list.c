@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_envp_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/18 12:50:35 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:17:19 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_envp_lstclear(t_envp_list **lst)
 {

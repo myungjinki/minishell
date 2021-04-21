@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   enter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/20 15:16:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:17:32 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *mini)
 {

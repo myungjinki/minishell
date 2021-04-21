@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:42:38 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 15:18:33 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:17:07 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 t_envp_list	*ft_find_env(t_envp_list *lst, char *key)
 {

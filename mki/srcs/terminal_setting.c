@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   terminal_setting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:59:52 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/19 11:17:46 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:16:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 void	term_set(void)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cursor.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:16:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 11:18:59 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:17:40 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 void	arrow(t_d_list **lst, int flag)
 {
