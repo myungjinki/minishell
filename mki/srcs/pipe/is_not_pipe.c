@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:19:17 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:36:37 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	is_not_pipe(t_mini *mini, char *envp[], char *str)
 {

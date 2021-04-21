@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 10:33:05 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:18:28 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:36 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int			ft_find_equal(char *str)
 {

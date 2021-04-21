@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:19:24 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:36:42 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static void	exe(t_mini *mini, char *envp[], char **split, int i)
 {

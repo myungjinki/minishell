@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 14:29:53 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:18:40 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:36:33 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void		t_f_lstclear(t_f_list **lst)
 {

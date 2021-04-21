@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/21 16:23:58 by mki               #+#    #+#             */
-/*   Updated: 2021/04/21 17:16:36 by mki              ###   ########.fr       */
+/*   Created: 2021/04/12 15:51:43 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 18:35:02 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-t_mini	g_mini;
-
-void    minishell(char **envp[])
+void	ft_pwd(t_envp_list *lst)
 {
+	lst = ft_find_env(lst, "PWD");
+	printf("%s\n", lst->value);
 }

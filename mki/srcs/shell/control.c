@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 13:08:08 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:04:03 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:36:48 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	control_d(t_mini *mini)
 {

@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:05:17 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:17 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static void	ft_pwd_set(t_envp_list *lst)
 {

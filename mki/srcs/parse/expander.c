@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_env.c                                      :+:      :+:    :+:   */
+/*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 12:42:38 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:18:59 by mki              ###   ########.fr       */
+/*   Created: 2021/04/21 18:03:31 by mki               #+#    #+#             */
+/*   Updated: 2021/04/21 18:36:19 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-
-t_envp_list	*ft_find_env(t_envp_list *lst, char *key)
-{
-	while (lst)
-	{
-		if (ft_strcmp(key, lst->key) == 0)
-			break ;
-		lst = lst->next;
-	}
-	return (lst);
-}
+#include "../../includes/minishell.h"

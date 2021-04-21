@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:18:21 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_envp_lstclear(t_envp_list **lst)
 {

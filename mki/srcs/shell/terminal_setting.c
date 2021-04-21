@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   terminal_setting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:18:33 by mki              ###   ########.fr       */
+/*   Created: 2021/04/14 11:59:52 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 18:36:09 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_exit(t_mini *mini, char *temp)
+void	term_set(void)
 {
-	ft_d_lstclear(&mini->head);
-	ft_d_lstclear(&mini->history);
-	ft_envp_lstclear(&mini->env);
-	free(mini->str);
-	free(temp);
-	exit(0);
+	struct termios	term;
+
+	tcgetattr(STDIN_FILENO, &term);
+	term.c_lflag &= ~ICANON;
+	term.c_lflag &= ~ECHO;
+	term.c_cc[VMIN] = 1;
+	term.c_cc[VTIME] = 0;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+	tgetent(NULL, "xterm");
+}
+
+void	backup_term(t_mini *mini)
+{
+	tcsetattr(STDIN_FILENO, TCSANOW, &mini->term);
 }

@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 18:03:01 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 18:52:31 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,27 +20,48 @@ AR			=	ar
 ARFLAGS		=	rcs
 RM			=	rm -rf
 
-SRCS_F		=	control\
+BIN_F		=	ft_add_export\
+				ft_cd\
+				ft_exit\
+				ft_pwd
+BIN_D		=	srcs/bin/
+BIN_C		=	$(addprefix $(BIN_D), $(addsuffix .c, $(BIN_F)))
+BIN_O		=	$(addprefix $(BIN_D), $(addsuffix .o, $(BIN_F)))
+
+ENV_F		=	ft_env\
+				ft_envp_list\
+				ft_envp_lstadd\
+				ft_find_env
+ENV_D		=	srcs/env/
+ENV_C		=	$(addprefix $(ENV_D), $(addsuffix .c, $(ENV_F)))
+ENV_O		=	$(addprefix $(ENV_D), $(addsuffix .o, $(ENV_F)))
+
+PARSE_F		=	executor\
+				expander\
+				lexer\
+				parser
+PARSE_D		=	srcs/parse/
+PARSE_C		=	$(addprefix $(PARSE_D), $(addsuffix .c, $(PARSE_F)))
+PARSE_O		=	$(addprefix $(PARSE_D), $(addsuffix .o, $(PARSE_F)))
+
+PIPE_F		=	ft_f_list\
+				is_not_pipe\
+				is_pipe
+PIPE_D		=	srcs/pipe/
+PIPE_C		=	$(addprefix $(PIPE_D), $(addsuffix .c, $(PIPE_F)))
+PIPE_O		=	$(addprefix $(PIPE_D), $(addsuffix .o, $(PIPE_F)))
+
+SHELL_F		=	control\
 				cursor\
 				delete\
 				enter\
-				ft_add_export\
-				ft_cd\
-				ft_env\
-				ft_envp_list\
-				ft_envp_lstadd\
-				ft_exit\
-				ft_f_list\
-				ft_find_env\
-				ft_pwd\
-				is_not_pipe\
-				is_pipe\
 				main\
 				mini_init\
 				terminal_setting
-SRCS_D		=	srcs/
-SRCS_C		=	$(addprefix $(SRCS_D), $(addsuffix .c, $(SRCS_F)))
-SRCS_O		=	$(addprefix $(SRCS_D), $(addsuffix .o, $(SRCS_F)))
+#				minishell
+SHELL_D		=	srcs/shell/
+SHELL_C		=	$(addprefix $(SHELL_D), $(addsuffix .c, $(SHELL_F)))
+SHELL_O		=	$(addprefix $(SHELL_D), $(addsuffix .o, $(SHELL_F)))
 
 ETC_F		=	ft_free_split\
 				ft_stoi\
@@ -49,32 +70,34 @@ ETC_D		=	lib/etc/
 ETC_C		=	$(addprefix $(ETC_D), $(addsuffix .c, $(ETC_F)))
 ETC_O		=	$(addprefix $(ETC_D), $(addsuffix .o, $(ETC_F)))
 
-LIST_F		=	ft_d_lstadd_back\
+DLIST_F		=	ft_d_lstadd_back\
 				ft_d_lstadd_front\
 				ft_d_lstclear\
 				ft_d_lstcopy\
 				ft_d_lstnew
-LIST_D		=	lib/d_list/
-LIST_C		=	$(addprefix $(LIST_D), $(addsuffix .c, $(LIST_F)))
-LIST_O		=	$(addprefix $(LIST_D), $(addsuffix .o, $(LIST_F)))
+DLIST_D		=	lib/d_list/
+DLIST_C		=	$(addprefix $(DLIST_D), $(addsuffix .c, $(DLIST_F)))
+DLIST_O		=	$(addprefix $(DLIST_D), $(addsuffix .o, $(DLIST_F)))
 
 INC_D		=	includes/
 
 LIBFT_D		=	lib/libft
 LIBFT_A		=	$(LIBFT_D)/libft.a
 
+OBJS		=	$(BIN_O) $(ENV_O) $(PARSE_O) $(PIPE_O) $(SHELL_O) $(ETC_O) $(DLIST_O)
+
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(SRCS_O) $(ETC_O) $(LIST_O)
+$(NAME): $(OBJS)
 	make -C $(LIBFT_D)
 	make bonus -C $(LIBFT_D)
-	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS_O) $(ETC_O) $(LIST_O) -o $@
+	$(CC) $(CFLAGS) $(LFLAGS) $^ -o $@
 
 all: $(NAME)
 
 clean:
-	$(RM) $(SRCS_O) $(ETC_O) $(LIST_O)
+	$(RM) $(OBJS)
 	make clean -C $(LIBFT_D)
 
 fclean: clean

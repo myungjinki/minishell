@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminal_setting.c                                 :+:      :+:    :+:   */
+/*   ft_find_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 11:59:52 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:20:05 by mki              ###   ########.fr       */
+/*   Created: 2021/04/13 12:42:38 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/21 18:35:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	term_set(void)
+t_envp_list	*ft_find_env(t_envp_list *lst, char *key)
 {
-	struct termios	term;
-
-	tcgetattr(STDIN_FILENO, &term);
-	term.c_lflag &= ~ICANON;
-	term.c_lflag &= ~ECHO;
-	term.c_cc[VMIN] = 1;
-	term.c_cc[VTIME] = 0;
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);
-	tgetent(NULL, "xterm");
-}
-
-void	backup_term(t_mini *mini)
-{
-	tcsetattr(STDIN_FILENO, TCSANOW, &mini->term);
+	while (lst)
+	{
+		if (ft_strcmp(key, lst->key) == 0)
+			break ;
+		lst = lst->next;
+	}
+	return (lst);
 }

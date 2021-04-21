@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:04:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:35:56 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *mini)
 {
