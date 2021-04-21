@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:30:24 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:19:51 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@ int	main(int argc, char *argv[], char *envp[])
 
 	argv = 0;
 	argc = 0;
-
 	i = -1;
 	g_mini.pid = 0;
-	pipe(g_mini.fd);
-	pipe(g_mini.std_fd);
 	tcgetattr(STDIN_FILENO, &g_mini.term);
 	mini_init(&g_mini, envp);
 	signal(SIGINT, (void *)sig);

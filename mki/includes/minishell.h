@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:34:43 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:20:42 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct			s_d_list
 	char				*content;
 }						t_d_list;
 
+typedef struct			s_f_list
+{
+	int					fd[2];
+	struct s_f_list		*next;
+}						t_f_list;
+
 typedef struct			s_mini
 {
 	t_d_list			*lst_temp;
@@ -47,14 +53,13 @@ typedef struct			s_mini
 	t_d_list			*head;
 	t_envp_list			*env;
 	t_envp_list			*env_temp;
+	t_f_list			*fd_lst;
 
 	int					c;
 	char				*str;
 	char				*temp;
 	pid_t				pid;
 	struct termios		term;
-	int					fd[2];
-	int					std_fd[2];
 }						t_mini;
 
 extern t_mini g_mini;
@@ -84,6 +89,12 @@ void		ft_exit(t_mini *mini, char *temp);
 void		ft_add_export(t_mini *mini, char *temp);
 void		control_d(t_mini *mini);
 void		backup_term(t_mini *mini);
+void		t_f_lstadd_back(t_f_list **lst);
+t_f_list	*t_f_lstlast(t_f_list *lst);
 void		sig(int signo);
+void		t_f_lstclear(t_f_list **lst);
+void		is_pipe(t_mini *mini, char *envp[], char **split);
+void		not_builtin(t_mini *mini, char *envp[], char *temp);
+void		is_not_pipe(t_mini *mini, char *envp[], char *str);
 
 #endif

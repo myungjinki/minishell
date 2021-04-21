@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 17:36:48 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 18:03:01 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,11 @@ SRCS_F		=	control\
 				ft_envp_list\
 				ft_envp_lstadd\
 				ft_exit\
+				ft_f_list\
 				ft_find_env\
 				ft_pwd\
+				is_not_pipe\
+				is_pipe\
 				main\
 				mini_init\
 				terminal_setting

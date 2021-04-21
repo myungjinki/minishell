@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:17:25 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:05:17 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void		ft_cd(t_envp_list *lst, char *str)
 
 	path = ft_strtrim(str, " ");
 	if (*str == '-')
-		ft_cd_hyphen(lst, &str);
+		ft_cd_hyphen(lst, &path);
 	else if (*str == 0)
 	{
 		lst_temp = ft_find_env(lst, "HOME");
 		str = lst_temp->value;
 	}
-	boolean = chdir(str);
+	boolean = chdir(path);
 	if (boolean == -1)
-		printf("cd: no such file or directory: %s\n", str);
+		printf("cd: no such file or directory: %s\n", path);
 	ft_pwd_set(lst);
 	free(path);
 }
