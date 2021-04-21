@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/20 15:16:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 17:51:40 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *min
 		i++;
 	}
 	(void)mini;
-//	mini->env_temp = ft_find_env(mini->env, "PWD");
-//	temp = ft_strjoin(mini->env_temp->value, "/");
-//	path = ft_strjoin(temp, argv[0]);
-//	execve(path, argv, envp);
-//	free(path);
+	mini->env_temp = ft_find_env(mini->env, "PWD");
+	temp = ft_strjoin(mini->env_temp->value, "/");
+	path = ft_strjoin(temp, argv[0]);
+	execve(path, argv, envp);
+	free(path);
 	free_split(split);
 }
 
-static void	not_builtin(t_mini *mini, char *envp[], char *temp)
+void		not_builtin(t_mini *mini, char *envp[], char *temp)
 {
 	char		**argv;
 	char		**split;
@@ -45,7 +45,6 @@ static void	not_builtin(t_mini *mini, char *envp[], char *temp)
 	backup_term(mini);
 	argv = ft_split(temp, ' ');
 	mini->env_temp = ft_find_env(mini->env, "PATH");
-	printf("%s\n", temp);
 	if (!mini->env_temp)
 	{
 		printf("bash: %s: No such file or directory\n", temp);
@@ -59,55 +58,24 @@ static void	not_builtin(t_mini *mini, char *envp[], char *temp)
 
 static void	builtin(t_mini *mini, char *envp[])
 {
-	char	*temp;
-	char	**split;
-	int		i;
-	int		status;
+	char		**split;
+	int			i;
+	t_f_list	*f_lst_temp;
 
 	split = ft_split(mini->lst_temp->content, '|');
 	i = 0;
-	if (mini->pid == 0)
-	{
-		while (split[i])
-		{
-			pipe(mini->fd);
-			temp = ft_strtrim(split[i], " ");
-			if (ft_strcmp(split[i], "pwd") == 0)
-				ft_pwd(mini->env);
-			else if (ft_strncmp(split[i], "cd ", 3) == 0 ||
-					(!ft_strcmp(split[i], "cd") && ft_strlen(split[i]) == 2))
-				ft_cd(mini->env, split[i] + 3);
-			else if (ft_strcmp(split[i], "env") == 0 || ft_strcmp(split[i], "export") == 0)
-				ft_env(*mini, split[i]);
-			else if (ft_strncmp(split[i], "export ", 7) == 0)
-				ft_add_export(mini, split[i]);
-			else if (ft_strcmp(split[i], "exit") == 0)
-				ft_exit(mini, split[i]);
-			else if (ft_strncmp(split[i], "unset ", 6) == 0)
-				ft_envp_lstdelone(mini->env, ft_strtrim(split[i] + 6, " "));
-			else
-			{
-				mini->pid = fork();
-				if (mini->pid == 0)
-				{
-					dup2(mini->fd[1], 1);
-					close(mini->fd[0]);
-					not_builtin(mini, envp, split[i]);
-				}
-				else
-				{
-					wait(&status);
-					dup2(mini->fd[0], 0);
-					close(mini->fd[1]);
-				}
-				mini->pid = 0;
-			}
-			free(temp);
-			i++;
-		}
-		exit(0);
-	}
-	free(split);
+	t_f_lstadd_back(&mini->fd_lst);
+	mini->pid = 0;
+	pipe(mini->fd_lst->fd);
+	close(mini->fd_lst->fd[1]);
+	f_lst_temp = mini->fd_lst;
+	if (split[i + 1])
+		is_pipe(mini, envp, split);
+	else
+		is_not_pipe(mini, envp, split[0]);
+	t_f_lstclear(&f_lst_temp);
+	mini->pid = 0;
+	free_split(split);
 }
 
 void		enter(t_mini *mini, char *envp[])
@@ -115,6 +83,7 @@ void		enter(t_mini *mini, char *envp[])
 	write(1, "\n", 1);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
+		mini->fd_lst = NULL;
 		mini->temp = mini->history->content;
 		mini->history->content = ft_strdup(mini->lst_temp->content);
 		builtin(mini, envp);
