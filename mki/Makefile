@@ -6,18 +6,23 @@
 #    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 19:00:30 by mki              ###   ########.fr        #
+#    Updated: 2021/04/21 19:43:37 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	minishell
+
+INC 		=	includes/
 CC			=	gcc
 CFLAGS_FT	=	-Wall -Wextra -Werror 
 CFLAGS_ASAN	=	-fsanitize=address -g2
-CFLAGS		=	$(CFLAGS_FT) $(CFLAGS_ASAN)
+CFLAGS		=	$(CFLAGS_FT) $(CFLAGS_ASAN) -I $(INC)
+
 LFLAGS		=	-Llib/libft -lft -lncurses
+
 AR			=	ar
 ARFLAGS		=	rcs
+
 RM			=	rm -rf
 
 BIN_F		=	ft_add_export\
@@ -93,8 +98,6 @@ $(NAME): $(OBJS)
 	make -C $(LIBFT_D)
 	make bonus -C $(LIBFT_D)
 	$(CC) $(CFLAGS) $(LFLAGS) $^ -o $@
-	make clean
-	rm $(LIBFT_A)
 
 all: $(NAME)
 

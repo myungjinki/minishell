@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 12:59:52 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:22:14 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:40:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_stoi(char *str)
 {

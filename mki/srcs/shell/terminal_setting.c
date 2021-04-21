@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 11:59:52 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:36:09 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:42:48 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	term_set(void)
 {

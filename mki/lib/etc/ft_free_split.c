@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 12:24:34 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:24:40 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:40:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	free_split(char **str)
 {

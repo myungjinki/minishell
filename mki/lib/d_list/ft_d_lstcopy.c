@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:09:40 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:22:37 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:40:08 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	ft_d_lstcopy(t_d_list **src, t_d_list *dst)
 {

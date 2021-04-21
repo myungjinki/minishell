@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:36:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:35:52 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:42:20 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 static int	nbr_size(int nbr)
 {

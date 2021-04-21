@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:26:28 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:35:27 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 19:41:12 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	ft_env(t_mini mini, char *str)
 {
