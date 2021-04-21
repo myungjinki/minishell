@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 18:20:42 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/21 18:55:27 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <sys/types.h>
 # include "../lib/libft/libft.h"
 # include <signal.h>
-
 
 typedef struct			s_envp_list
 {
