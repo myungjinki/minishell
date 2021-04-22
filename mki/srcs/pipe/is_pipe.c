@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/22 15:54:31 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/21 19:42:04 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 static void	exe(t_mini *mini, char *envp[], char **split, int i)
 {
@@ -31,8 +31,7 @@ static void	exe(t_mini *mini, char *envp[], char **split, int i)
 	else
 	{
 		close(mini->fd_lst->next->fd[0]);
-		if (i != 0)
-			dup2(mini->fd_lst->fd[0], 0);
+		dup2(mini->fd_lst->fd[0], 0);
 		if (split[i + 1])
 			dup2(mini->fd_lst->next->fd[1], 1);
 		not_builtin(mini, envp, split[i]);
