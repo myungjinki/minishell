@@ -83,6 +83,7 @@ void		enter(t_mini *mini, char *envp[])
 	write(1, "\n", 1);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
+		
 		mini->fd_lst = NULL;
 		mini->temp = mini->history->content;
 		mini->history->content = ft_strdup(mini->lst_temp->content);
