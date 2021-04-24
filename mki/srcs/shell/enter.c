@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 19:42:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/24 18:28:12 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ void		enter(t_mini *mini, char *envp[])
 	write(1, "\n", 1);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
-		
+		lexer(mini->lst_temp->content);
+		// parser();
+		// expander();
+		// executor();
 		mini->fd_lst = NULL;
 		mini->temp = mini->history->content;
 		mini->history->content = ft_strdup(mini->lst_temp->content);

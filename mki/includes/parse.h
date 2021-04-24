@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:06:59 by mki               #+#    #+#             */
-/*   Updated: 2021/04/21 21:16:41 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/24 18:28:47 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ typedef struct  s_line
     char        *line;
 }               t_line;
 
-void    get_line(void);
+void	lexer(char *s);
 
 #endif
