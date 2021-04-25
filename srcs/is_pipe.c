@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:39:23 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/24 13:19:54 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	exe(t_mini *mini, char *envp[], char **split, int i)
 	else
 	{
 		close(mini->fd_lst->next->fd[0]);
-		dup2(mini->fd_lst->fd[0], 0);
+		if (i != 0)
+			dup2(mini->fd_lst->fd[0], 0);
 		if (split[i + 1])
 			dup2(mini->fd_lst->next->fd[1], 1);
 		not_builtin(mini, envp, split[i]);
@@ -42,9 +43,15 @@ static void	exe(t_mini *mini, char *envp[], char **split, int i)
 
 void		is_pipe(t_mini *mini, char *envp[], char **split)
 {
-	int i;
+	int			i;
+	t_f_list	*f_lst_temp;
 
 	i = 0;
+	mini->fd_lst = NULL;
+	t_f_lstadd_back(&mini->fd_lst);
+	pipe(mini->fd_lst->fd);
+	close(mini->fd_lst->fd[1]);
+	f_lst_temp = mini->fd_lst;
 	while (split[i])
 	{
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
@@ -61,4 +68,5 @@ void		is_pipe(t_mini *mini, char *envp[], char **split)
 		}
 		i++;
 	}
+	t_f_lstclear(&f_lst_temp);
 }

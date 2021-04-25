@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:36:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 17:29:39 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/25 11:49:21 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		delete_end(int flag)
 	ce = tgetstr("ce", NULL);
 	if (flag == 1)
 		col = 1;
-	else if (col != 1)
+	else if (col != 1 && ft_strcmp(g_mini.lst_temp->content, ""))
 		--col;
 	tputs(tgoto(cm, col, row), 1, putchar_tc);
 	tputs(ce, 1, putchar_tc);
