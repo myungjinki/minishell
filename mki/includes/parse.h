@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:06:59 by mki               #+#    #+#             */
-/*   Updated: 2021/04/25 14:21:10 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/25 16:11:39 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,28 @@
 **	~	Tilde					U+007E
 */
 
-# define	WHITESPACE			20
-# define	EXCLAMATION			21
-# define	DOUBLE_QUOTE		22
-# define	HASH				23
-# define	DOLLAR_SIGN			24
-# define	PERCENT				25
-# define	AMPERSNAD			26
-# define	SINGLE_QUOTE		27	
-# define	L_PARENT			28
-# define	R_PARENT			29
-# define 	PIPELINE		3
-# define	COMMAND			4
-# define	OPTIONS			5
-# define 	BACKSLASH		6
+# define	COMMAND				0x01
+# define	OPTIONS				0x02
+# define 	QUOTE				0x03
+# define 	DQUOTE				0x04
+# define	STRING				0x05
+# define	CHARACTER			0x06
+
+# define	WHITESPACE			0x20
+# define	EXCLAMATION			0x21
+# define	DOUBLE_QUOTE		0x22
+# define	HASH				0x23
+# define	DOLLAR_SIGN			0x24
+# define	PERCENT				0x25
+# define	AMPERSNAD			0x26
+# define	SINGLE_QUOTE		0x27	
+# define	L_PARENT			0x28
+# define	R_PARENT			0x29
+# define	ASTERISK			0x2A
+# define	SEMICOLON			0x3B
+# define	QUESTION_MARK		0x3F
+# define 	BACKSLASH			0x5C
+# define 	VERTICAL_BAR		0x7C
 
 /*
 **	struct
@@ -79,6 +87,8 @@ typedef struct	s_symbol_table
 	void		*value;
 }				t_symbol_table;
 
-void	lexer(char *s);
+// void	lexer(char *s);
+// void	parser(t_mini *, char *, char **);
+void	token(t_mini *, char **);
 
 #endif
