@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:51:40 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/25 16:16:28 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,12 @@ static void	builtin(t_mini *mini, char *envp[])
 
 	split = ft_split(mini->lst_temp->content, '|');
 	i = 0;
-	t_f_lstadd_back(&mini->fd_lst);
 	mini->pid = 0;
-	pipe(mini->fd_lst->fd);
-	close(mini->fd_lst->fd[1]);
 	f_lst_temp = mini->fd_lst;
 	if (split[i + 1])
 		is_pipe(mini, envp, split);
 	else
 		is_not_pipe(mini, envp, split[0]);
-	t_f_lstclear(&f_lst_temp);
 	mini->pid = 0;
 	free_split(split);
 }
@@ -83,7 +79,6 @@ void		enter(t_mini *mini, char *envp[])
 	write(1, "\n", 1);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
-		mini->fd_lst = NULL;
 		mini->temp = mini->history->content;
 		mini->history->content = ft_strdup(mini->lst_temp->content);
 		builtin(mini, envp);
