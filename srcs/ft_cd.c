@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 17:50:09 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 12:44:41 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ static void	ft_cd_hyphen(t_envp_list *lst, char **str)
 		printf("%s\n", *str);
 	}
 	else
-	{
 		printf("cd: OLDPWD not set\n");
-		return ;
-	}
 }
 
 void		ft_cd(t_envp_list *lst, char *str)
@@ -52,7 +49,10 @@ void		ft_cd(t_envp_list *lst, char *str)
 
 	path = ft_strtrim(str, " ");
 	if (*str == '-')
+	{
 		ft_cd_hyphen(lst, &path);
+		return ;
+	}
 	else if (*str == 0)
 	{
 		lst_temp = ft_find_env(lst, "HOME");
