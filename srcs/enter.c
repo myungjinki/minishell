@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/25 16:16:28 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 12:43:09 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void		not_builtin(t_mini *mini, char *envp[], char *temp)
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		printf("bash: %s: No such file or directory\n", temp);
+		printf("%s: No such file or directory\n", temp);
 		exit(1);
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv, mini);
-	printf("command not found: %s\n", temp);
+	printf("%s: command not found\n", temp);
 	exit(0);
 }
 

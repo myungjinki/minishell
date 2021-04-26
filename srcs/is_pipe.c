@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/24 13:19:54 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 13:23:26 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 static void	exe(t_mini *mini, char *envp[], char **split, int i)
 {
+	close(mini->fd_lst->next->fd[0]);
+	if (i != 0)
+		dup2(mini->fd_lst->fd[0], 0);
+	if (split[i + 1])
+		dup2(mini->fd_lst->next->fd[1], 1);
 	if (ft_strcmp(split[i], "pwd") == 0)
 		ft_pwd(mini->env);
 	else if (ft_strncmp(split[i], "cd ", 3) == 0 ||
@@ -30,11 +35,6 @@ static void	exe(t_mini *mini, char *envp[], char **split, int i)
 		ft_envp_lstdelone(mini->env, ft_strtrim(split[i] + 6, " "));
 	else
 	{
-		close(mini->fd_lst->next->fd[0]);
-		if (i != 0)
-			dup2(mini->fd_lst->fd[0], 0);
-		if (split[i + 1])
-			dup2(mini->fd_lst->next->fd[1], 1);
 		not_builtin(mini, envp, split[i]);
 		mini->pid = 0;
 	}
