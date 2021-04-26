@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/25 16:47:37 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/26 13:01:03 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void		not_builtin(t_mini *mini, char *envp[], char *temp);
 void		is_not_pipe(t_mini *mini, char *envp[], char *str);
 void		minishell(char ***);
 
-void		token(t_mini *);
+void		token(t_mini *, char **);
 
 #endif
