@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 12:43:09 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 15:19:40 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,24 @@ static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *min
 	path = ft_strjoin(temp, argv[0]);
 	execve(path, argv, envp);
 	free(path);
-	free_split(split);
 }
 
-void		not_builtin(t_mini *mini, char *envp[], char *temp)
+void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 {
 	char		**argv;
 	char		**split;
 
 	backup_term(mini);
-	argv = ft_split(temp, ' ');
+	argv = (char **)lst->content;
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		printf("%s: No such file or directory\n", temp);
+		printf("%s: No such file or directory\n", argv[0]);
 		exit(1);
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv, mini);
-	printf("%s: command not found\n", temp);
+	printf("%s: command not found\n", argv[0]);
 	exit(0);
 }
 
@@ -66,10 +65,10 @@ static void	builtin(t_mini *mini, char *envp[])
 	i = 0;
 	mini->pid = 0;
 	f_lst_temp = mini->fd_lst;
-	if (split[i + 1])
-		is_pipe(mini, envp, split);
+	if (((t_list *)mini->token.lst->content)->next)
+		is_pipe(mini, envp);
 	else
-		is_not_pipe(mini, envp, split[0]);
+		is_not_pipe(mini, envp);
 	mini->pid = 0;
 	free_split(split);
 }
@@ -77,6 +76,7 @@ static void	builtin(t_mini *mini, char *envp[])
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
+	token(mini, envp);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
 		mini->temp = mini->history->content;
