@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_export.c                                    :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 16:59:01 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:18:12 by sehan            ###   ########.fr       */
+/*   Created: 2021/04/26 15:25:11 by sehan             #+#    #+#             */
+/*   Updated: 2021/04/26 15:45:04 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_add_export(t_mini *mini, char **temp)
+void	unset(t_envp_list **lst, char **str)
 {
 	int i;
 
-	i = 1;
-	while (temp[i])
+	i = 0;
+	while (str[i])
 	{
-		ft_envp_lstadd(&mini->env, temp[i]);
+		ft_envp_lstdelone(lst, str[i]);
 		i++;
 	}
 }

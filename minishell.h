@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/25 11:49:20 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 15:44:24 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ typedef struct			s_f_list
 	struct s_f_list		*next;
 }						t_f_list;
 
+typedef struct			s_token
+{
+	t_list				*lst;
+}						t_token;
+
 typedef struct			s_mini
 {
 	t_d_list			*lst_temp;
@@ -60,6 +65,8 @@ typedef struct			s_mini
 	char				*temp;
 	pid_t				pid;
 	struct termios		term;
+
+	t_token				token;
 }						t_mini;
 
 extern t_mini g_mini;
@@ -71,7 +78,7 @@ t_envp_list	*ft_find_env(t_envp_list *lst, char *key);
 void		ft_envp_lstinit(t_envp_list **lst, char *envp[]);
 void		ft_envp_lstadd(t_envp_list **lst, char *str);
 void		ft_envp_lstclear(t_envp_list **lst);
-void		ft_envp_lstdelone(t_envp_list *lst, char *str);
+void		ft_envp_lstdelone(t_envp_list **lst, char *str);
 void		term_set(void);
 int			ft_stoi(char *str);
 void		ft_d_lstadd(t_d_list **lst);
@@ -86,15 +93,17 @@ void		mini_init(t_mini *mini, char *envp[]);
 void		free_split(char **str);
 void		ft_env(t_mini mini, char *str);
 void		ft_exit(t_mini *mini, char *temp);
-void		ft_add_export(t_mini *mini, char *temp);
+void		ft_add_export(t_mini *mini, char **temp);
 void		control_d(t_mini *mini);
 void		backup_term(t_mini *mini);
 void		t_f_lstadd_back(t_f_list **lst);
 t_f_list	*t_f_lstlast(t_f_list *lst);
 void		sig(int signo);
 void		t_f_lstclear(t_f_list **lst);
-void		is_pipe(t_mini *mini, char *envp[], char **split);
-void		not_builtin(t_mini *mini, char *envp[], char *temp);
-void		is_not_pipe(t_mini *mini, char *envp[], char *str);
+void		is_pipe(t_mini *mini, char *envp[]);
+void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
+void		is_not_pipe(t_mini *mini, char *envp[]);
+void		token(t_mini *mini, char **envp);
+void		unset(t_envp_list **lst, char **str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 12:44:41 by sehan            ###   ########.fr       */
+/*   Updated: 2021/04/26 15:45:54 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_pwd_set(t_envp_list *lst)
 	char	*temp;
 	char	str[256];
 
-	ft_envp_lstdelone(lst, ft_strdup("OLDPWD"));
+	ft_envp_lstdelone(&lst, ft_strdup("OLDPWD"));
 	lst = ft_find_env(lst, "PWD");
 	temp = ft_strjoin("OLDPWD=", lst->value);
 	ft_envp_lstadd(&lst, temp);
