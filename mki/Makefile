@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mki <mki@student.42.fr>                    +#+  +:+       +#+         #
+#    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/21 22:21:42 by mki              ###   ########.fr        #
+#    Updated: 2021/04/25 16:10:23 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ ENV_O		=	$(addprefix $(ENV_D), $(addsuffix .o, $(ENV_F)))
 PARSE_F		=	executor\
 				expander\
 				lexer\
-				parser
+				parser\
+				token
 PARSE_D		=	srcs/parse/
 PARSE_C		=	$(addprefix $(PARSE_D), $(addsuffix .c, $(PARSE_F)))
 PARSE_O		=	$(addprefix $(PARSE_D), $(addsuffix .o, $(PARSE_F)))

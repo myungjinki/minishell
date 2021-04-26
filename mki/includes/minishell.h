@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 21:17:10 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/26 13:21:44 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <termcap.h>
 # include <sys/types.h>
 # include "../lib/libft/libft.h"
-# include "parse.h"
 # include <signal.h>
 
 typedef struct			s_envp_list
@@ -46,6 +45,11 @@ typedef struct			s_f_list
 	struct s_f_list		*next;
 }						t_f_list;
 
+typedef struct			t_token
+{
+	t_list				*lst;
+}						s_token;
+
 typedef struct			s_mini
 {
 	t_d_list			*lst_temp;
@@ -54,13 +58,14 @@ typedef struct			s_mini
 	t_envp_list			*env;
 	t_envp_list			*env_temp;
 	t_f_list			*fd_lst;
-	t_line				line;
 
 	int					c;
 	char				*str;
 	char				*temp;
 	pid_t				pid;
 	struct termios		term;
+
+	s_token				token;
 }						t_mini;
 
 extern t_mini g_mini;
@@ -98,5 +103,7 @@ void		is_pipe(t_mini *mini, char *envp[], char **split);
 void		not_builtin(t_mini *mini, char *envp[], char *temp);
 void		is_not_pipe(t_mini *mini, char *envp[], char *str);
 void		minishell(char ***);
+
+void		token(t_mini *, char **);
 
 #endif
