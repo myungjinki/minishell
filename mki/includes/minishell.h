@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 13:01:03 by mki              ###   ########.fr       */
+/*   Updated: 2021/04/26 13:21:44 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ typedef struct			s_f_list
 
 typedef struct			t_token
 {
-	t_d_list			*lst_semi;
-	t_d_list			*lst_pipe;
-	t_d_list			*lst_redi;
+	t_list				*lst;
 }						s_token;
 
 typedef struct			s_mini
