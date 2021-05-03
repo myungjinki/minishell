@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/03 13:26:36 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 20:07:58 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_isspace(char c)
 
 int		ft_isspecial(char c)
 {
-	return (ft_issp(c) || ft_ismeta(c) || ft_isspace(c));
+	return (ft_isdigit(c) || ft_issp(c) || ft_ismeta(c) || ft_isspace(c));
 }
 
 int		token_string(t_list **begin_list, char *str, int idx)
@@ -80,19 +80,19 @@ int		token_special(t_list **begin_list, char c)
 
 t_list	*lexer(char *str)
 {
-	t_list	*ret;
+	t_list	*lst_token;
 	int		idx;
 
-	ret = NULL;
+	lst_token = NULL;
 	idx = 0;
 	while (str[idx])
 	{
 		if (ft_isalpha(str[idx]))
-			idx += token_string(&ret, str, idx);
+			idx += token_string(&lst_token, str, idx);
 		else if (ft_isspecial(str[idx]))
-			idx += token_special(&ret, str[idx]);
+			idx += token_special(&lst_token, str[idx]);
 		else
 			idx++;
 	}
-	return (ret);
+	return (lst_token);
 }

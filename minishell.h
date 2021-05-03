@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 19:28:36 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 19:53:27 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ typedef struct			s_token
 	char				*value;
 }						t_token;
 
+typedef struct			s_word
+{
+	char				**argv;
+	int					*fd_in;
+	int					*fd_out;
+}						t_word;
+
 typedef struct			s_mini
 {
 	t_d_list			*lst_temp;
@@ -67,9 +74,7 @@ typedef struct			s_mini
 	pid_t				pid;
 	struct termios		term;
 
-	t_token				token;
-	t_list				*lst;
-	t_list				*tmp;
+	t_list				*lst_parsed;
 }						t_mini;
 
 extern t_mini g_mini;
