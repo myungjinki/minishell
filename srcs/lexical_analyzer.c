@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/05/03 13:20:10 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 18:31:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	print_token(t_list *lst)
 
 void	lexical_analyzer(t_mini *mini, char *envp[])
 {
-	t_list	*lst;
+	t_list	*lst_lexer;
+	t_list	*lst_parser;
 
-	lst = lexer(mini->lst_temp->content);
-	print_token(lst);
-	// parser();
+	lst_lexer = lexer(mini->lst_temp->content);
+	print_token(lst_lexer);
+	// lst_parser = parser(lst_lexer);
 	// expander();
 	// executor();
 	executor(mini, envp);
