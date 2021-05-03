@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/03 13:17:21 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 19:28:14 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ t_list	*ft_semi(char *s)
 	return (ret);
 }
 
-void	executor(t_mini *mini, char *envp[])
+int		executor(t_mini *mini, char *envp[])
 {
 	envp = 0;
 	mini->lst = ft_semi(mini->lst_temp->content);
 //	lst_print(mini->token.lst);
+	return (0);
 }

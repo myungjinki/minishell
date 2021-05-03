@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 12:46:58 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 19:28:36 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,9 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void		is_not_pipe(t_mini *mini, char *envp[]);
 void		unset(t_envp_list **lst, char **str);
 
-void		lexical_analyzer(t_mini *mini, char **envp);
+int			lexical_analyzer(t_mini *mini, char **envp);
 t_list		*lexer(char *s);
-void		executor(t_mini *mini, char *envp[]);
+int			executor(t_mini *mini, char *envp[]);
+t_list		*parser(t_list *token);
 
 #endif
