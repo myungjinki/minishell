@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 10:18:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 12:46:58 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct			s_mini
 
 	t_token				token;
 	t_list				*lst;
+	t_list				*tmp;
 }						t_mini;
 
 extern t_mini g_mini;
@@ -106,7 +107,9 @@ void		is_pipe(t_mini *mini, char *envp[]);
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void		is_not_pipe(t_mini *mini, char *envp[]);
 void		unset(t_envp_list **lst, char **str);
+
+void		lexical_analyzer(t_mini *mini, char **envp);
 t_list		*lexer(char *s);
-void		token(t_mini *mini, char **envp);
+void		executor(t_mini *mini, char *envp[]);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/03 10:14:53 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/03 13:17:21 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		lst_print(t_list *lst)
 	}
 }
 
-char	**token_string(char *s)
+char	**ft_str(char *s)
 {
 	char	**ret;
 	
@@ -42,7 +42,7 @@ char	**token_string(char *s)
 	return (ret);
 }
 
-t_list	*token_pipe(char *s)
+t_list	*ft_pipe(char *s)
 {
 	char		**split_pipe;
 	t_list		*ret;
@@ -53,12 +53,12 @@ t_list	*token_pipe(char *s)
 	i = -1;
 	while (split_pipe[++i])
 	{
-		ft_lstadd_back(&ret, ft_lstnew(token_string(split_pipe[i])));
+		ft_lstadd_back(&ret, ft_lstnew(ft_str(split_pipe[i])));
 	}
 	return (ret);
 }
 
-t_list	*token_semi(char *s)
+t_list	*ft_semi(char *s)
 {
 	char		**split_semi;
 	t_list	*ret;
@@ -69,14 +69,14 @@ t_list	*token_semi(char *s)
 	i = -1;
 	while (split_semi[++i])
 	{
-		ft_lstadd_back(&ret, ft_lstnew(token_pipe(split_semi[i])));
+		ft_lstadd_back(&ret, ft_lstnew(ft_pipe(split_semi[i])));
 	}
 	return (ret);
 }
 
-void	token(t_mini *mini, char **envp)
+void	executor(t_mini *mini, char *envp[])
 {
 	envp = 0;
-	mini->lst = token_semi(mini->lst_temp->content);
+	mini->lst = ft_semi(mini->lst_temp->content);
 //	lst_print(mini->token.lst);
 }
