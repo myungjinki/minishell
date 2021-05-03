@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.c                                            :+:      :+:    :+:   */
+/*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/25 16:12:02 by mki               #+#    #+#             */
-/*   Updated: 2021/04/26 14:33:44 by sehan            ###   ########.fr       */
+/*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
+/*   Updated: 2021/05/03 10:14:53 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ t_list	*token_semi(char *s)
 void	token(t_mini *mini, char **envp)
 {
 	envp = 0;
-	mini->token.lst = token_semi(mini->lst_temp->content);
+	mini->lst = token_semi(mini->lst_temp->content);
 //	lst_print(mini->token.lst);
 }

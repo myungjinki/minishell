@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/26 15:48:30 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/03 10:11:54 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ FILES =	main \
 		srcs/ft_f_list \
 		srcs/is_pipe \
 		srcs/is_not_pipe \
-		srcs/token \
-		srcs/unset
+		srcs/unset\
+		srcs/executor
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

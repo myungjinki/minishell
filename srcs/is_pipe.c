@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:51:03 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/03 10:16:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		is_pipe(t_mini *mini, char *envp[])
 	t_f_list	*f_lst_temp;
 	t_list		*temp;
 
-	temp = (t_list *)mini->token.lst->content;
+	temp = (t_list *)mini->lst->content;
 	i = 0;
 	mini->fd_lst = NULL;
 	t_f_lstadd_back(&mini->fd_lst);
