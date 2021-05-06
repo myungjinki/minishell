@@ -6,14 +6,14 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/03 19:28:57 by mki              ###   ########.fr        #
+#    Updated: 2021/05/06 16:28:54 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2 -I .
 LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
@@ -45,10 +45,10 @@ FILES =	main \
 		srcs/is_pipe \
 		srcs/is_not_pipe \
 		srcs/unset\
-		srcs/lexer\
-		srcs/executor\
-		srcs/lexical_analyzer\
-		srcs/parser
+		srcs/parsing/lexer\
+		srcs/parsing/executor\
+		srcs/parsing/lexical_analyzer\
+		srcs/parsing/parser
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

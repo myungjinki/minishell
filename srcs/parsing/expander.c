@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:43 by mki               #+#    #+#             */
-/*   Updated: 2021/05/05 14:09:43 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 16:27:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 // t_word	*word_new(char *str)
 // {
