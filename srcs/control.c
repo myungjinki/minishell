@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 13:08:08 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/25 11:42:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:15:27 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sig(int signo)
 		ft_d_lstclear(&g_mini.lst_temp);
 		ft_d_lstcopy(&g_mini.lst_temp, g_mini.history);
 		g_mini.head = g_mini.lst_temp;
-		ft_putstr_fd("\n>", 1);
+		ft_putstr_fd("\nminish-1.0$ ", 1);
 	}
 	else if (signo == SIGQUIT && g_mini.pid != 0)
 	{

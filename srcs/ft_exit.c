@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 14:46:45 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:19:07 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exit(t_mini *mini, char *temp)
 {
+	printf("exit\n");
 	ft_d_lstclear(&mini->head);
 	ft_d_lstclear(&mini->history);
 	ft_envp_lstclear(&mini->env);

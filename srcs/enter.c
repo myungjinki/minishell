@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/06 15:04:08 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 15:16:15 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv, mini);
-	printf("%s: command not found\n", argv[0]);
+	printf("minish: %s: command not found\n", argv[0]);
 	exit(0);
 }
 
@@ -93,5 +93,5 @@ void		enter(t_mini *mini, char *envp[])
 	else
 		mini->lst_temp = mini->head;
 	term_set();
-	write(1, "minishell$ ", 11);
+	write(1, "minish-1.0$ ", 12);
 }
