@@ -6,32 +6,67 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 17:33:18 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 21:01:52 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-t_list 	*syntax_quotes(t_list *lst, int token_name)
+t_list	*make_string(t_list *start, t_list *end)
 {
 	t_token *token;
-	int		flag_quote;
+	int		len;
 
-	flag_quote = 0;
+	len = 0;
+	start = start->next;
+	while (start != end)
+	{
+		token = start->content;
+		len += ft_strlen(token->value);
+		start = start->next;
+	}
+	// printf("len: %d\n", len);
+	return (end);
+}
+
+t_list	*find_quotes(t_list *lst, char c)
+{
+	t_token	*token;
+
+	lst = lst->next;
 	while (lst)
 	{
 		token = lst->content;
-		// printf("%d %d\n", token->name, token_name);
-		if (token->name == token_name)
-			flag_quote++;
+		// printf("%s\n", token->value);
+		if (token->name == c)
+			return (lst);
 		lst = lst->next;
 	}
-	if (flag_quote % 2 == 1)
+	return (NULL);
+}
+
+t_list 	*syntax_quotes(t_list *lst)
+{
+	t_list	*ret;
+	t_list	*end;
+	t_token *token;
+
+	ret = lst;
+	end = NULL;
+	while (lst)
 	{
-		printf("where is another quote");
-		lst = NULL;
+		// printf("start: %p\n", lst->next);
+		token = lst->content;
+		if (token->name == '\'')
+			end = find_quotes(lst, '\'');
+		if (end)
+			lst = make_string(lst, end);
+		else
+			return (NULL);
+		// printf("end: %p\n", lst->next);
+		lst = lst->next;
 	}
-	return (lst);
+	return (ret);
 }
 
 // t_list	*syntax_pipe_semi(t_list *lst, int token_name)
@@ -61,6 +96,9 @@ t_list 	*syntax_quotes(t_list *lst, int token_name)
 
 t_list	*parser(t_list *lst_token)
 {
-	syntax_quotes(lst_token, '\'');
-	return (lst_token);
+	t_list	*ret;
+
+	ret = lst_token;
+	ret = syntax_quotes(lst_token);
+	return (ret);
 }
