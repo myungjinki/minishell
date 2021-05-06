@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:56:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/06 15:10:17 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 16:22:03 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	mini_init(t_mini *mini, char *envp[])
 {
-	write(1, "minish-1.0$ ", 12);
+	write(1, ">", 1);
 	mini->env = NULL;
 	mini->history = NULL;
 	ft_envp_lstinit(&mini->env, envp);
