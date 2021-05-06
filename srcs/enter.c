@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 20:06:08 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 15:04:08 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void		enter(t_mini *mini, char *envp[])
 	else
 		mini->lst_temp = mini->head;
 	term_set();
-	write(1, ">", 1);
+	write(1, "minishell$ ", 11);
 }

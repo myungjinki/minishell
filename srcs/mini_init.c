@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:56:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 16:51:22 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/06 15:04:05 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	mini_init(t_mini *mini, char *envp[])
 {
-	write(1, ">", 1);
+	write(1, "minishell$ ", 11);
 	mini->env = NULL;
 	mini->history = NULL;
 	ft_envp_lstinit(&mini->env, envp);
