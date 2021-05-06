@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 17:29:35 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 18:24:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,34 @@ int		ft_issp(char c)
 	if (c == '*' || c == '@' || c == '#' || c == '?' ||
 		c == '-' || c == '$' || c == '!' || c == '0')
 		return (c);
-	else
-		return (0);
+	return (0);
 }
 
 int		ft_ismeta(char c)
 {
 	if (c == '|' || c == '&' || c == ';' || c == '(' ||
-		c == ')' || c == '<' || c == '>' || c == '\\')
+		c == ')' || c == '<' || c == '>' )
 		return (c);
-	else
-		return (0);
+	return (0);
 }
 
 int		ft_isspace(char c)
 {
 	if (c == ' ')
 		return (c);
-	else
-		return (0);
+	return (0);
+}
+
+int		ft_isquotes(char c)
+{
+	if (c == '\'' || c == '\"' || c == '\\')
+		return (c);
+	return (0);
 }
 
 int		ft_isspecial(char c)
 {
-	return (ft_isdigit(c) || ft_issp(c) || ft_ismeta(c) || ft_isspace(c));
+	return (ft_isdigit(c) || ft_issp(c) || ft_ismeta(c) || ft_isspace(c) || ft_isquotes(c));
 }
 
 int		token_string(t_list **begin_list, char *str, int idx)

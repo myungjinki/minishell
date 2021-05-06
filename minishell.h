@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/06 16:39:26 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:56:00 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <sys/types.h>
 # include "./libft/libft.h"
 # include <signal.h>
-# include "./srcs/parsing/lexical_analyzer.h"
+# include "./srcs/lexical_analyzer/lexical_analyzer.h"
 
 typedef struct			s_envp_list
 {

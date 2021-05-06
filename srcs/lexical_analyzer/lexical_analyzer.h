@@ -6,13 +6,14 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 16:56:47 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:39:52 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXICAL_ANALYZER_H
 # define LEXICAL_ANALYZER_H
 # include "../../libft/libft.h"
+# include <stdio.h>
 
 typedef struct			s_word
 {

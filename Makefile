@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/06 16:28:54 by mki              ###   ########.fr        #
+#    Updated: 2021/05/06 17:57:56 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,10 @@ FILES =	main \
 		srcs/is_pipe \
 		srcs/is_not_pipe \
 		srcs/unset\
-		srcs/parsing/lexer\
-		srcs/parsing/executor\
-		srcs/parsing/lexical_analyzer\
-		srcs/parsing/parser
+		srcs/lexical_analyzer/lexer\
+		srcs/lexical_analyzer/executor\
+		srcs/lexical_analyzer/lexical_analyzer\
+		srcs/lexical_analyzer/parser
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
