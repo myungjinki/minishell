@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 16:27:58 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:33:18 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "lexical_analyzer.h"
 
 t_list 	*syntax_quotes(t_list *lst, int token_name)
 {

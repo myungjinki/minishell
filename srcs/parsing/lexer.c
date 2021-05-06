@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 16:27:50 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:29:35 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "lexical_analyzer.h"
 
 int		ft_issp(char c)
 {

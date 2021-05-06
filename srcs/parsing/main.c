@@ -6,13 +6,16 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:34:43 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 16:35:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:33:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "lexical_analyzer.h"
 
-int		main(void)
+int		main(int argc, char *argv[], char *envp[])
 {
+	argc = 0;
+	argv = 0;
+	
 	return (0);
 }

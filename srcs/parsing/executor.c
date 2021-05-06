@@ -6,11 +6,11 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 16:53:55 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 17:33:14 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "lexical_analyzer.h"
 
 void		lst_print(t_list *lst)
 {
@@ -74,11 +74,10 @@ t_list	*ft_semi(char *s)
 	return (ret);
 }
 
-t_list	*executor(char *str, char *envp[])
+t_list	*executor(char *str)
 {
 	t_list	*ret;
 
-	envp = 0;
 	ret = ft_semi(str);
 //	lst_print(mini->token.lst);
 	return (ret);
