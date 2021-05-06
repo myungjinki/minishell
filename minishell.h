@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 19:53:27 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 16:39:26 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <sys/types.h>
 # include "./libft/libft.h"
 # include <signal.h>
-
+# include "./srcs/parsing/lexical_analyzer.h"
 
 typedef struct			s_envp_list
 {
@@ -45,19 +45,6 @@ typedef struct			s_f_list
 	int					fd[2];
 	struct s_f_list		*next;
 }						t_f_list;
-
-typedef struct			s_token
-{
-	int					name;
-	char				*value;
-}						t_token;
-
-typedef struct			s_word
-{
-	char				**argv;
-	int					*fd_in;
-	int					*fd_out;
-}						t_word;
 
 typedef struct			s_mini
 {
@@ -112,10 +99,5 @@ void		is_pipe(t_mini *mini, char *envp[]);
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void		is_not_pipe(t_mini *mini, char *envp[]);
 void		unset(t_envp_list **lst, char **str);
-
-int			lexical_analyzer(t_mini *mini, char **envp);
-t_list		*lexer(char *s);
-int			executor(t_mini *mini, char *envp[]);
-t_list		*parser(t_list *token);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/06 16:22:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/06 16:54:44 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	builtin(t_mini *mini, char *envp[])
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
-	if (lexical_analyzer(mini, envp))
+	if (!(mini->lst_parsed = lexical_analyzer(mini->lst_temp->content, envp)))
 		return ;
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
