@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:34:43 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 21:17:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/07 11:46:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int		main(int argc, char *argv[], char *envp[])
 	char	buf[1024];
 	int		i;
 	t_list	*lst;
-	t_token *token;
 
 	argc = 0;
 	argv = 0;
