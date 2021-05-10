@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/10 21:41:12 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/10 21:44:49 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,20 @@
 // 	return (*lst);
 // }
 
+t_list	*parser_backquotes(t_list *lst_begin)
+{
+	t_list	*lst;
+
+	lst = lst_begin;
+
+	return (lst_begin);
+}
+
 t_list	*parser(t_list *lst_begin)
 {
 	if (parser_quotes(lst_begin) == NULL)
 		return (NULL);
-	// if (parser_backquotes(lst_begin) == NULL)
-	// 	return (NULL);
+	if (parser_backquotes(lst_begin) == NULL)
+		return (NULL);
 	return (lst_begin);
 }

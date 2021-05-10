@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:39:56 by mki               #+#    #+#             */
-/*   Updated: 2021/05/10 21:40:46 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/10 21:43:38 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ t_list	*find_quotes(t_list *lst, char c)
 	return (NULL);
 }
 
-t_list 	*parser_quotes(t_list *lst)
+t_list 	*parser_quotes(t_list *lst_begin)
 {
-	t_list	*ret;
+	t_list	*lst;
 	t_list	*end;
 	t_token *token;
 
-	ret = lst;
+	lst = lst_begin;
 	end = NULL;
 	while (lst)
 	{
@@ -75,5 +75,5 @@ t_list 	*parser_quotes(t_list *lst)
 		}
 		lst = lst->next;
 	}
-	return (ret);
+	return (lst_begin);
 }
