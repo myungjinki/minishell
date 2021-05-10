@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 21:01:52 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/10 20:59:17 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,18 @@ t_list 	*syntax_quotes(t_list *lst)
 	end = NULL;
 	while (lst)
 	{
-		// printf("start: %p\n", lst->next);
+		printf("start: %p\n", lst->next);
 		token = lst->content;
 		if (token->name == '\'')
 			end = find_quotes(lst, '\'');
 		if (end)
 			lst = make_string(lst, end);
 		else
+		{
+			printf("wrong quote syntax");
 			return (NULL);
-		// printf("end: %p\n", lst->next);
+		}
+		printf("end: %p\n", lst->next);
 		lst = lst->next;
 	}
 	return (ret);
