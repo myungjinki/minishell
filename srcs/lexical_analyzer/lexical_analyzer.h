@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 11:35:11 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/11 12:26:06 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,13 @@ typedef struct			s_token
 	char				*value;
 }						t_token;
 
-typedef struct			s_error
-{
-	int					err_
-}						t_error;
-
 t_list		*lexical_analyzer(char *str, char *envp[]);
 t_list		*lexer(char *str);
 int			parser(t_list *token);
 int		 	parser_quotes(t_list *lst);
+int			parser_backslash_special(t_list *lst_begin);
 t_list		*executor(char *str);
 int			syntax_error(int num);
+void		free_token(t_list *lst);
 
 #endif

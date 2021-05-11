@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/07 11:42:18 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/11 12:20:03 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int		ft_isspecial(char c)
 int		token_string(t_list **begin_list, char *str, int idx)
 {
 	int		len;
-	t_token	*t;
+	t_token	*token;
 
-	t = (t_token *)malloc(sizeof(t_token));
+	token = (t_token *)malloc(sizeof(t_token));
 	len = idx;
 	while (str[len])
 	{
@@ -62,10 +62,10 @@ int		token_string(t_list **begin_list, char *str, int idx)
 			break ;
 	}
 	len -= idx;
-	t->value = (char *)malloc(sizeof(char) * (len + 1));
-	t->name = 's';
-	ft_strlcpy(t->value, str + idx, len + 1);
-	ft_lstadd_back(begin_list, ft_lstnew(t));
+	token->value = (char *)malloc(sizeof(char) * (len + 1));
+	token->name = 's';
+	ft_strlcpy(token->value, str + idx, len + 1);
+	ft_lstadd_back(begin_list, ft_lstnew(token));
 	return (len);
 }
 
