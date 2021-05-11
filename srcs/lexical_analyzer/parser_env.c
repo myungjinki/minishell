@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexical_analyzer.c                                 :+:      :+:    :+:   */
+/*   parser_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 13:35:34 by mki              ###   ########.fr       */
+/*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
+/*   Updated: 2021/05/11 13:36:35 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-void	print_lst_token(t_list *lst)
+t_envp_list	*ft_find_env(t_envp_list *lst, char *key)
 {
-	t_token	*token;
-
 	while (lst)
 	{
-		token = lst->content;
-		printf("%c: %s\n", token->name, token->value);
+		if (ft_strcmp(key, lst->key) == 0)
+			break ;
 		lst = lst->next;
 	}
+	return (lst);
 }
 
-t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp)
-{
-	t_list	*ret;
 
-	if (!(ret = lexer(str)))
-		return (NULL);
-	if (parser(ret, lst_envp))
-		return (NULL);
-	print_lst_token(ret);
-	if (!(ret = executor(str)))
-		return (NULL);
-	return (ret);
+int		parser_envp(t_list *lst, t_envp_list *envp)
+{
+
 }
