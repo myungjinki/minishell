@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 14:19:14 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/11 19:40:44 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,18 @@
 
 int	parser(t_list *lst_begin, t_envp_list *lst_envp) 
 {
-	if (parser_quotes(lst_begin))
-		return (syntax_error(ERROR_QUOTE));
-	if (parser_backslash_special(lst_begin))
-		return (syntax_error(ERROR_BACKSLASH));
-	if (parser_envp(lst_begin, lst_envp))
-		return (syntax_error(ERROR_ENV));
+	t_list	*lst;
+
+	lst = lst_begin;
+	while (lst)
+	{
+		if (parser_quotes(lst))
+			return (syntax_error(ERROR_QUOTE));
+		if (parser_backslash_special(lst))
+			return (syntax_error(ERROR_BACKSLASH));
+		if (parser_envp(lst, lst_envp))
+			return (syntax_error(ERROR_ENV));
+		lst = lst->next;
+	}
 	return (0);
 }
