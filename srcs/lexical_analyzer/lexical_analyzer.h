@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 15:38:11 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 16:20:11 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # include "../../libft/libft.h"
 # include <stdio.h>
 
-# define	ERROR_BACKSLASH	0x01
-# define	ERROR_DQUOTES	0x02
-# define	ERROR_ENV		0x04
-# define	ERROR_QUOTES	0x04
-# define	ERROR_SEMICOLON	0x08
+# define	ERROR_BACKSLASH		0x01
+# define	ERROR_DQUOTES		0x02
+# define	ERROR_QUOTES		0x04
+# define	ERROR_SEMICOLON		0x08
+# define	ERROR_SEMICOLONS	0x08
 
 typedef struct			s_word
 {
@@ -45,7 +45,7 @@ t_list		*executor(char *str);
 void		free_token(t_list *lst);
 t_list		*lexer(char *str);
 t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
-int			parser_backslash(t_list *lst_begin, int flag);
+int			parser_backslash(t_list *lst_begin, int mode);
 int			parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp);
 int			parser_env(t_list *lst_begin, t_envp_list *lst_envp);
 int			parser_pipeline(t_list *lst_begin);

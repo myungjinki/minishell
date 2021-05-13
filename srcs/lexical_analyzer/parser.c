@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 15:38:19 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 16:15:50 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	parser_if(t_list *lst, t_envp_list *lst_envp, char name)
 	else if (name == '\"')
 		return (parser_dquotes(lst, lst_envp));
 	else if (name == '$')
-		return (parser_envp(lst, lst_envp));
+		return (parser_env(lst, lst_envp));
 	else if (name == '|')
 		return (parser_pipeline(lst));
 	else if (name == '\'')
