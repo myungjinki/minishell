@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 17:21:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 19:12:39 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	main(int argc, char *argv[], char *envp[])
 		{
 			if (g_mini.c != 9 && g_mini.c >= 0 && g_mini.c <= 127)
 			{
-//				g_mini.temp = g_mini.lst_temp->content;
-//				g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
 				g_mini.temp = g_mini.history->content;
 				g_mini.history->content = ft_strjoin(g_mini.history->content, g_mini.str);
 				free(g_mini.temp);
