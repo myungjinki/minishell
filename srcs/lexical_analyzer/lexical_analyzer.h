@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 18:45:28 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 18:54:18 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct			s_token
 t_list		*executor(char *str);
 t_list		*lexer(char *str);
 t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
+t_list		*make_string(t_list *start, t_list *end);
 int			parser_backslash(t_list *lst_begin, int mode);
 int			parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp);
 int			parser_env(t_list *lst_begin, t_envp_list *lst_envp);
