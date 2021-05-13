@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_envp.c                                      :+:      :+:    :+:   */
+/*   parser_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 19:39:42 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 15:31:39 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		parser_envp(t_list *lst, t_envp_list *envp)
+int		parser_env(t_list *lst_begin, t_envp_list *lst_envp)
 {
+	lst_begin = 0;
+	lst_envp = 0;
+	// return (syntax_error(ERROR_ENV));
 	return (0);
 }

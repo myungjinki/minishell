@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:39:56 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 11:33:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 15:39:48 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_list	*make_string(t_list *start, t_list *end)
 	return (end);
 }
 
-t_list	*find_quotes(t_list *lst, char c)
+t_list	*find_token(t_list *lst, char c)
 {
 	t_token	*token;
 
@@ -64,11 +64,11 @@ int		parser_quotes(t_list *lst_begin)
 		token = lst->content;
 		if (token->name == '\'')
 		{
-			end = find_quotes(lst, '\'');
+			end = find_token(lst, '\'');
 			if (end)
 				lst = make_string(lst, end);
 			else
-				return (1);
+				return (syntax_error(ERROR_QUOTES));
 		}
 		lst = lst->next;
 	}

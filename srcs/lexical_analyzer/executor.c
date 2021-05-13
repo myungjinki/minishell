@@ -6,11 +6,22 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/06 17:33:14 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 15:13:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
+
+// t_word	*word_new(char *str)
+// {
+// 	t_word	*ret;
+
+// 	ret = (t_word *)malloc(sizeof(t_word));
+// 	ret->argv[0] = str;
+// 	ret->fd_in = NULL;
+// 	ret->fd_out = NULL;
+// 	return (ret);
+// }
 
 void		lst_print(t_list *lst)
 {

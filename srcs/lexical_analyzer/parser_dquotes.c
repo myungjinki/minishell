@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_dquotes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/06 16:34:43 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 14:45:40 by mki              ###   ########.fr       */
+/*   Created: 2021/05/13 15:19:30 by mki               #+#    #+#             */
+/*   Updated: 2021/05/13 15:30:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-int		main(int argc, char *argv[], char *envp[])
+int	parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp)
 {
-	char	buf[1024];
-	int		i;
-	t_list	*lst;
+	lst_begin = 0;
+	lst_envp = 0;
+	// t_list	*lst;
 
-	argc = 0;
-	argv = 0;
-	i = 0;
-	while (i < 1024)
-		buf[i++] = 0;
-	// while (1)
+	// lst = lst_begin;
+	// while (lst)
 	// {
-	printf("bash-3.2$ ");
-	scanf("%[^\n]s", buf);
-	lst = lexical_analyzer(buf, envp);
-	// 	if (!lst)
-	// 		break ;
+	// 	parser_backslash(lst);
+	// 	parser_env(lst, lst_envp);
+	// 	lst = lst->next;
 	// }
 	return (0);
 }

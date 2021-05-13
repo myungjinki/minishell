@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:25:33 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 12:25:50 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 15:38:27 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	backslash_special(t_list *lst)
 	return (0);
 }
 
-int	parser_backslash_special(t_list *lst_begin)
+int	parser_backslash(t_list *lst_begin, int flag)
 {
 	t_list	*lst;
 	t_token *token;
@@ -46,7 +46,7 @@ int	parser_backslash_special(t_list *lst_begin)
 	{
 		token = lst->content;
 		if (token->name == '\\' && backslash_special(lst))
-			return (1);
+			return (syntax_error(ERROR_BACKSLASH));
 		lst = lst->next;
 	}
 	return (0);

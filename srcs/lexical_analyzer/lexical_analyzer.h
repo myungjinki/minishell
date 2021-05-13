@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 13:36:23 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 15:38:11 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # include "../../libft/libft.h"
 # include <stdio.h>
 
-# define	ERROR_QUOTE		1
-# define	ERROR_BACKSLASH	2
-# define	ERROR_ENV		3
+# define	ERROR_BACKSLASH	0x01
+# define	ERROR_DQUOTES	0x02
+# define	ERROR_ENV		0x04
+# define	ERROR_QUOTES	0x04
+# define	ERROR_SEMICOLON	0x08
 
 typedef struct			s_word
 {
@@ -35,18 +37,22 @@ typedef struct			s_envp_list
 
 typedef struct			s_token
 {
-	int					name;
+	char				name;
 	char				*value;
 }						t_token;
 
-t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
-t_list		*lexer(char *str);
-int			parser(t_list *token, t_envp_list *envp);
-int		 	parser_quotes(t_list *lst);
-int			parser_backslash_special(t_list *lst_begin);
-int			parser_envp(t_list *lst, t_envp_list *envp);
 t_list		*executor(char *str);
-int			syntax_error(int num);
 void		free_token(t_list *lst);
+t_list		*lexer(char *str);
+t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
+int			parser_backslash(t_list *lst_begin, int flag);
+int			parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp);
+int			parser_env(t_list *lst_begin, t_envp_list *lst_envp);
+int			parser_pipeline(t_list *lst_begin);
+int		 	parser_quotes(t_list *lst_begin);
+int		 	parser_redirection(t_list *lst_begin);
+int			parser_semicolon(t_list *lst_begin);
+int			parser(t_list *lst_begin, t_envp_list *lst_envp);
+int			syntax_error(int num);
 
 #endif
