@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:56:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/21 16:51:22 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 18:35:25 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	mini_init(t_mini *mini, char *envp[])
 	mini->history = NULL;
 	ft_envp_lstinit(&mini->env, envp);
 	ft_d_lstadd(&mini->history);
-	ft_d_lstcopy(&mini->lst_temp, mini->history);
-	mini->head = mini->lst_temp;
+	mini->head = mini->history;
 	term_set();
 	mini->str = (char *)malloc(5);
 	ft_memset(mini->str, 0, 5);

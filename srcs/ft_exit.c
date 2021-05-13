@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/17 14:46:45 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 17:06:03 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_exit(t_mini *mini, char *temp)
 {
 	ft_d_lstclear(&mini->head);
-	ft_d_lstclear(&mini->history);
 	ft_envp_lstclear(&mini->env);
 	free(mini->str);
 	free(temp);

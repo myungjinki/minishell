@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:26:28 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/27 11:55:39 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 18:41:59 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_env(t_mini mini, char *str)
 		}
 	}
 	else
-	{
 		while (mini.env)
 		{
 			printf("declare - x %s", mini.env->key);
@@ -39,5 +38,4 @@ void	ft_env(t_mini mini, char *str)
 			printf("\n");
 			mini.env = mini.env->next;
 		}
-	}
 }

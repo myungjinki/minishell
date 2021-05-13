@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 15:28:06 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 17:01:52 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct			s_d_list
 	struct s_d_list		*next;
 	struct s_d_list		*prev;
 	char				*content;
+	char				*temp;
 }						t_d_list;
 
 typedef struct			s_f_list
@@ -53,7 +54,7 @@ typedef struct			s_token
 
 typedef struct			s_mini
 {
-	t_d_list			*lst_temp;
+//	t_d_list			*lst_temp;
 	t_d_list			*history;
 	t_d_list			*head;
 	t_envp_list			*env;

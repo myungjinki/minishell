@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:29 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/14 13:25:23 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 16:04:24 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_d_list	*ft_d_lstnew(void *content)
 	if (!result)
 		return (result);
 	result->content = content;
+	result->temp = ft_strdup(content);
 	result->next = 0;
 	result->prev = 0;
 	return (result);

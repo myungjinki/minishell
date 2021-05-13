@@ -6,17 +6,18 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 13:31:02 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 17:58:51 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *mini)
+static void	not_builtin_exe(char *envp[], char **split, char **argv)
 {
 	int		i;
 	char	*temp;
 	char	*path;
+	char	*str;
 
 	i = 0;
 	while (split[i])
@@ -28,12 +29,13 @@ static void	not_builtin_exe(char *envp[], char **split, char **argv, t_mini *min
 		free(path);
 		i++;
 	}
-	(void)mini;
-	mini->env_temp = ft_find_env(mini->env, "PWD");
-	temp = ft_strjoin(mini->env_temp->value, "/");
+	str = getcwd(0, 0);
+	temp = ft_strjoin(str, "/");
 	path = ft_strjoin(temp, argv[0]);
 	execve(path, argv, envp);
+	free(str);
 	free(path);
+	free(temp);
 }
 
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
@@ -50,18 +52,16 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
-	not_builtin_exe(envp, split, argv, mini);
+	not_builtin_exe(envp, split, argv);
 	printf("%s: command not found\n", argv[0]);
 	exit(0);
 }
 
 static void	builtin(t_mini *mini, char *envp[])
 {
-	char		**split;
 	int			i;
 	t_f_list	*f_lst_temp;
 
-	split = ft_split(mini->lst_temp->content, '|');
 	i = 0;
 	mini->pid = 0;
 	f_lst_temp = mini->fd_lst;
@@ -70,28 +70,29 @@ static void	builtin(t_mini *mini, char *envp[])
 	else
 		is_not_pipe(mini, envp);
 	mini->pid = 0;
-	free_split(split);
 }
 
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
 	token(mini, envp);
-	if (ft_strcmp(mini->lst_temp->content, ""))
+	if (ft_strcmp(mini->history->content, ""))
 	{
 		mini->status = 0;
-		mini->temp = mini->history->content;
-		mini->history->content = ft_strdup(mini->lst_temp->content);
+		free(mini->head->content);
+		free(mini->head->temp);
+		mini->head->content = ft_strdup(mini->history->content);
+		mini->head->temp = ft_strdup(mini->history->content);
+		free(mini->history->content);
+		mini->history->content = mini->history->temp;
+		mini->history->temp = ft_strdup(mini->history->content);
 		builtin(mini, envp);
-		free(mini->temp);
-		mini->lst_temp = mini->head;
-		ft_d_lstclear(&mini->lst_temp);
-		ft_d_lstadd(&mini->history);
-		ft_d_lstcopy(&mini->lst_temp, mini->history);
-		mini->head = mini->lst_temp;
+		ft_d_lstadd(&mini->head);
+		mini->history = mini->head;
 	}
 	else
-		mini->lst_temp = mini->head;
+		mini->history = mini->head;
+	printf("%d\n", mini->status);
 	if (mini->status >= 256)
 		mini->status /= 256;
 	term_set();

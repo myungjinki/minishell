@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 16:12:02 by mki               #+#    #+#             */
-/*   Updated: 2021/04/26 14:33:44 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 16:30:00 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ t_list	*token_semi(char *s)
 void	token(t_mini *mini, char **envp)
 {
 	envp = 0;
-	mini->token.lst = token_semi(mini->lst_temp->content);
+	mini->token.lst = token_semi(mini->history->content);
 //	lst_print(mini->token.lst);
 }

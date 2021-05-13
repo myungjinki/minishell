@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 16:02:01 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 18:42:10 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ void		ft_cd(t_envp_list *lst, char *str)
 	char		*oldpwd;
 
 	path = ft_strtrim(str, " ");
-//	if (*str == '-')
-//	{
-//		ft_cd_hyphen(lst, &path);
-//		return ;
-//	}
 	if (*str == 0)
 	{
 		lst_temp = ft_find_env(lst, "HOME");
@@ -57,5 +52,6 @@ void		ft_cd(t_envp_list *lst, char *str)
 	}
 	else
 		ft_pwd_set(lst, oldpwd);
+	free(oldpwd);
 	free(path);
 }

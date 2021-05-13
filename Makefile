@@ -6,7 +6,7 @@
 #    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/04/26 15:48:30 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/13 18:43:59 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	rm libft/libft.a
+
 re: clean all
 
 .PHONY: bonus all clean fclean re
