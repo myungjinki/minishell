@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 19:12:39 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 19:37:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char *argv[], char *envp[])
 	mini_init(&g_mini, envp);
 	signal(SIGINT, (void *)sig);
 	signal(SIGQUIT, sig);
+	sehan
 	while (read(0, g_mini.str, 4) > 0)
 	{
 		g_mini.c = ft_stoi(g_mini.str);
