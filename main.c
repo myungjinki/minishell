@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 12:39:40 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/07 15:14:30 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ int	main(int argc, char *argv[], char *envp[])
 			control_d(&g_mini);
 		else
 		{
-			g_mini.temp = g_mini.lst_temp->content;
-			g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
-			free(g_mini.temp);
-			write(1, g_mini.str, 1);
+			if (g_mini.c != 9 && g_mini.c >= 0 && g_mini.c <= 127)
+			{
+				g_mini.temp = g_mini.lst_temp->content;
+				g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
+				free(g_mini.temp);
+				write(1, g_mini.str, 1);
+			}
 		}
 		ft_memset(g_mini.str, 0, 5);
 	}

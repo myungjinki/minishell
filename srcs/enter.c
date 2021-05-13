@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:19:40 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 13:31:02 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	if (!mini->env_temp)
 	{
 		printf("%s: No such file or directory\n", argv[0]);
-		exit(1);
+		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv, mini);
@@ -79,6 +79,7 @@ void		enter(t_mini *mini, char *envp[])
 	token(mini, envp);
 	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
+		mini->status = 0;
 		mini->temp = mini->history->content;
 		mini->history->content = ft_strdup(mini->lst_temp->content);
 		builtin(mini, envp);
@@ -91,6 +92,8 @@ void		enter(t_mini *mini, char *envp[])
 	}
 	else
 		mini->lst_temp = mini->head;
+	if (mini->status >= 256)
+		mini->status /= 256;
 	term_set();
 	write(1, ">", 1);
 }

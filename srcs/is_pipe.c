@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:51:03 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 15:24:50 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 	if (temp->next)
 		dup2(mini->fd_lst->next->fd[1], 1);
 	if (ft_strcmp(split[0], "pwd") == 0)
-		ft_pwd(mini->env);
+		ft_pwd();
 	else if (ft_strncmp(split[0], "cd", 2) == 0)
 		ft_cd(mini->env, split[1]);
 	else if (ft_strcmp(split[0], "export") == 0 && split[1])
@@ -40,7 +40,7 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 		not_builtin(mini, envp, temp);
 		mini->pid = 0;
 	}
-	exit(0);
+	exit(mini->status);
 }
 
 void		is_pipe(t_mini *mini, char *envp[])
@@ -66,7 +66,7 @@ void		is_pipe(t_mini *mini, char *envp[])
 			exe(mini, envp, temp, i);
 		else
 		{
-			wait(NULL);
+			wait(&mini->status);
 			close(mini->fd_lst->next->fd[1]);
 			close(mini->fd_lst->fd[0]);
 		}

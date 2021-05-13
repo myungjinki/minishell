@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:44:24 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 15:28:06 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct			s_mini
 	char				*temp;
 	pid_t				pid;
 	struct termios		term;
+	int					status;
 
 	t_token				token;
 }						t_mini;
@@ -72,7 +73,7 @@ typedef struct			s_mini
 extern t_mini g_mini;
 
 int			ft_strcmp(char *s1, char *s2);
-void		ft_pwd(t_envp_list *lst);
+void		ft_pwd(void);
 void		ft_cd(t_envp_list *lst, char *str);
 t_envp_list	*ft_find_env(t_envp_list *lst, char *key);
 void		ft_envp_lstinit(t_envp_list **lst, char *envp[]);
