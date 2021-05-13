@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 16:20:11 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 18:45:28 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct			s_token
 }						t_token;
 
 t_list		*executor(char *str);
-void		free_token(t_list *lst);
 t_list		*lexer(char *str);
 t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
 int			parser_backslash(t_list *lst_begin, int mode);
@@ -54,5 +53,7 @@ int		 	parser_redirection(t_list *lst_begin);
 int			parser_semicolon(t_list *lst_begin);
 int			parser(t_list *lst_begin, t_envp_list *lst_envp);
 int			syntax_error(int num);
+t_list		*token_find(t_list *lst, char c);
+void		token_free(t_list *lst);
 
 #endif

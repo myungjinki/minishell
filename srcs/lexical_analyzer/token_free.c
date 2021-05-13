@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_quotes.c                                    :+:      :+:    :+:   */
+/*   token_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 21:39:56 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 18:53:01 by mki              ###   ########.fr       */
+/*   Created: 2021/05/11 12:12:40 by mki               #+#    #+#             */
+/*   Updated: 2021/05/13 16:24:06 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-int		parser_quotes(t_list *lst_begin)
+void	token_free(t_list *lst)
 {
-	t_list	*lst;
-	t_list	*end;
-	t_token *token;
-
-	lst = lst_begin;
-	end = token_find(lst, '\'');
-	if (end)
-		lst = make_string(lst, end);
-	else
-		return (syntax_error(ERROR_QUOTES));
-	return (0);
+	free(((t_token *)lst->content)->value);
+	free(lst->content);
+	free(lst);
 }

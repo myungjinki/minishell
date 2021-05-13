@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   token_find.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 12:12:40 by mki               #+#    #+#             */
-/*   Updated: 2021/05/11 12:14:57 by mki              ###   ########.fr       */
+/*   Created: 2021/05/13 16:22:25 by mki               #+#    #+#             */
+/*   Updated: 2021/05/13 16:39:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-void	free_token(t_list *lst)
+t_list	*token_find(t_list *lst, char c)
 {
-	free(((t_token *)lst->content)->value);
-	free(lst->content);
-	free(lst);
+	t_token	*token;
+
+	lst = lst->next;
+	while (lst)
+	{
+		token = lst->content;
+		if (token->name == c)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
 }
