@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 17:58:51 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 19:09:16 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	builtin(t_mini *mini, char *envp[])
 	i = 0;
 	mini->pid = 0;
 	f_lst_temp = mini->fd_lst;
-	if (((t_list *)mini->token.lst->content)->next)
+	if (((t_list *)mini->lst_parsed->content)->next)
 		is_pipe(mini, envp);
 	else
 		is_not_pipe(mini, envp);
@@ -75,8 +75,9 @@ static void	builtin(t_mini *mini, char *envp[])
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
-	token(mini, envp);
-	if (ft_strcmp(mini->history->content, ""))
+	if (!(mini->lst_parsed = lexical_analyzer(mini->lst_temp->content, mini->env)))
+		return ;
+	if (ft_strcmp(mini->lst_temp->content, ""))
 	{
 		mini->status = 0;
 		free(mini->head->content);

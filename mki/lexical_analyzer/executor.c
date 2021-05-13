@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.c                                            :+:      :+:    :+:   */
+/*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/25 16:12:02 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 16:30:00 by sehan            ###   ########.fr       */
+/*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
+/*   Updated: 2021/05/13 19:10:08 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "lexical_analyzer.h"
+
+// t_word	*word_new(char *str)
+// {
+// 	t_word	*ret;
+
+// 	ret = (t_word *)malloc(sizeof(t_word));
+// 	ret->argv[0] = str;
+// 	ret->fd_in = NULL;
+// 	ret->fd_out = NULL;
+// 	return (ret);
+// }
 
 void		lst_print(t_list *lst)
 {
@@ -33,7 +44,7 @@ void		lst_print(t_list *lst)
 	}
 }
 
-char	**token_string(char *s)
+char	**ft_str(char *s)
 {
 	char	**ret;
 	
@@ -42,7 +53,7 @@ char	**token_string(char *s)
 	return (ret);
 }
 
-t_list	*token_pipe(char *s)
+t_list	*ft_pipe(char *s)
 {
 	char		**split_pipe;
 	t_list		*ret;
@@ -53,12 +64,12 @@ t_list	*token_pipe(char *s)
 	i = -1;
 	while (split_pipe[++i])
 	{
-		ft_lstadd_back(&ret, ft_lstnew(token_string(split_pipe[i])));
+		ft_lstadd_back(&ret, ft_lstnew(ft_str(split_pipe[i])));
 	}
 	return (ret);
 }
 
-t_list	*token_semi(char *s)
+t_list	*ft_semi(char *s)
 {
 	char		**split_semi;
 	t_list	*ret;
@@ -69,14 +80,21 @@ t_list	*token_semi(char *s)
 	i = -1;
 	while (split_semi[++i])
 	{
-		ft_lstadd_back(&ret, ft_lstnew(token_pipe(split_semi[i])));
+		ft_lstadd_back(&ret, ft_lstnew(ft_pipe(split_semi[i])));
 	}
 	return (ret);
 }
 
-void	token(t_mini *mini, char **envp)
+t_list	*executor(char *str)
 {
+<<<<<<< HEAD:srcs/token.c
 	envp = 0;
 	mini->token.lst = token_semi(mini->history->content);
+=======
+	t_list	*ret;
+
+	ret = ft_semi(str);
+>>>>>>> 6fecfe5c8dc98a91cd2723cd1cfade2c79fb9a03:mki/lexical_analyzer/executor.c
 //	lst_print(mini->token.lst);
+	return (ret);
 }

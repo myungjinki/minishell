@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sehan <sehan@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/13 18:43:59 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/13 19:08:09 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g2
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2 -I .
 LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
@@ -44,8 +44,22 @@ FILES =	main \
 		srcs/ft_f_list \
 		srcs/is_pipe \
 		srcs/is_not_pipe \
-		srcs/token \
-		srcs/unset
+		srcs/unset\
+		srcs/lexical_analyzer/executor\
+		srcs/lexical_analyzer/lexer\
+		srcs/lexical_analyzer/lexical_analyzer\
+		srcs/lexical_analyzer/make_string\
+		srcs/lexical_analyzer/parser_backslash\
+		srcs/lexical_analyzer/parser_dquotes\
+		srcs/lexical_analyzer/parser_env\
+		srcs/lexical_analyzer/parser_pipeline\
+		srcs/lexical_analyzer/parser_quotes\
+		srcs/lexical_analyzer/parser_redirection\
+		srcs/lexical_analyzer/parser_semicolon\
+		srcs/lexical_analyzer/parser\
+		srcs/lexical_analyzer/syntax_error\
+		srcs/lexical_analyzer/token_find\
+		srcs/lexical_analyzer/token_free
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

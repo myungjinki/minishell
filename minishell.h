@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 17:01:52 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 19:08:43 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,7 @@
 # include <sys/types.h>
 # include "./libft/libft.h"
 # include <signal.h>
-
-
-typedef struct			s_envp_list
-{
-	struct s_envp_list	*next;
-	void				*key;
-	void				*value;
-}						t_envp_list;
+# include "./srcs/lexical_analyzer/lexical_analyzer.h"
 
 typedef struct			s_d_list
 {
@@ -46,11 +39,6 @@ typedef struct			s_f_list
 	int					fd[2];
 	struct s_f_list		*next;
 }						t_f_list;
-
-typedef struct			s_token
-{
-	t_list				*lst;
-}						t_token;
 
 typedef struct			s_mini
 {
@@ -68,7 +56,7 @@ typedef struct			s_mini
 	struct termios		term;
 	int					status;
 
-	t_token				token;
+	t_list				*lst_parsed;
 }						t_mini;
 
 extern t_mini g_mini;
@@ -105,7 +93,6 @@ void		t_f_lstclear(t_f_list **lst);
 void		is_pipe(t_mini *mini, char *envp[]);
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void		is_not_pipe(t_mini *mini, char *envp[]);
-void		token(t_mini *mini, char **envp);
 void		unset(t_envp_list **lst, char **str);
 
 #endif

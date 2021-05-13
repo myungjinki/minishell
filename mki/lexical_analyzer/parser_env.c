@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   parser_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 17:06:03 by sehan            ###   ########.fr       */
+/*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
+/*   Updated: 2021/05/13 15:31:39 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
-void	ft_exit(t_mini *mini, char *temp)
+int		parser_env(t_list *lst_begin, t_envp_list *lst_envp)
 {
-	ft_d_lstclear(&mini->head);
-	ft_envp_lstclear(&mini->env);
-	free(mini->str);
-	free(temp);
-	exit(0);
+	lst_begin = 0;
+	lst_envp = 0;
+	// return (syntax_error(ERROR_ENV));
+	return (0);
 }
