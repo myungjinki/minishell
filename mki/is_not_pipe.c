@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/03 19:54:15 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 19:09:37 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	is_not_pipe(t_mini *mini, char *envp[])
 
 	str = ((t_list *)(mini->lst_parsed->content))->content;
 	if (ft_strcmp(str[0], "pwd") == 0)
-		ft_pwd(mini->env);
+		ft_pwd();
 	else if (ft_strncmp(str[0], "cd ", 3) == 0 ||
 			(!ft_strcmp(str[0], "cd") && ft_strlen(str[0]) == 2))
 		ft_cd(mini->env, str[1]);
@@ -30,14 +30,13 @@ void	is_not_pipe(t_mini *mini, char *envp[])
 		ft_exit(mini, str[0]);
 	else if (ft_strcmp(str[0], "unset") == 0)
 		unset(&mini->env, str);
-//		ft_envp_lstdelone(mini->env, ft_strtrim(str[0] + 6, " "));
 	else
 	{
 		mini->pid = fork();
 		if (mini->pid == 0)
 			not_builtin(mini, envp, (t_list *)mini->lst_parsed->content);
 		else
-			wait(NULL);
+			wait(&mini->status);
 		mini->pid = 0;
 	}
 }

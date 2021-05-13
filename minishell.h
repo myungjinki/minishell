@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/11 13:28:15 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/13 19:08:43 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct			s_d_list
 	struct s_d_list		*next;
 	struct s_d_list		*prev;
 	char				*content;
+	char				*temp;
 }						t_d_list;
 
 typedef struct			s_f_list
@@ -41,7 +42,7 @@ typedef struct			s_f_list
 
 typedef struct			s_mini
 {
-	t_d_list			*lst_temp;
+//	t_d_list			*lst_temp;
 	t_d_list			*history;
 	t_d_list			*head;
 	t_envp_list			*env;
@@ -53,6 +54,7 @@ typedef struct			s_mini
 	char				*temp;
 	pid_t				pid;
 	struct termios		term;
+	int					status;
 
 	t_list				*lst_parsed;
 }						t_mini;
@@ -60,7 +62,7 @@ typedef struct			s_mini
 extern t_mini g_mini;
 
 int			ft_strcmp(char *s1, char *s2);
-void		ft_pwd(t_envp_list *lst);
+void		ft_pwd(void);
 void		ft_cd(t_envp_list *lst, char *str);
 t_envp_list	*ft_find_env(t_envp_list *lst, char *key);
 void		ft_envp_lstinit(t_envp_list **lst, char *envp[]);

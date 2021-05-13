@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 12:39:40 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 17:21:05 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,29 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		g_mini.c = ft_stoi(g_mini.str);
 		if (g_mini.c == ARROW_UP || g_mini.c == ARROW_DOWN)
-			arrow(&g_mini.lst_temp, g_mini.c);
+			//arrow(&g_mini.lst_temp, g_mini.c);
+			arrow(&g_mini.history, g_mini.c);
 		else if (g_mini.c == 10)
 			enter(&g_mini, envp);
 		else if (g_mini.c == DELETE)
 		{
 			delete_end(0);
-			if (ft_strlen(g_mini.lst_temp->content))
-				g_mini.lst_temp->content[ft_strlen(g_mini.lst_temp->content) - 1] = 0;
+			if (ft_strlen(g_mini.history->content))
+				g_mini.history->content[ft_strlen(g_mini.history->content) - 1] = 0;
 		}
 		else if (g_mini.c == CTRL_D)
 			control_d(&g_mini);
 		else
 		{
-			g_mini.temp = g_mini.lst_temp->content;
-			g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
-			free(g_mini.temp);
-			write(1, g_mini.str, 1);
+			if (g_mini.c != 9 && g_mini.c >= 0 && g_mini.c <= 127)
+			{
+//				g_mini.temp = g_mini.lst_temp->content;
+//				g_mini.lst_temp->content = ft_strjoin(g_mini.lst_temp->content, g_mini.str);
+				g_mini.temp = g_mini.history->content;
+				g_mini.history->content = ft_strjoin(g_mini.history->content, g_mini.str);
+				free(g_mini.temp);
+				write(1, g_mini.str, 1);
+			}
 		}
 		ft_memset(g_mini.str, 0, 5);
 	}

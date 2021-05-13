@@ -6,39 +6,28 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:45:54 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 18:42:10 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_pwd_set(t_envp_list *lst)
+static void	ft_pwd_set(t_envp_list *lst, char *oldpwd)
 {
 	char	*temp;
-	char	str[256];
+	char	*str;
 
-	ft_envp_lstdelone(&lst, ft_strdup("OLDPWD"));
+	ft_envp_lstdelone(&lst, "OLDPWD");
 	lst = ft_find_env(lst, "PWD");
-	temp = ft_strjoin("OLDPWD=", lst->value);
+	temp = ft_strjoin("OLDPWD=", oldpwd);
 	ft_envp_lstadd(&lst, temp);
-	free(lst->value);
 	free(temp);
-	getcwd(str, 256);
-	lst->value = ft_strdup(str);
-}
-
-static void	ft_cd_hyphen(t_envp_list *lst, char **str)
-{
-	t_envp_list *lst_temp;
-
-	lst_temp = ft_find_env(lst, "OLDPWD");
-	if (lst_temp)
+	if (lst)
 	{
-		*str = lst_temp->value;
-		printf("%s\n", *str);
+		free(lst->value);
+		str = getcwd(0, 0);
+		lst->value = ft_strdup(str);
 	}
-	else
-		printf("cd: OLDPWD not set\n");
 }
 
 void		ft_cd(t_envp_list *lst, char *str)
@@ -46,21 +35,23 @@ void		ft_cd(t_envp_list *lst, char *str)
 	char		*path;
 	int			boolean;
 	t_envp_list	*lst_temp;
+	char		*oldpwd;
 
 	path = ft_strtrim(str, " ");
-	if (*str == '-')
-	{
-		ft_cd_hyphen(lst, &path);
-		return ;
-	}
-	else if (*str == 0)
+	if (*str == 0)
 	{
 		lst_temp = ft_find_env(lst, "HOME");
 		str = lst_temp->value;
 	}
+	oldpwd = getcwd(0, 0);
 	boolean = chdir(path);
 	if (boolean == -1)
+	{
+		g_mini.status = 1;
 		printf("cd: no such file or directory: %s\n", path);
-	ft_pwd_set(lst);
+	}
+	else
+		ft_pwd_set(lst, oldpwd);
+	free(oldpwd);
 	free(path);
 }

@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:35:16 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/26 15:50:35 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/13 17:14:29 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	ft_envp_lstinit(t_envp_list **lst, char *envp[])
 		ft_envp_lstadd(lst, envp[i]);
 		i++;
 	}
-	ft_envp_lstdelone(lst, ft_strdup("OLDPWD"));
+	ft_envp_lstdelone(lst, "OLDPWD");
 }

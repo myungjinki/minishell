@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/13 18:53:20 by mki              ###   ########.fr        #
+#    Updated: 2021/05/13 19:08:09 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	rm libft/libft.a
+
 re: clean all
 
 .PHONY: bonus all clean fclean re
