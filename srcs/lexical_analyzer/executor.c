@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 19:23:00 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/15 18:02:13 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_list	*ft_pipe(char *s)
 	int			i;
 	
 	split_pipe = ft_split(s, '|');
+	free(s);
 	ret = NULL;
 	i = -1;
 	while (split_pipe[++i])

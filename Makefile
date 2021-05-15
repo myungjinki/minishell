@@ -6,14 +6,15 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/13 19:08:09 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/15 17:44:53 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2 -I .
+ASAN = -fsanitize=address -g2
+CFLAGS = -Wall -Wextra -Werror -I .
 LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
