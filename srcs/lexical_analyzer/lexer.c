@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/17 12:49:16 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/17 13:14:25 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		token_special(t_list **begin_list, char c)
 	t = (t_token *)malloc(1);
 	t->name = c;
 	// free(t->value);
-	printf("%lu\n", sizeof(t_token));
+	// printf("%lu\n", sizeof(t_token));
 	t->value = (char *)malloc(sizeof(char) * 2);
 	t->value[0] = c;
 	t->value[1] = '\0';
