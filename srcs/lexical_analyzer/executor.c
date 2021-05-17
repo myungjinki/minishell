@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/15 18:02:13 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/17 11:50:41 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	**ft_str(char *s)
 	
 	ret = NULL;
 	ret = ft_split(s, ' ');
+	free(s);
 	return (ret);
 }
 
@@ -67,6 +68,7 @@ t_list	*ft_pipe(char *s)
 	{
 		ft_lstadd_back(&ret, ft_lstnew(ft_str(split_pipe[i])));
 	}
+	free(split_pipe);
 	return (ret);
 }
 
@@ -82,7 +84,13 @@ t_list	*ft_semi(char *s)
 	while (split_semi[++i])
 	{
 		ft_lstadd_back(&ret, ft_lstnew(ft_pipe(split_semi[i])));
+		// printf("while: %p\n", ret);
 	}
+	// printf("res: %p\n", ret);
+	// t_list	*pipe = ret->content;
+	// t_list	*space = pipe->content;
+	// printf("%s\n", ((char **)space->content)[0]);
+	free(split_semi);
 	return (ret);
 }
 
