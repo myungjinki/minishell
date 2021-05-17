@@ -6,14 +6,14 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/13 19:08:09 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/17 12:25:07 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2 -I .
+CFLAGS = -Wall -Wextra -Werror -I . #-fsanitize=address -g2 
 LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
@@ -59,7 +59,8 @@ FILES =	main \
 		srcs/lexical_analyzer/parser\
 		srcs/lexical_analyzer/syntax_error\
 		srcs/lexical_analyzer/token_find\
-		srcs/lexical_analyzer/token_free
+		srcs/lexical_analyzer/token_free \
+		srcs/ft_lst_free
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

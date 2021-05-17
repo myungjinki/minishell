@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 19:08:43 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/17 12:24:47 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct			s_f_list
 
 typedef struct			s_mini
 {
-//	t_d_list			*lst_temp;
 	t_d_list			*history;
 	t_d_list			*head;
 	t_envp_list			*env;
@@ -94,5 +93,6 @@ void		is_pipe(t_mini *mini, char *envp[]);
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void		is_not_pipe(t_mini *mini, char *envp[]);
 void		unset(t_envp_list **lst, char **str);
+void		ft_lst_free(t_list *lst);
 
 #endif
