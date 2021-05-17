@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 12:11:44 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/17 12:29:05 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,44 @@ static void	builtin(t_mini *mini, char *envp[])
 	mini->pid = 0;
 }
 
+static void	history(t_mini *mini)
+{
+	char *temp;
+
+	temp = ft_strdup(mini->history->content);
+	free(mini->head->content);
+	free(mini->head->temp);
+	mini->head->content = ft_strdup(temp);
+	mini->head->temp = ft_strdup(temp);
+	free(mini->history->content);
+	free(mini->history->temp);
+	mini->history->content = ft_strdup(mini->history->temp);
+	mini->history->temp = ft_strdup(mini->history->content);
+	ft_d_lstadd(&mini->head);
+	mini->history = mini->head;
+	free(temp);
+}
+
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
 	mini->lst_parsed = lexical_analyzer(mini->history->content, mini->env);
+	system("leaks minishell");
 	if (ft_strcmp(mini->history->content, ""))
 	{
 		mini->status = 0;
-		free(mini->head->content);
-		free(mini->head->temp);
-		mini->head->content = ft_strdup(mini->history->content);
-		mini->head->temp = ft_strdup(mini->history->content);
-		free(mini->history->content);
-		mini->history->content = mini->history->temp;
-		mini->history->temp = ft_strdup(mini->history->content);
-		builtin(mini, envp);
-		ft_d_lstadd(&mini->head);
-		mini->history = mini->head;
+		history(mini);
+		if (mini->lst_parsed)
+			builtin(mini, envp);
+		else
+			printf("syntex error");
 	}
 	else
 		mini->history = mini->head;
 	if (mini->status >= 256)
 		mini->status /= 256;
 	term_set();
+	ft_lst_free(mini->lst_parsed);
+	system("leaks minishell");
 	write(1, ">", 1);
 }

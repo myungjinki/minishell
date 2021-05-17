@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/15 17:44:53 by mki              ###   ########.fr        #
+#    Updated: 2021/05/17 12:28:51 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ FILES =	main \
 		srcs/lexical_analyzer/parser\
 		srcs/lexical_analyzer/syntax_error\
 		srcs/lexical_analyzer/token_find\
-		srcs/lexical_analyzer/token_free
+		srcs/lexical_analyzer/token_free \
+		srcs/ft_lst_free
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

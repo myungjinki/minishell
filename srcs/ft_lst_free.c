@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cursor.c                                           :+:      :+:    :+:   */
+/*   ft_lst_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/14 16:16:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 19:47:51 by sehan            ###   ########.fr       */
+/*   Created: 2021/05/17 12:13:06 by sehan             #+#    #+#             */
+/*   Updated: 2021/05/17 12:25:52 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	arrow(t_d_list **lst, int flag)
+void	ft_lst_free(t_list *lst)
 {
-	delete_end(1);
-	if (flag == ARROW_UP)
+	t_list *temp;
+	t_list *free_temp;
+
+	while (lst)
 	{
-		if ((*lst)->next)
-			*lst = (*lst)->next;
+		free_temp = (t_list *)lst->content;
+		while (temp)
+		{
+			temp = free_temp->next;
+			free_split(free_temp->content);
+			free(free_temp);
+		}
+		temp = lst;
+		lst = lst->next;
+		free(temp);
 	}
-	else
-	{
-		if ((*lst)->prev)
-			*lst = (*lst)->prev;
-	}
-	ft_putstr_fd((*lst)->content, 1);
 }
