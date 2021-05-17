@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 12:29:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/17 12:53:09 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
 	mini->lst_parsed = lexical_analyzer(mini->history->content, mini->env);
-	system("leaks minishell");
 	if (ft_strcmp(mini->history->content, ""))
 	{
 		mini->status = 0;
@@ -110,6 +109,5 @@ void		enter(t_mini *mini, char *envp[])
 		mini->status /= 256;
 	term_set();
 	ft_lst_free(mini->lst_parsed);
-	system("leaks minishell");
 	write(1, ">", 1);
 }
