@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 13:28:06 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 14:39:19 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list		*lexer(char *str);
 t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp, int status);
 t_list		*make_string(t_list *start, t_list *end);
 int			parser_backslash(t_list *lst_begin, int mode);
-int			parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp);
+int			parser_dquotes(t_list *lst_begin, t_envp_list *lst_envp, int status);
 int			parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status);
 int			parser_pipeline(t_list *lst_begin);
 int		 	parser_quotes(t_list *lst_begin);
