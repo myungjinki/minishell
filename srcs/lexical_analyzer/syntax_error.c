@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:04:05 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 16:20:19 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 13:25:07 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		syntax_error(int num)
 		printf("Multiline Command doesn't work\n");
 	else if (num == ERROR_QUOTES)
 		printf("Multiline Command doesn't work\n");
+	else if (num == ERROR_ENV)
+		printf("wrong $\n");
 	else if (num == ERROR_SEMICOLON)
 		printf("bash: syntax error near unexpected token `;'\n");
 	else if (num == ERROR_SEMICOLONS)
