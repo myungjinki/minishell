@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 14:33:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 18:11:03 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 	char	*tmp;
 
 	join = (char *)ft_calloc(1, 1);
-	while (lst_begin->next)
+	t = (lst_begin->next)->content;
+	while (t->name == 's' || t->name == '_' || ft_isdigit(t->name))
 	{
-		t = lst_begin->next->content;
-		if (t->name == 's' || t->name == '_' || ft_isdigit(t->name))
-		{
-			tmp = ft_strjoin(join, t->value);
-			free(join);
-			join = tmp;
-		}
-		lst_tmp = lst_begin->next->next;
+		tmp = ft_strjoin(join, t->value);
+		free(join);
+		join = tmp;
+		lst_tmp = (lst_begin->next)->next;
 		token_free(lst_begin->next);
 		lst_begin->next = lst_tmp;
+		if (lst_begin->next == NULL)
+			return ;
+		t = (lst_begin->next)->content;
 	}
 
 	t_envp_list	*lst_envp_tmp;
