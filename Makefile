@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/17 12:28:51 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/18 13:09:34 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,11 @@ FILES =	main \
 		srcs/is_not_pipe \
 		srcs/unset\
 		srcs/lexical_analyzer/executor\
+		srcs/lexical_analyzer/ft_isall\
+		srcs/lexical_analyzer/ft_ismeta\
+		srcs/lexical_analyzer/ft_isquotes\
+		srcs/lexical_analyzer/ft_isspace\
+		srcs/lexical_analyzer/ft_isspecial\
 		srcs/lexical_analyzer/lexer\
 		srcs/lexical_analyzer/lexical_analyzer\
 		srcs/lexical_analyzer/make_string\

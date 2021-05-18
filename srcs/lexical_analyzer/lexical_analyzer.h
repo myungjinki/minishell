@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/17 13:18:49 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 11:51:37 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # define	ERROR_DQUOTES		0x02
 # define	ERROR_QUOTES		0x04
 # define	ERROR_SEMICOLON		0x08
-# define	ERROR_SEMICOLONS	0x08
+# define	ERROR_SEMICOLONS	0x10
+# define	ERROR_ENV			0x20
 
 typedef struct			s_word
 {
@@ -42,6 +43,11 @@ typedef struct			s_token
 }						t_token;
 
 t_list		*executor(char *str);
+int			ft_isall(char c);
+int			ft_ismeta(char c);
+int			ft_isquotes(char c);
+int			ft_isspace(char c);
+int			ft_isspecial(char c);
 t_list		*lexer(char *str);
 t_list		*lexical_analyzer(char *str, t_envp_list *lst_envp);
 t_list		*make_string(t_list *start, t_list *end);
