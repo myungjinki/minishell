@@ -6,15 +6,23 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 11:26:00 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 14:33:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	parser_dollar_question_mark(t_list *lst_begin)
+void	parser_dollar_question_mark(t_list *lst_begin, int status)
 {
-	lst_begin = 0;
+	t_list	*lst_next;
+	t_token	*token;
+
+	token = lst_begin->content;
+	lst_next = lst_begin->next;
+	lst_begin->next = lst_next->next;
+	token_free(lst_next);
+	token->name = 's';
+	token->value = ft_itoa(status);
 }
 
 void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
@@ -51,7 +59,7 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 		t->name = 0;
 }
 
-int		parser_env(t_list *lst_begin, t_envp_list *lst_envp)
+int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 {
 	t_token	*token;
 
@@ -59,7 +67,7 @@ int		parser_env(t_list *lst_begin, t_envp_list *lst_envp)
 	if (token->name == 's' || token->name == '_')
 		parser_env_var(lst_begin, lst_envp);
 	else if (token->name == '?')
-		parser_dollar_question_mark(lst_begin);
+		parser_dollar_question_mark(lst_begin, status);
 	else
 		return (syntax_error(ERROR_DQUOTES));
 	return (0);
