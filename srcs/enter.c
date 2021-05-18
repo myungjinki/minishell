@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/18 13:25:54 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 16:16:45 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,24 @@ static void	builtin(t_mini *mini, char *envp[])
 {
 	int			i;
 	t_f_list	*f_lst_temp;
+	t_list		*temp;
 
 	i = 0;
 	mini->pid = 0;
 	f_lst_temp = mini->fd_lst;
-	if (((t_list *)mini->lst_parsed->content)->next)
-		is_pipe(mini, envp);
-	else
-		is_not_pipe(mini, envp);
+	temp = mini->lst_parsed;
+	while (temp)
+	{
+		char **str;
+		t_list *lst;
+		lst = temp->content;
+		str = lst->content;
+		if (((t_list *)temp->content)->next)
+			is_pipe(mini, envp, temp->content);
+		else
+			is_not_pipe(mini, envp, temp->content);
+		temp = temp->next;
+	}
 	mini->pid = 0;
 }
 
@@ -101,7 +111,10 @@ void		enter(t_mini *mini, char *envp[])
 		if (mini->lst_parsed)
 			builtin(mini, envp);
 		else
+		{
+			mini->status = 127;
 			printf("syntex error");
+		}
 	}
 	else
 		mini->history = mini->head;

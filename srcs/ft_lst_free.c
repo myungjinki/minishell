@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 12:13:06 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 12:25:52 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/17 16:41:44 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	ft_lst_free(t_list *lst)
 
 	while (lst)
 	{
-		free_temp = (t_list *)lst->content;
+		temp = (t_list *)lst->content;
 		while (temp)
 		{
+			free_temp = temp;
 			temp = free_temp->next;
 			free_split(free_temp->content);
 			free(free_temp);
