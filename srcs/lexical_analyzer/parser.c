@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/19 11:29:39 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 14:19:45 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	parser_if(t_list *lst, t_envp_list *lst_envp, char name, int status)
 		return (parser_quotes(lst));
 	else if (name == '>' || name == '<')
 		return (parser_redirection(lst));
-	else if (name == ';')
-		return (parser_semicolon(lst));
 	return (0);
 }
 
@@ -36,6 +34,7 @@ int	parser(t_list *lst_begin, t_envp_list *lst_envp, int status)
 	t_list	*lst;
 	t_token *token;
 
+	parser_semicolon(lst_begin);
 	lst = lst_begin;
 	while (lst)
 	{

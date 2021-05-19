@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:20:35 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 15:32:08 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 14:32:14 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,13 @@
 int	parser_semicolon(t_list *lst_begin)
 {
 	lst_begin = 0;
-	return (0);
+	// t_list	*lst;
+
+	// lst = lst_begin;
+	// while (lst)
+	// {
+		
+	// 	lst = lst->next;
+	// }
+	// return (0);
 }

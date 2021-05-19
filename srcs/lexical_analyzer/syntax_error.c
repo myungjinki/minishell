@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:04:05 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 13:25:07 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 13:54:10 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		syntax_error(int num)
 	else if (num == ERROR_DQUOTES)
 		printf("Multiline Command doesn't work\n");
 	else if (num == ERROR_QUOTES)
+		printf("Multiline Command doesn't work\n");
+	else if (num == ERROR_PIPELINE)
 		printf("Multiline Command doesn't work\n");
 	else if (num == ERROR_ENV)
 		printf("wrong $\n");

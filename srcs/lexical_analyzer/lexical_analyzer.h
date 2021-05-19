@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 14:39:19 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 13:53:50 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define	ERROR_SEMICOLON		0x08
 # define	ERROR_SEMICOLONS	0x10
 # define	ERROR_ENV			0x20
+# define	ERROR_PIPELINE		0x20
 
 typedef struct			s_word
 {
