@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/19 12:32:57 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 13:11:13 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	parser_env_trans(t_list *lst_begin, t_envp_list *lst_envp, char *join)
 		token->value = ft_strdup(lst_envp_tmp->value);
 	}
 	else
+	{
 		token->name = 0;
+		token->value[0] = '\0';
+	}
 	free(join);
 }
 
