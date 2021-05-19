@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 16:47:46 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/18 18:02:21 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,31 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 	pipe(mini->fd_lst->fd);
 	close(mini->fd_lst->fd[1]);
 	f_lst_temp = mini->fd_lst;
+	mini->pid = (pid_t *)malloc(sizeof(pid_t) * ft_lstsize(lst));
 	while (lst)
 	{
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
 		t_f_lstadd_back(&mini->fd_lst);
 		pipe(mini->fd_lst->next->fd);
-		mini->pid = fork();
-		if (mini->pid == 0)
+		//mini->pid = fork();
+		mini->pid[i] = fork();
+		//if (mini->pid == 0)
+		if (mini->pid[i] == 0)
 			exe(mini, envp, lst, i);
 		else
 		{
-			wait(&mini->status);
+			//wait(&mini->status);
 			close(mini->fd_lst->next->fd[1]);
 			close(mini->fd_lst->fd[0]);
 		}
 		i++;
 		lst = lst->next;
 	}
+	while (i >= 0)
+	{
+		waitpid(mini->pid[i], &mini->status, 0);
+		i--;
+	}
+	free(mini->pid);
 	t_f_lstclear(&f_lst_temp);
 }

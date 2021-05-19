@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 16:43:03 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/18 17:55:07 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct			s_mini
 	int					c;
 	char				*str;
 	char				*temp;
-	pid_t				pid;
+	pid_t				*pid;
 	struct termios		term;
 	int					status;
 
