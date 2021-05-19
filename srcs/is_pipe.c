@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/18 18:02:21 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/19 13:14:20 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,28 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 	else
 	{
 		not_builtin(mini, envp, temp);
-		mini->pid = 0;
+		mini->pid[i] = 0;
 	}
 	exit(mini->status);
+}
+
+void		ft_wait(t_mini *mini, int i, t_f_list *temp)
+{
+	while (--i >= 0)
+	{
+		waitpid(mini->pid[i], &mini->status, 0);
+	}
+	free(mini->pid);
+	t_f_lstclear(&temp);
+	mini->pid = 0;
+}
+
+void		pipe_init(t_mini *mini)
+{
+	mini->fd_lst = NULL;
+	t_f_lstadd_back(&mini->fd_lst);
+	pipe(mini->fd_lst->fd);
+	close(mini->fd_lst->fd[1]);
 }
 
 void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
@@ -49,10 +68,7 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 	t_f_list	*f_lst_temp;
 
 	i = 0;
-	mini->fd_lst = NULL;
-	t_f_lstadd_back(&mini->fd_lst);
-	pipe(mini->fd_lst->fd);
-	close(mini->fd_lst->fd[1]);
+	pipe_init(mini);
 	f_lst_temp = mini->fd_lst;
 	mini->pid = (pid_t *)malloc(sizeof(pid_t) * ft_lstsize(lst));
 	while (lst)
@@ -60,25 +76,16 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
 		t_f_lstadd_back(&mini->fd_lst);
 		pipe(mini->fd_lst->next->fd);
-		//mini->pid = fork();
 		mini->pid[i] = fork();
-		//if (mini->pid == 0)
 		if (mini->pid[i] == 0)
 			exe(mini, envp, lst, i);
 		else
 		{
-			//wait(&mini->status);
 			close(mini->fd_lst->next->fd[1]);
 			close(mini->fd_lst->fd[0]);
 		}
 		i++;
 		lst = lst->next;
 	}
-	while (i >= 0)
-	{
-		waitpid(mini->pid[i], &mini->status, 0);
-		i--;
-	}
-	free(mini->pid);
-	t_f_lstclear(&f_lst_temp);
+	ft_wait(mini, i, f_lst_temp);
 }

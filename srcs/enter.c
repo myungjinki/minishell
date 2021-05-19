@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/18 18:52:11 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/19 12:55:06 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ static void	builtin(t_mini *mini, char *envp[])
 	temp = mini->lst_parsed;
 	while (temp)
 	{
-		char **str;
-		t_list *lst;
-		lst = temp->content;
-		str = lst->content;
 		if (((t_list *)temp->content)->next)
 			is_pipe(mini, envp, temp->content);
 		else

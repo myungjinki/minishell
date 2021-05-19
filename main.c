@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 13:43:54 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 12:23:26 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		g_mini.c = ft_stoi(g_mini.str);
 		if (g_mini.c == ARROW_UP || g_mini.c == ARROW_DOWN)
-			//arrow(&g_mini.lst_temp, g_mini.c);
 			arrow(&g_mini.history, g_mini.c);
 		else if (g_mini.c == 10)
 			enter(&g_mini, envp);
