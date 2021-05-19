@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 15:20:15 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 15:31:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 13:54:37 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	parser_pipeline(t_list *lst_begin)
 {
-	lst_begin = 0;
+	if (!lst_begin->next)
+		return (syntax_error(ERROR_PIPELINE));
 	return (0);
 }
