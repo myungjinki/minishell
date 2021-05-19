@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 14:33:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/19 12:32:57 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ void	parser_dollar_question_mark(t_list *lst_begin, int status)
 	token->value = ft_itoa(status);
 }
 
+void	parser_env_trans(t_list *lst_begin, t_envp_list *lst_envp, char *join)
+{
+	t_envp_list	*lst_envp_tmp;
+	t_token	*token;
+
+	token = lst_begin->content;
+	if ((lst_envp_tmp = ft_find_env(lst_envp, join)))
+	{
+		token->name = 's';
+		free(token->value);
+		token->value = ft_strdup(lst_envp_tmp->value);
+	}
+	else
+		token->name = 0;
+	free(join);
+}
+
 void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 {
 	t_list	*lst_tmp;
@@ -33,30 +50,22 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 	char	*tmp;
 
 	join = (char *)ft_calloc(1, 1);
-	while (lst_begin->next)
+	t = lst_begin->next->content;
+	while (t->name == 's' || t->name == '_' || ft_isdigit(t->name))
 	{
-		t = lst_begin->next->content;
-		if (t->name == 's' || t->name == '_' || ft_isdigit(t->name))
-		{
-			tmp = ft_strjoin(join, t->value);
-			free(join);
-			join = tmp;
-		}
+		tmp = ft_strjoin(join, t->value);
+		free(join);
+		join = tmp;
+		
 		lst_tmp = lst_begin->next->next;
 		token_free(lst_begin->next);
 		lst_begin->next = lst_tmp;
+		if (lst_begin->next == NULL)
+			break ;
+		else
+			t = lst_begin->next->content;
 	}
-
-	t_envp_list	*lst_envp_tmp;
-
-	t = lst_begin->content;
-	if ((lst_envp_tmp = ft_find_env(lst_envp, join)))
-	{
-		t->name = 's';
-		t->value = lst_envp_tmp->value;
-	}
-	else
-		t->name = 0;
+	parser_env_trans(lst_begin, lst_envp, join);
 }
 
 int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
