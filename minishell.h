@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/17 12:24:47 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/18 17:55:07 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct			s_mini
 	int					c;
 	char				*str;
 	char				*temp;
-	pid_t				pid;
+	pid_t				*pid;
 	struct termios		term;
 	int					status;
 
@@ -89,9 +89,9 @@ void		t_f_lstadd_back(t_f_list **lst);
 t_f_list	*t_f_lstlast(t_f_list *lst);
 void		sig(int signo);
 void		t_f_lstclear(t_f_list **lst);
-void		is_pipe(t_mini *mini, char *envp[]);
+void		is_pipe(t_mini *mini, char *envp[], t_list *lst);
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst);
-void		is_not_pipe(t_mini *mini, char *envp[]);
+void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst);
 void		unset(t_envp_list **lst, char **str);
 void		ft_lst_free(t_list *lst);
 

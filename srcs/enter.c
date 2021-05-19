@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/18 13:25:54 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 18:52:11 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,31 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv);
 	printf("%s: command not found\n", argv[0]);
-	exit(0);
+	exit(127);
 }
 
 static void	builtin(t_mini *mini, char *envp[])
 {
 	int			i;
 	t_f_list	*f_lst_temp;
+	t_list		*temp;
 
 	i = 0;
 	mini->pid = 0;
 	f_lst_temp = mini->fd_lst;
-	if (((t_list *)mini->lst_parsed->content)->next)
-		is_pipe(mini, envp);
-	else
-		is_not_pipe(mini, envp);
+	temp = mini->lst_parsed;
+	while (temp)
+	{
+		char **str;
+		t_list *lst;
+		lst = temp->content;
+		str = lst->content;
+		if (((t_list *)temp->content)->next)
+			is_pipe(mini, envp, temp->content);
+		else
+			is_not_pipe(mini, envp, temp->content);
+		temp = temp->next;
+	}
 	mini->pid = 0;
 }
 
@@ -93,7 +103,8 @@ static void	history(t_mini *mini)
 void		enter(t_mini *mini, char *envp[])
 {
 	write(1, "\n", 1);
-	mini->lst_parsed = lexical_analyzer(mini->history->content, mini->env, mini->status);
+	mini->lst_parsed =
+		lexical_analyzer(mini->history->content, mini->env, mini->status);
 	if (ft_strcmp(mini->history->content, ""))
 	{
 		mini->status = 0;
@@ -101,7 +112,10 @@ void		enter(t_mini *mini, char *envp[])
 		if (mini->lst_parsed)
 			builtin(mini, envp);
 		else
+		{
+			mini->status = 127;
 			printf("syntex error");
+		}
 	}
 	else
 		mini->history = mini->head;

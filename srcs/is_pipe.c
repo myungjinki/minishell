@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 19:21:38 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/18 18:02:21 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,42 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 	exit(mini->status);
 }
 
-void		is_pipe(t_mini *mini, char *envp[])
+void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 {
 	int			i;
 	t_f_list	*f_lst_temp;
-	t_list		*temp;
 
-	temp = (t_list *)mini->lst_parsed->content;
 	i = 0;
 	mini->fd_lst = NULL;
 	t_f_lstadd_back(&mini->fd_lst);
 	pipe(mini->fd_lst->fd);
 	close(mini->fd_lst->fd[1]);
 	f_lst_temp = mini->fd_lst;
-	while (temp)
+	mini->pid = (pid_t *)malloc(sizeof(pid_t) * ft_lstsize(lst));
+	while (lst)
 	{
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
 		t_f_lstadd_back(&mini->fd_lst);
 		pipe(mini->fd_lst->next->fd);
-		mini->pid = fork();
-		if (mini->pid == 0)
-			exe(mini, envp, temp, i);
+		//mini->pid = fork();
+		mini->pid[i] = fork();
+		//if (mini->pid == 0)
+		if (mini->pid[i] == 0)
+			exe(mini, envp, lst, i);
 		else
 		{
-			wait(&mini->status);
+			//wait(&mini->status);
 			close(mini->fd_lst->next->fd[1]);
 			close(mini->fd_lst->fd[0]);
 		}
 		i++;
-		temp = temp->next;
+		lst = lst->next;
 	}
+	while (i >= 0)
+	{
+		waitpid(mini->pid[i], &mini->status, 0);
+		i--;
+	}
+	free(mini->pid);
 	t_f_lstclear(&f_lst_temp);
 }
