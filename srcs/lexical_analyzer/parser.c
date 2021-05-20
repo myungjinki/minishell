@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/20 12:46:56 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/20 14:32:29 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	syntax_check(t_list *lst_begin)
 	{
 		if (syntax_backslash(lst_begin))
 			return (1);
-		else if (syntax_quotes(lst_begin))
-			return (1);
 		else if (syntax_pipeline(lst_begin))
 			return (1);
 		else if (syntax_redirection(lst_begin))
@@ -45,6 +43,10 @@ int	syntax_check(t_list *lst_begin)
 			return (1);
 		lst_begin = lst_begin->next;
 	}
+	if (syntax_quotes(lst_begin))
+		return (1);
+	if (syntax_dquotes(lst_begin))
+		return (1);
 	return (0);
 }
 
