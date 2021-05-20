@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/19 13:53:50 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/20 12:12:34 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int			parser(t_list *lst_begin, t_envp_list *lst_envp, int status);
 int			syntax_error(int num);
 t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
-void		lst_token_free(t_list *lst);
+void		lst_token_free(t_list *start, t_list *end);
+t_list		*lst_next_free(t_list *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/19 13:11:13 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/20 12:06:46 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	parser_env_trans(t_list *lst_begin, t_envp_list *lst_envp, char *join)
 
 void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 {
-	t_list	*lst_tmp;
 	t_token	*t;
 	char	*join;
 	char	*tmp;
@@ -59,10 +58,7 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 		tmp = ft_strjoin(join, t->value);
 		free(join);
 		join = tmp;
-		
-		lst_tmp = lst_begin->next->next;
-		token_free(lst_begin->next);
-		lst_begin->next = lst_tmp;
+		lst_next_free(lst_begin);
 		if (lst_begin->next == NULL)
 			break ;
 		else
