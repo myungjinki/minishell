@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 13:19:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:25:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 # include "../../libft/libft.h"
 # include <stdio.h>
 
-# define	BACKSLASH_MULTI		0x0001
-# define	DQUOTES_SYNTAX		0x0002
-# define	DQUOTES_MULTI		0x0004
-# define	QUOTES_SYNTAX		0x0008
-# define	QUOTES_MULTI		0x0010
-# define	SEMICOLON_SYNTAX	0x0020
-# define	SEMICOLONS_SYNTAX	0x0040
-# define	PIPELINE_SYNTAX		0x0080
-# define	PIPELINES_SYNTAX	0x0100
-# define	PIPELINE_MULTI		0x0200
+# define	BACKSLASH_MULTI			0x0001
+# define	DQUOTES_MULTI			0x0002
+# define	QUOTES_MULTI			0x0004
+# define	SEMICOLON_SYNTAX		0x0008
+# define	SEMICOLONS_SYNTAX		0x0010
+# define	PIPELINE_SYNTAX			0x0020
+# define	PIPELINES_SYNTAX		0x0040
+# define	PIPELINE_MULTI			0x0080
+# define	R_REDIRECTION_SYNTAX	0x0100
+# define	R_REDIRECTIONS_SYNTAX	0x0200
+# define	L_REDIRECTION_SYNTAX	0x0400
 
 typedef struct			s_word
 {
