@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:25:33 by mki               #+#    #+#             */
-/*   Updated: 2021/05/13 16:15:25 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/20 12:57:57 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	parser_backslash(t_list *lst, int mode)
 	t_list	*lst_next;
 	char	c;
 
-	if (lst->next == NULL)
-		return (syntax_error(ERROR_BACKSLASH));
 	lst_next = lst->next;
 	token[0] = lst->content;
 	token[1] = lst_next->content;

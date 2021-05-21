@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/20 12:12:34 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/20 14:35:15 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,13 @@ int		 	parser_quotes(t_list *lst_begin);
 int		 	parser_redirection(t_list *lst_begin);
 int			parser_semicolon(t_list *lst_begin);
 int			parser(t_list *lst_begin, t_envp_list *lst_envp, int status);
+int			syntax_backslash(t_list *lst_begin);
+int			syntax_dquotes(t_list *lst_begin);
 int			syntax_error(int num);
+int			syntax_pipeline(t_list *lst_begin);
+int			syntax_quotes(t_list *lst_begin);
+int			syntax_redirection(t_list *lst_begin);
+int			syntax_semicolon(t_list *lst_begin);
 t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
