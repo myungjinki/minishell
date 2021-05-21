@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 12:37:08 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:40:03 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	parser(t_list *lst_begin, t_envp_list *lst_envp, int status)
 	t_list	*lst;
 	t_token *token;
 
-	if (syntax_check(lst_begin))
-		return (1);
+	// if (syntax_check(lst_begin))
+	// 	return (1);
 	lst = lst_begin;
 	while (lst)
 	{
