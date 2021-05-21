@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 13:15:40 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:19:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define	SEMICOLON_SYNTAX	0x0020
 # define	SEMICOLONS_SYNTAX	0x0040
 # define	PIPELINE_SYNTAX		0x0080
-# define	PIPELINE_MULTI		0x0100
+# define	PIPELINES_SYNTAX	0x0100
+# define	PIPELINE_MULTI		0x0200
 
 typedef struct			s_word
 {
