@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 18:42:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/19 13:49:07 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void		ft_cd(t_envp_list *lst, char *str)
 	if (boolean == -1)
 	{
 		g_mini.status = 1;
-		printf("cd: no such file or directory: %s\n", path);
+		write(2, "cd: no such file or directory: ", 31);
+		write(2, path, ft_strlen(path));
+		write(2, "\n", 1);
 	}
 	else
 		ft_pwd_set(lst, oldpwd);
