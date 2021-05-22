@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:39:56 by mki               #+#    #+#             */
-/*   Updated: 2021/05/20 14:34:34 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:38:52 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int		parser_quotes(t_list *lst_begin)
 	if (end)
 		lst = make_string(lst, end);
 	else
-		return (syntax_error(ERROR_QUOTES));
+		return (syntax_error(QUOTES_MULTI));
 	return (0);
 }

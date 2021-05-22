@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/20 12:06:46 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:29:18 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 	else if (token->name == '?')
 		parser_dollar_question_mark(lst_begin, status);
 	else
-		return (syntax_error(ERROR_DQUOTES));
+		return (1);
 	return (0);
 }
