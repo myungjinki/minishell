@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/19 12:55:06 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/21 12:29:38 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, argv);
-	printf("%s: command not found\n", argv[0]);
+	write(2, argv[0], ft_strlen(argv[0]));
+	write(2, ": command not found\n", 20);
 	exit(127);
 }
 
@@ -98,26 +99,29 @@ static void	history(t_mini *mini)
 
 void		enter(t_mini *mini, char *envp[])
 {
+	char *str;
+
 	write(1, "\n", 1);
-	mini->lst_parsed =
-		lexical_analyzer(mini->history->content, mini->env, mini->status);
 	if (ft_strcmp(mini->history->content, ""))
 	{
+		str = ft_strtrim(mini->history->content, " ");
+		if (*str != 0)
+			mini->lst_parsed =
+				lexical_analyzer(mini->history->content, mini->env, mini->status);
 		mini->status = 0;
-		history(mini);
-		if (mini->lst_parsed)
+		if (mini->lst_parsed && *str != 0)
 			builtin(mini, envp);
-		else
-		{
+		else if (*str != 0)
 			mini->status = 127;
-			printf("syntex error");
-		}
+		if (*str != 0)
+			ft_lst_free(mini->lst_parsed);
+		history(mini);
+		free(str);
 	}
 	else
 		mini->history = mini->head;
 	if (mini->status >= 256)
 		mini->status /= 256;
 	term_set();
-	ft_lst_free(mini->lst_parsed);
 	write(1, ">", 1);
 }
