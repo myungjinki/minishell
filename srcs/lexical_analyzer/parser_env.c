@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/19 12:32:57 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:29:18 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ void	parser_env_trans(t_list *lst_begin, t_envp_list *lst_envp, char *join)
 		token->value = ft_strdup(lst_envp_tmp->value);
 	}
 	else
+	{
 		token->name = 0;
+		token->value[0] = '\0';
+	}
 	free(join);
 }
 
 void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 {
-	t_list	*lst_tmp;
 	t_token	*t;
 	char	*join;
 	char	*tmp;
@@ -56,10 +58,7 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 		tmp = ft_strjoin(join, t->value);
 		free(join);
 		join = tmp;
-		
-		lst_tmp = lst_begin->next->next;
-		token_free(lst_begin->next);
-		lst_begin->next = lst_tmp;
+		lst_next_free(lst_begin);
 		if (lst_begin->next == NULL)
 			break ;
 		else
@@ -78,6 +77,6 @@ int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 	else if (token->name == '?')
 		parser_dollar_question_mark(lst_begin, status);
 	else
-		return (syntax_error(ERROR_DQUOTES));
+		return (1);
 	return (0);
 }

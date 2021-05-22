@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/21 12:21:02 by sehan            ###   ########.fr        #
+#    Updated: 2021/05/22 16:05:12 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,15 @@ FILES =	main \
 		srcs/lexical_analyzer/parser_redirection\
 		srcs/lexical_analyzer/parser_semicolon\
 		srcs/lexical_analyzer/parser\
+		srcs/lexical_analyzer/syntax_backslash\
+		srcs/lexical_analyzer/syntax_dquotes\
 		srcs/lexical_analyzer/syntax_error\
+		srcs/lexical_analyzer/syntax_pipeline\
+		srcs/lexical_analyzer/syntax_quotes\
+		srcs/lexical_analyzer/syntax_redirection\
+		srcs/lexical_analyzer/syntax_semicolon\
 		srcs/lexical_analyzer/token_find\
-		srcs/lexical_analyzer/token_free \
+		srcs/lexical_analyzer/token_free\
 		srcs/ft_lst_free
 
 SRCS_DIR = ./

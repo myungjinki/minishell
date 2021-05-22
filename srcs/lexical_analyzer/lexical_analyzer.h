@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/18 14:39:19 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/21 13:25:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 # include "../../libft/libft.h"
 # include <stdio.h>
 
-# define	ERROR_BACKSLASH		0x01
-# define	ERROR_DQUOTES		0x02
-# define	ERROR_QUOTES		0x04
-# define	ERROR_SEMICOLON		0x08
-# define	ERROR_SEMICOLONS	0x10
-# define	ERROR_ENV			0x20
+# define	BACKSLASH_MULTI			0x0001
+# define	DQUOTES_MULTI			0x0002
+# define	QUOTES_MULTI			0x0004
+# define	SEMICOLON_SYNTAX		0x0008
+# define	SEMICOLONS_SYNTAX		0x0010
+# define	PIPELINE_SYNTAX			0x0020
+# define	PIPELINES_SYNTAX		0x0040
+# define	PIPELINE_MULTI			0x0080
+# define	R_REDIRECTION_SYNTAX	0x0100
+# define	R_REDIRECTIONS_SYNTAX	0x0200
+# define	L_REDIRECTION_SYNTAX	0x0400
 
 typedef struct			s_word
 {
@@ -59,9 +64,16 @@ int		 	parser_quotes(t_list *lst_begin);
 int		 	parser_redirection(t_list *lst_begin);
 int			parser_semicolon(t_list *lst_begin);
 int			parser(t_list *lst_begin, t_envp_list *lst_envp, int status);
+int			syntax_backslash(t_list *lst_begin);
+int			syntax_dquotes(t_list *lst_begin);
 int			syntax_error(int num);
+int			syntax_pipeline(t_list *lst_begin);
+int			syntax_quotes(t_list *lst_begin);
+int			syntax_redirection(t_list *lst_begin);
+int			syntax_semicolon(t_list *lst_begin);
 t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
-void		lst_token_free(t_list *lst);
+void		lst_token_free(t_list *start, t_list *end);
+t_list		*lst_next_free(t_list *lst);
 
 #endif
