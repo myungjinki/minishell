@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 13:25:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/22 17:46:37 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct			s_token
 	char				*value;
 }						t_token;
 
-t_list		*executor(char *str);
+t_list		*executor(char *str, t_list *lst_begin);
 int			ft_isall(char c);
 int			ft_ismeta(char c);
 int			ft_isquotes(char c);
