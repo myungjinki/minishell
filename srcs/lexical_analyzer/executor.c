@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:10:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/22 17:57:26 by mki              ###   ########.fr       */
+/*   Updated: 2021/05/24 10:28:11 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,24 @@ t_list	*ft_semi(char *s)
 	// printf("%s\n", ((char **)space->content)[0]);
 	free(split_semi);
 	return (ret);
+}
+
+int		rr_redi(t_list *lst_begin)
+{
+
+	return (0);
+}
+
+int		r_redi(t_list *lst_begin)
+{
+
+	return (0);
+}
+
+int		l_redi(t_list *lst_begin)
+{
+
+	return (0);
 }
 
 // int		redirection(t_list *lst_begin)
