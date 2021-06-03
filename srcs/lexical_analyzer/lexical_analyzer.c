@@ -28,13 +28,15 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
 	t_list	*ret;
 
+	if (syntax_multline(str))
+		return (NULL);
 	if (!(ret = lexer(str)))
 		return (NULL);
 	if (parser(ret, lst_envp, status))
 		return (NULL);
-	if (!(ret = executor(str, ret)))
-		return (NULL);
 	print_lst_token(ret);
-	lst_token_free(ret, NULL);
-	return (ret);
+	// lst_token_free(ret, NULL);
+	// if (!(ret = executor(str, ret)))
+	// 	return (NULL);
+	return (NULL);
 }

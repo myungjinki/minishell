@@ -67,6 +67,7 @@ int			parser(t_list *lst_begin, t_envp_list *lst_envp, int status);
 int			syntax_backslash(t_list *lst_begin);
 int			syntax_dquotes(t_list *lst_begin);
 int			syntax_error(int num);
+int			syntax_multline(char *str);
 int			syntax_pipeline(t_list *lst_begin);
 int			syntax_quotes(t_list *lst_begin);
 int			syntax_redirection(t_list *lst_begin);

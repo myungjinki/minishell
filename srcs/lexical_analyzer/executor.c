@@ -94,23 +94,23 @@ t_list	*ft_semi(char *s)
 	return (ret);
 }
 
-int		rr_redi(t_list *lst_begin)
-{
+// int		rr_redi(t_list *lst_begin)
+// {
 
-	return (0);
-}
+// 	return (0);
+// }
 
-int		r_redi(t_list *lst_begin)
-{
+// int		r_redi(t_list *lst_begin)
+// {
 
-	return (0);
-}
+// 	return (0);
+// }
 
-int		l_redi(t_list *lst_begin)
-{
+// int		l_redi(t_list *lst_begin)
+// {
 
-	return (0);
-}
+// 	return (0);
+// }
 
 // int		redirection(t_list *lst_begin)
 // {
@@ -131,6 +131,7 @@ t_list	*executor(char *str, t_list *lst_begin)
 	t_list	*ret;
 
 	ret = ft_semi(str);
+	lst_begin = 0;
 //	lst_print(mini->lst_parsed);
 	// if (redirection(lst_begin))
 		// return (NULL);

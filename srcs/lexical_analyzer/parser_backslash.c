@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
+
 int	isspecial_in_dquote(char c)
 {
 	if (c == '`' || c == '\\' || c == '\"' || c == '$')
@@ -25,6 +26,8 @@ int	parser_backslash(t_list *lst, int mode)
 	char	c;
 
 	lst_next = lst->next;
+	if (lst->next == NULL)
+		return (syntax_error(BACKSLASH_MULTI));
 	token[0] = lst->content;
 	token[1] = lst_next->content;
 	c = token[1]->name;

@@ -66,6 +66,7 @@ FILES =	main \
 		srcs/lexical_analyzer/syntax_backslash\
 		srcs/lexical_analyzer/syntax_dquotes\
 		srcs/lexical_analyzer/syntax_error\
+		srcs/lexical_analyzer/syntax_multiline\
 		srcs/lexical_analyzer/syntax_pipeline\
 		srcs/lexical_analyzer/syntax_quotes\
 		srcs/lexical_analyzer/syntax_redirection\
