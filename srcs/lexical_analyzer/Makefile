@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2021/05/22 14:59:10 by mki              ###   ########.fr        #
+#    Updated: 2021/06/09 13:08:13 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LEX			=	executor\
 				lexer\
 				lexical_analyzer\
 				make_string\
+				make_word\
 				parser_backslash\
 				parser_dquotes\
 				parser_pipeline\
@@ -35,7 +36,7 @@ LEX			=	executor\
 				parser\
 				token_find\
 				token_free\
-				#syntax_backslash\
+				syntax_backslash\
 				syntax_dquotes\
 				syntax_error\
 				syntax_pipeline\

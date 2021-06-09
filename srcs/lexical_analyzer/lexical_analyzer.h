@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+;/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lexical_analyzer.h                                 :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/22 17:46:37 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/09 12:17:16 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEXICAL_ANALYZER_H
 # include "../../libft/libft.h"
 # include <stdio.h>
+# include <fcntl.h>
 
 # define	BACKSLASH_MULTI			0x0001
 # define	DQUOTES_MULTI			0x0002
@@ -76,5 +77,7 @@ t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
 t_list		*lst_next_free(t_list *lst);
+t_list		*make_word(t_list *lst);
+void		print_lst_token(t_list *lst);
 
 #endif

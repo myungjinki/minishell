@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/05/22 17:46:02 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/09 13:07:34 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ void	print_lst_token(t_list *lst)
 
 t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
-	t_list	*ret;
+	t_list	*lst;
 
 	if (syntax_multline(str))
 		return (NULL);
-	if (!(ret = lexer(str)))
+	if (!(lst = lexer(str)))
 		return (NULL);
-	if (parser(ret, lst_envp, status))
+	if (parser(lst, lst_envp, status))
 		return (NULL);
-	print_lst_token(ret);
-	// lst_token_free(ret, NULL);
-	// if (!(ret = executor(str, ret)))
+	if (!(lst = make_word(lst)))
+		return (NULL);
+	// if (!(lst = executor(str, ret)))
 	// 	return (NULL);
 	return (NULL);
+	// return (lst);
 }
