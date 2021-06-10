@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/05/26 10:33:36 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/10 13:27:53 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ FILES =	main \
 		srcs/lexical_analyzer/lexer\
 		srcs/lexical_analyzer/lexical_analyzer\
 		srcs/lexical_analyzer/make_string\
+		srcs/lexical_analyzer/make_word\
 		srcs/lexical_analyzer/parser_backslash\
 		srcs/lexical_analyzer/parser_dquotes\
 		srcs/lexical_analyzer/parser_env\
@@ -66,6 +67,7 @@ FILES =	main \
 		srcs/lexical_analyzer/syntax_backslash\
 		srcs/lexical_analyzer/syntax_dquotes\
 		srcs/lexical_analyzer/syntax_error\
+		srcs/lexical_analyzer/syntax_multiline\
 		srcs/lexical_analyzer/syntax_pipeline\
 		srcs/lexical_analyzer/syntax_quotes\
 		srcs/lexical_analyzer/syntax_redirection\

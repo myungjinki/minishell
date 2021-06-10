@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexical_analyzer.c                                 :+:      :+:    :+:   */
+/*   make_word.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/10 12:38:11 by mki              ###   ########.fr       */
+/*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
+/*   Updated: 2021/06/10 12:47:31 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-void	print_lst_token(t_list *lst)
+t_word	*make_word(t_list *lst)
 {
-	t_token	*token;
+	
+}
 
+t_list	*make_word_list(t_list *lst_begin)
+{
+	t_list	*lst;
+	t_token	*token;
+	t_word	*word;
+
+	print_lst_token(lst_begin);
+	lst = lst_begin;
 	while (lst)
 	{
 		token = lst->content;
-		printf("%c: %s\n", token->name, token->value);
-		lst = lst->next;
+		word = make_word(lst_begin);
 	}
-}
-
-t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
-{
-	t_list	*lst;
-
-	if (syntax_multline(str))
-		return (NULL);
-	if (!(lst = lexer(str)))
-		return (NULL);
-	if (parser(lst, lst_envp, status))
-		return (NULL);
-	if (!(lst = make_word_list(lst)))
-		return (NULL);
-	// return (lst);
-	// if (!(lst = executor(str, ret)))
-	// 	return (NULL);
+	// lst_token_free(lst_begin, NULL);
 	return (NULL);
 }

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+;/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   lexical_analyzer.h                                 :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 13:25:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/09 12:17:16 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEXICAL_ANALYZER_H
 # include "../../libft/libft.h"
 # include <stdio.h>
+# include <fcntl.h>
 
 # define	BACKSLASH_MULTI			0x0001
 # define	DQUOTES_MULTI			0x0002
@@ -30,8 +31,8 @@
 typedef struct			s_word
 {
 	char				**argv;
-	int					*fd_in;
-	int					*fd_out;
+	int					fd_in;
+	int					fd_out;
 }						t_word;
 
 typedef struct			s_envp_list
@@ -47,7 +48,7 @@ typedef struct			s_token
 	char				*value;
 }						t_token;
 
-t_list		*executor(char *str);
+t_list		*executor(char *str, t_list *lst_begin);
 int			ft_isall(char c);
 int			ft_ismeta(char c);
 int			ft_isquotes(char c);
@@ -67,6 +68,7 @@ int			parser(t_list *lst_begin, t_envp_list *lst_envp, int status);
 int			syntax_backslash(t_list *lst_begin);
 int			syntax_dquotes(t_list *lst_begin);
 int			syntax_error(int num);
+int			syntax_multline(char *str);
 int			syntax_pipeline(t_list *lst_begin);
 int			syntax_quotes(t_list *lst_begin);
 int			syntax_redirection(t_list *lst_begin);
@@ -75,5 +77,7 @@ t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
 t_list		*lst_next_free(t_list *lst);
+t_list		*make_word_list(t_list *lst);
+void		print_lst_token(t_list *lst);
 
 #endif
