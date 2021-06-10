@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/26 11:23:07 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/10 17:37:08 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,22 @@
 static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 {
 	char **split;
+	t_word *word;
 
-	split = (char **)temp->content;
+	word = temp->content;
+	split = word->argv;
 	close(mini->fd_lst->next->fd[0]);
-	if (i != 0)
+	if (word->fd_out > 0)
+		dup2(word->fd_out, 0);
+	else if (i != 0)
 		dup2(mini->fd_lst->fd[0], 0);
 	if (temp->next)
-		dup2(mini->fd_lst->next->fd[1], 1);
+	{
+		if (word->fd_in > 0)
+			dup2(word->fd_in, 1);
+		else
+			dup2(mini->fd_lst->next->fd[1], 1);
+	}
 	if (ft_strcmp(split[0], "pwd") == 0)
 		ft_pwd();
 	else if (ft_strncmp(split[0], "cd", 2) == 0)
@@ -64,6 +73,7 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 {
 	int			i;
 	t_f_list	*f_lst_temp;
+	t_word		*word;
 
 	i = 0;
 	pipe_init(mini);
@@ -74,12 +84,16 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
 		t_f_lstadd_back(&mini->fd_lst);
 		pipe(mini->fd_lst->next->fd);
-		printf("%d\n", mini->fd_lst->next->fd[0]);
 		mini->pid[i] = fork();
 		if (mini->pid[i] == 0)
 			exe(mini, envp, lst, i);
 		else
 		{
+			word = lst->content;
+			if (word->fd_in > 0)
+				close(word->fd_in);
+			if (word->fd_out > 0)
+				close(word->fd_out);
 			close(mini->fd_lst->next->fd[1]);
 			close(mini->fd_lst->fd[0]);
 		}

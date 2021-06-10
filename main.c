@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/31 13:55:32 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/10 19:54:58 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	main(int argc, char *argv[], char *envp[])
 		if (g_mini.c == ARROW_UP || g_mini.c == ARROW_DOWN)
 			arrow(&g_mini, &g_mini.history, g_mini.c);
 		else if (g_mini.c == 10)
+		{
 			enter(&g_mini, envp);
+		}
 		else if (g_mini.c == DELETE)
 		{
 			if (ft_strlen(g_mini.history->content))

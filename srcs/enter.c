@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/27 11:40:19 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/10 21:44:27 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,21 @@ static void	not_builtin_exe(char *envp[], char **split, char **argv)
 
 void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 {
-	char		**argv;
 	char		**split;
+	t_word		*word;
 
-	argv = (char **)lst->content;
+	word = lst->content;
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		write(2, argv[0], ft_strlen(argv[0]));
+		//write(2, argv[0], ft_strlen(argv[0]));
+		write(2, word->argv[0], ft_strlen(word->argv[0]));
 		write(2, ": No such file or directory\n", 28);
 		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
-	not_builtin_exe(envp, split, argv);
-	write(2, argv[0], ft_strlen(argv[0]));
+	not_builtin_exe(envp, split, word->argv);
+	write(2, word->argv[0], ft_strlen(word->argv[0]));
 	write(2, ": command not found\n", 20);
 	exit(127);
 }
@@ -126,7 +127,6 @@ void		enter(t_mini *mini, char *envp[])
 		mini->status /= 256;
 	if (mini->flag)
 		mini->status = mini->flag;
-	printf("%d\n", mini->status);
 	term_set();
 	write(1, ">", 1);
 }

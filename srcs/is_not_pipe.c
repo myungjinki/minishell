@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/26 10:33:13 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/10 19:56:45 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,26 @@
 
 static void	pid_fork(t_mini *mini, char *envp[], t_list *lst)
 {
+	t_word	*word;
+
+	word = lst->content;
 	mini->pid[0] = fork();
 	if (mini->pid[0] == 0)
+	{
+		if (word->fd_in > 0)
+			dup2(word->fd_in, 1);
+		if (word->fd_out > 0)
+		{
+			dup2(word->fd_out, 0);
+		}
 		not_builtin(mini, envp, lst);
+	}
 	else
 		wait(&mini->status);
+	if (word->fd_in > 0)
+		close(word->fd_in);
+	if (word->fd_out > 0)
+		close(word->fd_out);
 	free(mini->pid);
 	mini->pid = 0;
 }
@@ -26,8 +41,10 @@ static void	pid_fork(t_mini *mini, char *envp[], t_list *lst)
 void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst)
 {
 	char **str;
+	t_word *word;
 
-	str = lst->content;
+	word = lst->content;
+	str = word->argv;
 	mini->pid = (pid_t *)malloc(sizeof(pid_t));
 	if (ft_strcmp(str[0], "pwd") == 0)
 		ft_pwd();
