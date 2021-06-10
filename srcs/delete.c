@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:36:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 16:48:26 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/31 14:48:05 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,34 @@ static int	putchar_tc(int tc)
 	return (0);
 }
 
-void		delete_end(int flag)
+void		multline_delete(t_mini *mini, int *col, int *row)
 {
-	char	*cm;
-	char	*ce;
+	int	len;
+
+	len = ft_strlen(mini->history->content);
+	while (len > *col)
+	{
+		len = len - *col - 1;
+		tputs(tgoto(mini->cm, 0, *row), 1, putchar_tc);
+		tputs(mini->ce, 1, putchar_tc);
+		(*row)--;
+		*col = len;
+		tputs(tgoto(mini->cm, *col, *row), 1, putchar_tc);
+		get_cursor_position(col, row);
+	}
+	*col = 1;
+	tputs(tgoto(mini->cm, *col, *row), 1, putchar_tc);
+	tputs(mini->ce, 1, putchar_tc);
+}
+
+void		delete_end(t_mini *mini, int flag)
+{
 	int		col;
 	int		row;
 
+	flag = 0;
 	get_cursor_position(&col, &row);
-	cm = tgetstr("cm", NULL);
-	ce = tgetstr("ce", NULL);
-	if (flag == 1)
-		col = 1;
-	else if (col != 1 && ft_strcmp(g_mini.history->content, ""))
-		--col;
-	tputs(tgoto(cm, col, row), 1, putchar_tc);
-	tputs(ce, 1, putchar_tc);
+	multline_delete(mini, &col, &row);
+	if (ft_strcmp(mini->history->content, "") && !flag)
+		write(1, mini->history->content, ft_strlen(mini->history->content));
 }

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/19 12:54:37 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/26 10:33:13 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	pid_fork(t_mini *mini, char *envp[], t_list *lst)
 		not_builtin(mini, envp, lst);
 	else
 		wait(&mini->status);
-	mini->pid[0] = 0;
 	free(mini->pid);
+	mini->pid = 0;
 }
 
 void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst)

@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:56:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/13 18:35:25 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/28 17:07:43 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	mini_init(t_mini *mini, char *envp[])
 	term_set();
 	mini->str = (char *)malloc(5);
 	ft_memset(mini->str, 0, 5);
+	mini->cm = tgetstr("cm", NULL);
+	mini->ce = tgetstr("ce", NULL);
 }

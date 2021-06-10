@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/18 17:55:07 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/28 17:07:55 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ typedef struct			s_mini
 	pid_t				*pid;
 	struct termios		term;
 	int					status;
+	int					flag;
+	char				*cm;
+	char				*ce;
 
 	t_list				*lst_parsed;
 }						t_mini;
@@ -72,11 +75,11 @@ void		term_set(void);
 int			ft_stoi(char *str);
 void		ft_d_lstadd(t_d_list **lst);
 t_d_list	*ft_d_lstnew(void *content);
-void		delete_end(int flag);
+void		delete_end(t_mini *mini, int flag);
 void		ft_d_lstclear(t_d_list **lst);
 void		ft_d_lstadd_back(t_d_list **lst, t_d_list *new);
 void		ft_d_lstcopy(t_d_list **src, t_d_list *dst);
-void		arrow(t_d_list **lst, int flag);
+void		arrow(t_mini *mini, t_d_list **lst, int flag);
 void		enter(t_mini *mini, char *envp[]);
 void		mini_init(t_mini *mini, char *envp[]);
 void		free_split(char **str);
