@@ -31,8 +31,8 @@
 typedef struct			s_word
 {
 	char				**argv;
-	int					*fd_in;
-	int					*fd_out;
+	int					fd_in;
+	int					fd_out;
 }						t_word;
 
 typedef struct			s_envp_list
@@ -77,7 +77,7 @@ t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
 t_list		*lst_next_free(t_list *lst);
-t_list		*make_word(t_list *lst);
+t_list		*make_word_list(t_list *lst);
 void		print_lst_token(t_list *lst);
 
 #endif
