@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/21 12:29:38 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/27 11:40:19 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	char		**argv;
 	char		**split;
 
-	backup_term(mini);
 	argv = (char **)lst->content;
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		printf("%s: No such file or directory\n", argv[0]);
+		write(2, argv[0], ft_strlen(argv[0]));
+		write(2, ": No such file or directory\n", 28);
 		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
@@ -104,6 +104,8 @@ void		enter(t_mini *mini, char *envp[])
 	write(1, "\n", 1);
 	if (ft_strcmp(mini->history->content, ""))
 	{
+		backup_term(mini);
+		mini->flag = 0;
 		str = ft_strtrim(mini->history->content, " ");
 		if (*str != 0)
 			mini->lst_parsed =
@@ -122,6 +124,9 @@ void		enter(t_mini *mini, char *envp[])
 		mini->history = mini->head;
 	if (mini->status >= 256)
 		mini->status /= 256;
+	if (mini->flag)
+		mini->status = mini->flag;
+	printf("%d\n", mini->status);
 	term_set();
 	write(1, ">", 1);
 }

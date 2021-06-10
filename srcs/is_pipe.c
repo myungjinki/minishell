@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/19 13:14:20 by sehan            ###   ########.fr       */
+/*   Updated: 2021/05/26 11:23:07 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,17 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 	else if (ft_strcmp(split[0], "unset") == 0)
 		unset(&mini->env, split);
 	else
-	{
 		not_builtin(mini, envp, temp);
-		mini->pid[i] = 0;
-	}
 	exit(mini->status);
 }
 
 void		ft_wait(t_mini *mini, int i, t_f_list *temp)
 {
-	while (--i >= 0)
-	{
-		waitpid(mini->pid[i], &mini->status, 0);
-	}
+	int	j;
+
+	j = -1;
+	while (++j < i)
+		waitpid(mini->pid[j], &mini->status, 0);
 	free(mini->pid);
 	t_f_lstclear(&temp);
 	mini->pid = 0;
@@ -76,6 +74,7 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 		mini->fd_lst = t_f_lstlast(mini->fd_lst);
 		t_f_lstadd_back(&mini->fd_lst);
 		pipe(mini->fd_lst->next->fd);
+		printf("%d\n", mini->fd_lst->next->fd[0]);
 		mini->pid[i] = fork();
 		if (mini->pid[i] == 0)
 			exe(mini, envp, lst, i);
