@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/10 13:27:53 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/10 21:16:29 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 ASAN = -fsanitize=address -g2
-CFLAGS = -Wall -Wextra -Werror -I . #$(ASAN)
+CFLAGS = -Wall -Wextra -Werror -I . $(ASAN)
 LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
@@ -74,7 +74,8 @@ FILES =	main \
 		srcs/lexical_analyzer/syntax_semicolon\
 		srcs/lexical_analyzer/token_find\
 		srcs/lexical_analyzer/token_free\
-		srcs/ft_lst_free
+		srcs/ft_lst_free \
+		srcs/lexical_analyzer/make_word2
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

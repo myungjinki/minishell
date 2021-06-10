@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2021/06/09 13:08:13 by mki              ###   ########.fr        #
+#    Updated: 2021/06/10 21:14:30 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ LEX			=	executor\
 				syntax_redirection\
 				syntax_semicolon\
 				parser_env\
+				make_word2
 
 LEX_DIR		=	./
 LEX_SRCS	=	$(addprefix $(LEX_DIR), $(addsuffix .c, $(LEX))) 

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/10 12:38:11 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/10 21:43:03 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,36 @@ void	print_lst_token(t_list *lst)
 	}
 }
 
+void	list_check(t_list *lst)
+{
+	t_list	*temp;
+	t_word 	*word;
+	int		i;
+	while (lst)
+	{
+		temp = lst->content;
+		printf("???? : ");
+		while (temp)
+		{
+			i = 0;
+			word = temp->content;
+			printf("%p\n", word->argv);
+//			printf("%p\n", word->argv[0]);
+//			printf("%p\n", word->argv[1]);
+			while (word && word->argv[i])
+			{
+				printf("str : %s \n", word->argv[i]);
+				i++;
+			}
+//			printf("fd_in  %d\n", word->fd_in);
+//			printf("fd_out %d\n", word->fd_out);
+			temp = temp->next;
+		}
+		printf("\n");
+		lst = lst->next;
+	}
+}
+
 t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
 	t_list	*lst;
@@ -36,7 +66,8 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 		return (NULL);
 	if (!(lst = make_word_list(lst)))
 		return (NULL);
-	// return (lst);
+//	list_check(lst);
+	return (lst);
 	// if (!(lst = executor(str, ret)))
 	// 	return (NULL);
 	return (NULL);
