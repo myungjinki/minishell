@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/06/10 21:52:11 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/11 18:12:42 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define	R_REDIRECTION_SYNTAX	0x0100
 # define	R_REDIRECTIONS_SYNTAX	0x0200
 # define	L_REDIRECTION_SYNTAX	0x0400
+# define	FIRST					1
+# define	LAST					1
 
 typedef struct			s_word
 {
@@ -94,7 +96,5 @@ void		lst_token_free(t_list *start, t_list *end);
 t_list		*lst_next_free(t_list *lst);
 t_list		*make_word_list(t_list *lst);
 void		print_lst_token(t_list *lst);
-
-void		pipe_semi_init(t_make *make, t_word **word, int *i, int *j);
 
 #endif
