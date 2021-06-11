@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/11 09:01:48 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/11 18:03:46 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,14 @@ void	list_check(t_list *lst)
 t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
 	t_list	*lst;
+	char	*trim;
 
-	if (syntax_multline(str))
+	trim = ft_strtrim(str, " ");
+	if (syntax_multline(trim))
 		return (NULL);
-	if (!(lst = lexer(str)))
+	if (!(lst = lexer(trim)))
 		return (NULL);
+	free(trim);
 	if (parser(lst, lst_envp, status))
 		return (NULL);
 	print_lst_token(lst);
