@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/11 19:06:56 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/11 19:16:55 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int		*string_size(t_list *lst, t_word **word)
 
 t_list	*make_word_list(t_list *lst_begin)
 {
-	t_list	*result;
 	t_token	*token;
 	t_word	*word;
 	int		*str_size;
@@ -61,7 +60,6 @@ t_list	*make_word_list(t_list *lst_begin)
 	int		j;
 
 	str_size = string_size(lst_begin, &word);
-	result = NULL;
 	i = 0;
 	j = -1;
 	word[i].argv = (char **)malloc(sizeof(char *) * (str_size[i] + 1));
@@ -70,16 +68,9 @@ t_list	*make_word_list(t_list *lst_begin)
 	{
 		token = lst_begin->content;
 		if (token->name == 's')
-		{
 			word[i].argv[++j] = ft_strdup(token->value);
-		}
 		else if (token->name == ';' || token->name == '|')
-		{
-			i++;
-			j = -1;
-			word[i].argv = (char **)malloc(sizeof(char *) * (str_size[i] + 1));
-			word[i].argv[str_size[i]] = 0;
-		}
+			malloc_argv(word, &i, &j, str_size[i + 1]);
 		else if (token->name == '>')
 		{
 		}
@@ -88,5 +79,5 @@ t_list	*make_word_list(t_list *lst_begin)
 		}
 		lst_begin = lst_begin->next;
 	}
-	return (result);
+	return (NULL);
 }
