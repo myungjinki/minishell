@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/11 18:03:46 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/11 19:07:28 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 	free(trim);
 	if (parser(lst, lst_envp, status))
 		return (NULL);
+
 	print_lst_token(lst);
 // 	if (!(lst = make_word_list(lst)))
 // 		return (NULL);
