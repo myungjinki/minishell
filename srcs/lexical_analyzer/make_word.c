@@ -6,16 +6,11 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/10 21:52:16 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/11 08:34:54 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
-
-//t_word	*make_word(t_list *lst)
-//{
-//	
-//}
 
 void	semi_num(t_make *make)
 {

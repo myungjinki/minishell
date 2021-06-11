@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 13:29:18 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/11 09:09:01 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,16 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 {
 	t_token	*token;
-
-	token = lst_begin->next->content;
-	if (token->name == 's' || token->name == '_')
-		parser_env_var(lst_begin, lst_envp);
-	else if (token->name == '?')
-		parser_dollar_question_mark(lst_begin, status);
-	else
-		return (1);
+	
+	if (lst_begin->next)
+	{
+		token = lst_begin->next->content;
+		if (token->name == 's' || token->name == '_')
+			parser_env_var(lst_begin, lst_envp);
+		else if (token->name == '?')
+			parser_dollar_question_mark(lst_begin, status);
+		else
+			return (1);
+	}
 	return (0);
 }

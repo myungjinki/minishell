@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/05/21 12:26:39 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/11 09:06:20 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		token_string(t_list **begin_list, char *str, int idx)
 	len = idx;
 	while (str[len])
 	{
-		if (ft_isalpha(str[len]))
+		if (!ft_isall(str[len]))
 			len++;
 		else
 			break ;
@@ -80,12 +80,10 @@ t_list	*lexer(char *str)
 	idx = 0;
 	while (str[idx])
 	{
-		if (ft_isalpha(str[idx]))
-			idx += token_string(&lst_token, str, idx);
-		else if (ft_isascii(str[idx]))
+		if (ft_isall(str[idx]))
 			idx += token_special(&lst_token, str[idx]);
 		else
-			idx++;
+			idx += token_string(&lst_token, str, idx);
 	}
 	if (space_token_compress(lst_token))
 		return (NULL);
