@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/06/11 09:06:20 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/11 18:09:06 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,27 @@ int		space_token_compress(t_list *lst_begin)
 	return (0);
 }
 
+int		delete_last_semi(t_list *lst_begin)
+{
+	t_list	*lst;
+	t_token *token;
+	t_list	*lst_next;
+
+	lst = lst_begin;
+	while (lst)
+	{
+		if (lst->next)
+		{
+			lst_next = lst->next;
+			token = lst_next->content;
+			if (token->name == ';' && lst_next->next == NULL)
+				lst_next_free(lst);
+		}
+		lst = lst->next;
+	}
+	return (0);	
+}
+
 t_list	*lexer(char *str)
 {
 	t_list	*lst_token;
@@ -86,6 +107,8 @@ t_list	*lexer(char *str)
 			idx += token_string(&lst_token, str, idx);
 	}
 	if (space_token_compress(lst_token))
+		return (NULL);
+	if (delete_last_semi(lst_token))
 		return (NULL);
 	return (lst_token);
 }
