@@ -94,7 +94,7 @@ t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
 t_list		*lst_next_free(t_list *lst);
-t_word		*make_word_list(t_list *lst);
+t_word		*make_word(t_list *lst);
 void		print_lst_token(t_list *lst);
 
 void		malloc_argv(t_word *word, int *i, int *j, int size);
