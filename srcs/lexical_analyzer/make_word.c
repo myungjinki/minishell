@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 17:13:49 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/14 22:37:03 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,6 @@ int		*string_size(t_list *lst, t_word **word)
 	return (str_size);
 }
 
-//void	word_check(t_word *word)
-//{
-//	int i;
-//	int j;
-//
-//	i = 0;
-//	while (1)
-//	{
-//		j = 0;
-//		printf("fd_out : %d fd_in %d\n", word[i].fd_out, word[i].fd_in);
-//		while (word[i].argv && word[i].argv[j])
-//		{
-//			printf("%s ", word[i].argv[j]);
-//			j++;
-//		}
-//		printf("\n");
-//		i++;
-//	}
-//}
-
 t_word	*make_word(t_list *lst_begin)
 {
 	t_token	*token;
@@ -116,6 +96,6 @@ t_word	*make_word(t_list *lst_begin)
 			malloc_argv(word, &i, &j, str_size[i + 1]);
 		lst_begin = lst_begin->next;
 	}
-//	word_check(word);
+	// word_check(word);
 	return (word);
 }
