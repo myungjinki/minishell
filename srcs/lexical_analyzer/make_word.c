@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/12 16:32:03 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/14 17:13:49 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		*string_size(t_list *lst, t_word **word)
 //	}
 //}
 
-t_word	*make_word_list(t_list *lst_begin)
+t_word	*make_word(t_list *lst_begin)
 {
 	t_token	*token;
 	t_word	*word;

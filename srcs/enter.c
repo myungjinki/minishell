@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/10 21:44:27 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/14 22:31:37 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		//write(2, argv[0], ft_strlen(argv[0]));
 		write(2, word->argv[0], ft_strlen(word->argv[0]));
 		write(2, ": No such file or directory\n", 28);
 		exit(127);
@@ -56,7 +55,6 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	not_builtin_exe(envp, split, word->argv);
 	write(2, word->argv[0], ft_strlen(word->argv[0]));
 	write(2, ": command not found\n", 20);
-	exit(127);
 }
 
 static void	builtin(t_mini *mini, char *envp[])
@@ -90,8 +88,8 @@ static void	history(t_mini *mini)
 	mini->head->content = ft_strdup(temp);
 	mini->head->temp = ft_strdup(temp);
 	free(mini->history->content);
-	free(mini->history->temp);
 	mini->history->content = ft_strdup(mini->history->temp);
+	free(mini->history->temp);
 	mini->history->temp = ft_strdup(mini->history->content);
 	ft_d_lstadd(&mini->head);
 	mini->history = mini->head;
@@ -109,24 +107,20 @@ void		enter(t_mini *mini, char *envp[])
 		mini->flag = 0;
 		str = ft_strtrim(mini->history->content, " ");
 		if (*str != 0)
-			mini->lst_parsed =
-				lexical_analyzer(mini->history->content, mini->env, mini->status);
+		mini->lst_parsed =
+			lexical_analyzer(mini->history->content,
+			mini->env, mini->status);
 		mini->status = 0;
 		if (mini->lst_parsed && *str != 0)
 			builtin(mini, envp);
 		else if (*str != 0)
 			mini->status = 127;
-		if (*str != 0)
+		if (*str != 0 && mini->lst_parsed)
 			ft_lst_free(mini->lst_parsed);
 		history(mini);
 		free(str);
 	}
 	else
 		mini->history = mini->head;
-	if (mini->status >= 256)
-		mini->status /= 256;
-	if (mini->flag)
-		mini->status = mini->flag;
-	term_set();
-	write(1, ">", 1);
+	enter_end(mini);
 }
