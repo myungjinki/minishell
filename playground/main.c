@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 12:17:24 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 14:02:14 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/14 14:55:51 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,64 +33,41 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 
+// ls | grep a
+
 int	main(void)
 {	
-	char	*grep1[3] = {"grep", "a", NULL};
-	char	*grep2[3] = {"grep", "b", NULL};
-	char	*ls[2] = {"ls", NULL};
-	char	*pwd[2] = {"pwd", NULL};
-	int		pid[3];
-	int		fd_child[3][2];
-	int		fd = open("test", O_CREAT | O_WRONLY, 0644);
-	
-	pipe(fd_child[0]);
-	pid[0] = fork();
-	if (pid[0] == 0)
-	{
-		dup2(fd_child[0][1], 1);
-		close(fd_child[0][0]);
-		execve("/usr/bin/grep", grep1, NULL);
-	}
-	else
-	{
-		close(fd_child[0][1]);
-	}
-	pipe(fd_child[1]);
-	pid[1] = fork();
-	if (pid[1] == 0)
-	{
-		dup2(fd_child[0][0], 0);
-		dup2(fd_child[1][1], 1);
-		close(fd_child[0][1]);
-		close(fd_child[1][0]);
-		execve("/bin/ls", ls, NULL);
-	}
-	else
-	{
-		close(fd_child[0][0]);
-		close(fd_child[1][1]);
-	}
-	pipe(fd_child[2]);
-	pid[2] = fork();
-	if (pid[2] == 0)
-	{
-		dup2(fd_child[1][0], 0);
-		// dup2(fd_child[2][1], 1);
-		close(fd_child[1][1]);
-		close(fd_child[2][0]);
+	char	*cmd1[2] = {"ls", NULL};
+	char	*cmd2[3] = {"grep", "e", NULL};
+	int		fd1[2];
+	int		pid1;
+	int		fd2[2];
+	int		pid2;
 
-		execve("/bin/ls", ls, NULL);
+	pipe(fd1);
+	pid1 = fork();
+	if (pid1 == 0)
+	{
+		dup2(fd1[1], 1);
+		close(fd1[0]);
+		execve("/bin/ls", cmd1, NULL);
 	}
 	else
 	{
-		close(fd_child[1][0]);
-		close(fd_child[2][1]);
+		close(fd1[1]);		
 	}
-	waitpid(pid[0], NULL, 0);
-	waitpid(pid[1], NULL, 0);
-	waitpid(pid[2], NULL, 0);
-	// dup2(fd_child1[0], 0);
-	// execve("/usr/bin/grep", grep2, NULL);
-	// dup2(fd, 1);
+	pipe(fd2);
+	pid2 = fork();
+	if (pid2 == 0)
+	{
+		dup2(fd1[1], 1);
+		dup2(fd1[1], 1);
+		close(fd1[0]);
+		execve("/use/bin/grep", cmd2, NULL);
+	}
+	else
+	{
+		close(fd1[1]);		
+	}
 	return (0);	
 }
