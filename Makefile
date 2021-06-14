@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/11 19:13:26 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/14 21:47:35 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ FILES =	main \
 		srcs/is_pipe \
 		srcs/is_not_pipe \
 		srcs/unset\
+		srcs/enter_end \
+		srcs/is_pipe2 \
 		srcs/lexical_analyzer/executor\
 		srcs/lexical_analyzer/ft_isall\
 		srcs/lexical_analyzer/ft_ismeta\
@@ -75,7 +77,8 @@ FILES =	main \
 		srcs/lexical_analyzer/token_find\
 		srcs/lexical_analyzer/token_free\
 		srcs/ft_lst_free \
-		srcs/lexical_analyzer/make_word2
+		srcs/lexical_analyzer/make_word2 \
+		srcs/lexical_analyzer/make_word_list
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

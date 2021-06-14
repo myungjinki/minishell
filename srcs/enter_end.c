@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   enter_end.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 12:24:34 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 11:20:22 by sehan            ###   ########.fr       */
+/*   Created: 2021/06/14 21:00:00 by sehan             #+#    #+#             */
+/*   Updated: 2021/06/14 21:00:56 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	free_split(char **str)
+void	enter_end(t_mini *mini)
 {
-	int i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-		{
-			free(str[i]);
-			i++;
-		}
-		free(str[i]);
-		free(str);
-	}
+	if (mini->status >= 256)
+		mini->status /= 256;
+	if (mini->flag)
+		mini->status = mini->flag;
+	term_set();
+	write(1, ">", 1);
 }
