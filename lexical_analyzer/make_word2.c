@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:05:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 16:01:22 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 22:11:55 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void	open_fail(t_list **lst, t_word *word, int *i, int *j)
 		(*lst) = (*lst)->next;
 		token = (*lst)->content;
 	}
-	while ((*j)--)
-		free(word[*i].argv[*j]);
+	if (*j > 0)
+	{
+		while ((*j)--)
+			free(word[*i].argv[*j]);
+	}
 	free(word[*i].argv);
 	word[*i].argv = NULL;
 }
@@ -57,7 +60,12 @@ t_token	*left_angle_bracket(t_list **lst, t_word *word, int *i, int *j)
 		close(word[*i].fd_in);
 	word[*i].fd_in = open(token->value, O_RDONLY);
 	if (word[*i].fd_in < 0)
+	{
 		open_fail(lst, word, i, j);
+		word[*i].argv = (char **)malloc(sizeof(char *) * 2);
+		word[*i].argv[0] = ft_strjoin("<", token->value);
+		word[*i].argv[1] = NULL;
+	}
 	return ((*lst)->content);
 }
 

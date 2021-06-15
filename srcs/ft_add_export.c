@@ -6,13 +6,13 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:59:01 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 13:30:20 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 22:31:36 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	export_check(char **temp, int i, int *j)
+void		export_check(char **temp, int i, int *j)
 {
 	*j = 0;
 	if ((temp[i][0] < 'A' || (temp[i][0] > 'Z' && temp[i][0] < 'a')

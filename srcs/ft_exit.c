@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 21:43:50 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 22:03:01 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_exit(t_mini *mini, char **temp)
 	ft_d_lstclear(&mini->head);
 	ft_envp_lstclear(&mini->env);
 	free(mini->str);
-	if (temp)
+	if (temp && temp[1])
 	{
 		if (temp[1][0] < '0' || temp[1][0] > '9')
 		{

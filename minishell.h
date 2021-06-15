@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 21:41:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 22:32:16 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ void				pipe_exe(t_mini *mini, char **split);
 void				ft_echo(char **str);
 
 void				get_cursor_position(int *col, int *row);
+void				export_check(char **temp, int i, int *j);
 
 #endif
