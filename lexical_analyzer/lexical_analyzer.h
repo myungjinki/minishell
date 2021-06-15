@@ -12,7 +12,7 @@
 
 #ifndef LEXICAL_ANALYZER_H
 # define LEXICAL_ANALYZER_H
-# include "../../libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <fcntl.h>
 

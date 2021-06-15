@@ -6,13 +6,13 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2021/06/15 12:09:40 by mki              ###   ########.fr        #
+#    Updated: 2021/06/15 12:22:11 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	liblex.a
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -I ../..
+CFLAGS		=	-Wall -Wextra -Werror -I ../
 AR			=	ar -rcs
 RM			=	rm -rf
 

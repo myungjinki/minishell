@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 21:16:35 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 12:20:35 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <sys/types.h>
 # include "./libft/libft.h"
 # include <signal.h>
-# include "./srcs/lexical_analyzer/lexical_analyzer.h"
+# include "lexical_analyzer/lexical_analyzer.h"
 
 typedef struct			s_d_list
 {
