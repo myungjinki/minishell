@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:00:00 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 21:00:56 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 13:21:21 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	enter_end(t_mini *mini)
 	if (mini->flag)
 		mini->status = mini->flag;
 	term_set();
-	write(1, ">", 1);
+	write(1, "minishell$ ", 11);
 }

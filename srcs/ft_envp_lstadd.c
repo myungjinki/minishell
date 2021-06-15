@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 10:33:05 by sehan             #+#    #+#             */
-/*   Updated: 2021/04/18 11:36:11 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 12:59:13 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,32 @@ static void	ft_envp_lstadd_back(t_envp_list **lst, t_envp_list *temp)
 	(*lst)->next = temp;
 }
 
+static char	**export_split(char *str)
+{
+	int		i;
+	char	**result;
+	int		size;
+
+	i = 0;
+	size = 1;
+	while (str[i] != '=' && str[i])
+		i++;
+	if (str[i] == '=' && str[i + 1])
+		size++;
+	result = (char **)malloc(sizeof(char *) * (size + 1));
+	result[size] = 0;
+	result[0] = ft_substr(str, 0, i);
+	if (size == 2)
+		result[1] = ft_substr(str + i + 1, 0, ft_strlen(str + i + 1));
+	return (result);
+}
+
 void		ft_envp_lstadd(t_envp_list **lst, char *str)
 {
 	t_envp_list *temp;
 	char		**split;
 
-	split = ft_split(str, '=');
+	split = export_split(str);
 	temp = ft_find_env(*lst, split[0]);
 	if (temp)
 		free(temp->value);

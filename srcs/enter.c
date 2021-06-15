@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 22:31:37 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 13:48:49 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,17 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	mini->env_temp = ft_find_env(mini->env, "PATH");
 	if (!mini->env_temp)
 	{
-		write(2, word->argv[0], ft_strlen(word->argv[0]));
-		write(2, ": No such file or directory\n", 28);
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(word->argv[0], 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
 		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
 	not_builtin_exe(envp, split, word->argv);
-	write(2, word->argv[0], ft_strlen(word->argv[0]));
-	write(2, ": command not found\n", 20);
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(word->argv[0], 2);
+	ft_putstr_fd(": command not found\n", 2);
+	exit(127);
 }
 
 static void	builtin(t_mini *mini, char *envp[])
@@ -107,9 +110,9 @@ void		enter(t_mini *mini, char *envp[])
 		mini->flag = 0;
 		str = ft_strtrim(mini->history->content, " ");
 		if (*str != 0)
-		mini->lst_parsed =
-			lexical_analyzer(mini->history->content,
-			mini->env, mini->status);
+			mini->lst_parsed =
+				lexical_analyzer(mini->history->content,
+						mini->env, mini->status);
 		mini->status = 0;
 		if (mini->lst_parsed && *str != 0)
 			builtin(mini, envp);
