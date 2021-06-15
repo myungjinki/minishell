@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 12:17:24 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 14:44:19 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/14 16:30:12 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 	{
 		dup2(fd_child[0][1], 1);
 		close(fd_child[0][0]);
-		execve("/usr/bin/grep", grep1, NULL);
+		execve("/bin/ls", ls, NULL);
 	}
 	else
 	{
@@ -63,15 +63,15 @@ int	main(void)
 		dup2(fd_child[1][1], 1);
 		close(fd_child[0][1]);
 		close(fd_child[1][0]);
-		execve("/bin/ls", ls, NULL);
+		execve("/usr/bin/grep", grep1, NULL);
 	}
 	else
 	{
 		close(fd_child[0][0]);
 		close(fd_child[1][1]);
 	}
-	pipe(fd_child[2]);
-	pid[2] = fork();
+	// pipe(fd_child[2]);
+	// pid[2] = fork();
 	// if (pid[2] == 0)
 	// {
 	// 	dup2(fd_child[1][0], 0);

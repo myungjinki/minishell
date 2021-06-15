@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 12:03:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/14 15:43:57 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,32 @@ void	list_check(t_list *lst)
 	}
 }
 
-t_list	*make_word_list(t_word *word)
+t_list	*make_word_list(t_list *lst_token_begin, t_word *word)
 {
-	t_list	*ret;
+	t_list	*lst_semi;
+	t_list	*lst_pipe;
+	t_list	*lst_token;
+	t_token	*token;
+	int		i;
 
-	
-	word = 0;
-	ret = NULL;
-	return (ret);
+	lst_token = lst_token_begin;
+	lst_semi = NULL;
+	i = -1;
+	ft_lstadd_back(&lst_pipe, ft_lstnew((void *)word[++i]));
+	while (lst_token)
+	{
+		token = lst_token->content;
+		if (token->name == '|')
+		{
+			
+		}
+		else if (token->name == ';')
+		{
+
+		}
+		lst_token = lst_token->next;
+	}
+	return (lst_semi);
 }
 
 t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
@@ -78,7 +96,7 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 	if (parser(lst, lst_envp, status))
 		return (NULL);
 //	print_lst_token(lst);
- 	if (!(lst = make_word_list(make_word(lst))))
+ 	if (!(lst = make_word_list(lst, make_word(lst))))
  		return (NULL);
 // //	list_check(lst);
 // 	return (lst);
