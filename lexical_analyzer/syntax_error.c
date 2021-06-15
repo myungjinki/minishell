@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_semicolon.c                                 :+:      :+:    :+:   */
+/*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:20:35 by mki               #+#    #+#             */
-/*   Updated: 2021/05/20 12:09:31 by mki              ###   ########.fr       */
+/*   Created: 2021/05/11 11:04:05 by mki               #+#    #+#             */
+/*   Updated: 2021/06/15 15:55:59 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
-int	parser_semicolon(t_list *lst_begin)
+int		syntax_error(int num)
 {
-	lst_begin = 0;
-	// t_list	*lst;
-
-	// lst = lst_begin;
-	// while (lst)
-	// {
-	// 	lst = lst->next;
-	// }
-	return (0);
+	if (num == BACKSLASH_MULTI)
+		printf("\\ Multiline Command doesn't work\n");
+	else if (num == DQUOTES_MULTI)
+		printf("\" Multiline Command doesn't work\n");
+	else if (num == QUOTES_MULTI)
+		printf("\' Multiline Command doesn't work\n");
+	else if (num == PIPELINE_MULTI)
+		printf("| Multiline Command doesn't work\n");
+	else if (num == SYNTAX)
+		printf("syntax error near unexpected token\n");
+	return (1);
 }

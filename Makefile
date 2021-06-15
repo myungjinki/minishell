@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/14 21:47:35 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/15 12:21:25 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minishell
 CC = gcc
 ASAN = -fsanitize=address -g2
 CFLAGS = -Wall -Wextra -Werror -I . $(ASAN)
-LFLAGS = -Llibft -lft -lncurses
+LFLAGS = -Llibft -lft -lncurses -Llexical_analyzer -llex
 AR = ar rcs
 RM = rm -f
 
@@ -48,37 +48,7 @@ FILES =	main \
 		srcs/unset\
 		srcs/enter_end \
 		srcs/is_pipe2 \
-		srcs/lexical_analyzer/executor\
-		srcs/lexical_analyzer/ft_isall\
-		srcs/lexical_analyzer/ft_ismeta\
-		srcs/lexical_analyzer/ft_isquotes\
-		srcs/lexical_analyzer/ft_isspace\
-		srcs/lexical_analyzer/ft_isspecial\
-		srcs/lexical_analyzer/lexer\
-		srcs/lexical_analyzer/lexical_analyzer\
-		srcs/lexical_analyzer/make_string\
-		srcs/lexical_analyzer/make_word\
-		srcs/lexical_analyzer/parser_backslash\
-		srcs/lexical_analyzer/parser_dquotes\
-		srcs/lexical_analyzer/parser_env\
-		srcs/lexical_analyzer/parser_pipeline\
-		srcs/lexical_analyzer/parser_quotes\
-		srcs/lexical_analyzer/parser_redirection\
-		srcs/lexical_analyzer/parser_semicolon\
-		srcs/lexical_analyzer/parser\
-		srcs/lexical_analyzer/syntax_backslash\
-		srcs/lexical_analyzer/syntax_dquotes\
-		srcs/lexical_analyzer/syntax_error\
-		srcs/lexical_analyzer/syntax_multiline\
-		srcs/lexical_analyzer/syntax_pipeline\
-		srcs/lexical_analyzer/syntax_quotes\
-		srcs/lexical_analyzer/syntax_redirection\
-		srcs/lexical_analyzer/syntax_semicolon\
-		srcs/lexical_analyzer/token_find\
-		srcs/lexical_analyzer/token_free\
 		srcs/ft_lst_free \
-		srcs/lexical_analyzer/make_word2 \
-		srcs/lexical_analyzer/make_word_list
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
@@ -92,6 +62,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS)
 	make -C libft
 	make -C libft bonus
+	make -C lexical_analyzer
 	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS) -o $@
 
 all: $(NAME)
@@ -99,9 +70,11 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
 	make clean -C libft
+	make clean -C lexical_analyzer
 
 fclean: clean
 	$(RM) $(NAME)
+	rm lexical_analyzer/liblex.a
 	rm libft/libft.a
 
 re: clean all
