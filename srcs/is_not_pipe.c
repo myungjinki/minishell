@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 20:57:42 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 17:03:47 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	cd_export_env(t_mini *mini, char **split)
 		ft_add_export(mini, split);
 	else if (!ft_strcmp(split[0], "env") || !ft_strcmp(split[0], "export"))
 		ft_env(*mini, split[0]);
+	else if (!ft_strcmp(split[0], "echo"))
+		ft_echo(split);
 }
 
 void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst)
@@ -72,7 +74,7 @@ void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst)
 			ft_pwd();
 		else if (!ft_strcmp(split[0], "cd") || (!ft_strcmp(split[0], "export")
 				&& split[1]) || !ft_strcmp(split[0], "env") ||
-				!ft_strcmp(split[0], "export"))
+				!ft_strcmp(split[0], "export") || !ft_strcmp(split[0], "echo"))
 			cd_export_env(mini, split);
 		else if (ft_strcmp(split[0], "exit") == 0)
 			ft_exit(mini, split[0]);

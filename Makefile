@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/15 12:21:25 by mki              ###   ########.fr        #
+#    Updated: 2021/06/15 16:58:30 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ FILES =	main \
 		srcs/enter_end \
 		srcs/is_pipe2 \
 		srcs/ft_lst_free \
+		srcs/ft_echo
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

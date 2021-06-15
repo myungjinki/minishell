@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 16:07:32 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 16:58:20 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void				ft_lst_free(t_list *lst);
 void				enter_end(t_mini *mini);
 void				parent(t_mini *mini, t_word **word, t_list *lst);
 void				pipe_exe(t_mini *mini, char **split);
+void				ft_echo(char **str);
 
 #endif
