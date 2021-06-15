@@ -69,7 +69,7 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 	if (parser(lst, lst_envp, status))
 		return (NULL);
 //	print_lst_token(lst);
- 	if (!(lst = make_word_list(make_word(lst))))
+ 	if (!(lst = make_word_list(lst, make_word(lst))))
  		return (NULL);
 // //	list_check(lst);
 // 	return (lst);
