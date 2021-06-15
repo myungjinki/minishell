@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:26:28 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/25 19:00:36 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 21:00:58 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_env_str(t_mini mini, char **str, int size)
 	i = 0;
 	while (i < size)
 	{
-		str[i] = mini.env->key;
+		str[i] = ft_strdup(mini.env->key);
 		mini.env = mini.env->next;
 		i++;
 	}
@@ -72,7 +72,8 @@ void		ft_export(t_mini mini)
 	int			i;
 
 	size = ft_env_size(mini);
-	str = (char **)malloc(sizeof(char *) * size);
+	str = (char **)malloc(sizeof(char *) * (size + 1));
+	str[size] = NULL;
 	temp = mini.env;
 	ft_env_str(mini, str, size);
 	ft_env_sort(str, size);
@@ -86,6 +87,7 @@ void		ft_export(t_mini mini)
 		printf("\n");
 		i++;
 	}
+	free_split(str);
 }
 
 void		ft_env(t_mini mini, char *str)
@@ -94,7 +96,7 @@ void		ft_env(t_mini mini, char *str)
 	{
 		if (!ft_find_env(mini.env, "PATH"))
 		{
-			printf("env: No such file or directory\n");
+			printf("minishell: env: No such file or directory\n");
 			g_mini.status = 127;
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:41:42 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 22:34:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 18:54:48 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	main_init(int argc, char *argv[], char *envp[])
 	mini_init(&g_mini, envp);
 	signal(SIGINT, (void *)sig);
 	signal(SIGQUIT, sig);
+	g_mini.col_size = 11;
 }
 
 static void	input(void)

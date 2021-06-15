@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:12:40 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 14:14:25 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 21:44:28 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,18 @@ t_list	*lst_next_free(t_list *lst)
 	return (ret);
 }
 
-void	lst_token_free(t_list *start, t_list *end)
+void	lst_token_free(t_list *start)
 {
 	t_list	*lst;
+	t_token *token;
 
-	lst = start;
-	while (lst != end)
-		lst = lst_next_free(lst);
-	token_free(start);
+	while (start)
+	{
+		lst = start;
+		start = start->next;
+		token = lst->content;
+		free(token->value);
+		free(token);
+		free(lst);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:40:18 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 17:03:47 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 21:37:36 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ static void	redirection(int *std_fd, t_word *word)
 		dup2(word->fd_out, 1);
 }
 
-static void	redirection_end(int *std_fd)
+static void	redirection_end(pid_t *pid, int *std_fd)
 {
 	dup2(std_fd[0], 0);
 	dup2(std_fd[1], 1);
+	free(pid);
 }
 
 static void	cd_export_env(t_mini *mini, char **split)
@@ -77,11 +78,11 @@ void		is_not_pipe(t_mini *mini, char *envp[], t_list *lst)
 				!ft_strcmp(split[0], "export") || !ft_strcmp(split[0], "echo"))
 			cd_export_env(mini, split);
 		else if (ft_strcmp(split[0], "exit") == 0)
-			ft_exit(mini, split[0]);
+			ft_exit(mini, split);
 		else if (ft_strcmp(split[0], "unset") == 0)
 			unset(&mini->env, split);
 		else
 			pid_fork(mini, envp, lst);
-		redirection_end(std_fd);
+		redirection_end(mini->pid, std_fd);
 	}
 }
