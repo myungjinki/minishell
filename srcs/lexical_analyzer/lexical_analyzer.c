@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 15:43:57 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/14 22:36:20 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,38 +54,11 @@ void	list_check(t_list *lst)
 	}
 }
 
-t_list	*make_word_list(t_list *lst_token_begin, t_word *word)
-{
-	t_list	*lst_semi;
-	t_list	*lst_pipe;
-	t_list	*lst_token;
-	t_token	*token;
-	int		i;
-
-	lst_token = lst_token_begin;
-	lst_semi = NULL;
-	i = -1;
-	ft_lstadd_back(&lst_pipe, ft_lstnew((void *)word[++i]));
-	while (lst_token)
-	{
-		token = lst_token->content;
-		if (token->name == '|')
-		{
-			
-		}
-		else if (token->name == ';')
-		{
-
-		}
-		lst_token = lst_token->next;
-	}
-	return (lst_semi);
-}
-
 t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
 	t_list	*lst;
 	char	*trim;
+	t_word	*word;
 
 	trim = ft_strtrim(str, " ");
 	if (syntax_multline(trim))
@@ -102,5 +75,5 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 // 	return (lst);
 	// if (!(lst = executor(str, ret)))
 	// 	return (NULL);
-	return (NULL);
+	return (lst);
 }

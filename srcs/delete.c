@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:36:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/31 14:48:05 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/14 20:55:33 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ void		delete_end(t_mini *mini, int flag)
 	int		col;
 	int		row;
 
-	flag = 0;
 	get_cursor_position(&col, &row);
 	multline_delete(mini, &col, &row);
+	col = 1;
+	tputs(tgoto(mini->cm, col, row), 1, putchar_tc);
+	tputs(mini->ce, 1, putchar_tc);
 	if (ft_strcmp(mini->history->content, "") && !flag)
 		write(1, mini->history->content, ft_strlen(mini->history->content));
 }

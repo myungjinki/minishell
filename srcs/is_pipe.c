@@ -6,47 +6,47 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/10 17:37:08 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/14 21:17:23 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+static void	dup2_set(t_mini *mini, t_word *word, t_list *temp, int i)
+{
+	if (word->fd_in > 0)
+		dup2(word->fd_in, 0);
+	else if (i != 0)
+		dup2(mini->fd_lst->fd[0], 0);
+	if (word->fd_out > 0)
+		dup2(word->fd_out, 1);
+	else if (temp->next)
+		dup2(mini->fd_lst->next->fd[1], 1);
+}
+
 static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 {
-	char **split;
-	t_word *word;
+	char	**split;
+	t_word	*word;
 
 	word = temp->content;
 	split = word->argv;
 	close(mini->fd_lst->next->fd[0]);
-	if (word->fd_out > 0)
-		dup2(word->fd_out, 0);
-	else if (i != 0)
-		dup2(mini->fd_lst->fd[0], 0);
-	if (temp->next)
+	if (split)
 	{
-		if (word->fd_in > 0)
-			dup2(word->fd_in, 1);
+		dup2_set(mini, word, temp, i);
+		if (!ft_strcmp(split[0], "pwd") || !ft_strcmp(split[0], "cd") ||
+			(!ft_strcmp(split[0], "export") && split[1]) ||
+			!ft_strcmp(split[0], "export") || !ft_strcmp(split[0], "env") ||
+			!ft_strcmp(split[0], "exit"))
+			pipe_exe(mini, split);
+		else if (ft_strcmp(split[0], "unset") == 0)
+			unset(&mini->env, split);
 		else
-			dup2(mini->fd_lst->next->fd[1], 1);
+			not_builtin(mini, envp, temp);
+		exit(mini->status);
 	}
-	if (ft_strcmp(split[0], "pwd") == 0)
-		ft_pwd();
-	else if (ft_strncmp(split[0], "cd", 2) == 0)
-		ft_cd(mini->env, split[1]);
-	else if (ft_strcmp(split[0], "export") == 0 && split[1])
-		ft_add_export(mini, split);
-	else if (ft_strcmp(split[0], "env") == 0 ||
-			ft_strcmp(split[0], "export") == 0)
-		ft_env(*mini, split[0]);
-	else if (ft_strcmp(split[0], "exit") == 0)
-		ft_exit(mini, split[0]);
-	else if (ft_strcmp(split[0], "unset") == 0)
-		unset(&mini->env, split);
-	else
-		not_builtin(mini, envp, temp);
-	exit(mini->status);
+	exit(0);
 }
 
 void		ft_wait(t_mini *mini, int i, t_f_list *temp)
@@ -88,15 +88,7 @@ void		is_pipe(t_mini *mini, char *envp[], t_list *lst)
 		if (mini->pid[i] == 0)
 			exe(mini, envp, lst, i);
 		else
-		{
-			word = lst->content;
-			if (word->fd_in > 0)
-				close(word->fd_in);
-			if (word->fd_out > 0)
-				close(word->fd_out);
-			close(mini->fd_lst->next->fd[1]);
-			close(mini->fd_lst->fd[0]);
-		}
+			parent(mini, &word, lst);
 		i++;
 		lst = lst->next;
 	}
