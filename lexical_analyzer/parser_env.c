@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/06/11 09:09:01 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 12:58:36 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parser_dollar_question_mark(t_list *lst_begin, int status)
 void	parser_env_trans(t_list *lst_begin, t_envp_list *lst_envp, char *join)
 {
 	t_envp_list	*lst_envp_tmp;
-	t_token	*token;
+	t_token		*token;
 
 	token = lst_begin->content;
 	if ((lst_envp_tmp = ft_find_env(lst_envp, join)))
@@ -70,7 +70,7 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 {
 	t_token	*token;
-	
+
 	if (lst_begin->next)
 	{
 		token = lst_begin->next->content;

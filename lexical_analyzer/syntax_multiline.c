@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 11:48:52 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 11:48:54 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 12:53:58 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	quote(char *str, int *i)
 	(*i)++;
 	while (str[*i])
 	{
-		if (str[*i] == '\'') 
+		if (str[*i] == '\'')
 			return (0);
 		(*i)++;
 	}
@@ -42,10 +42,10 @@ int	dquote(char *str, int *i)
 	return (0);
 }
 
-int syntax_multline(char *str)
+int	syntax_multline(char *str)
 {
 	int i;
-	
+
 	i = 0;
 	while (str[i])
 	{
