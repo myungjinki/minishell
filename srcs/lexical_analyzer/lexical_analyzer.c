@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 12:44:16 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 22:36:20 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:31:47 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ t_list	*lexical_analyzer(char *str, t_envp_list *lst_envp, int status)
 {
 	t_list	*lst;
 	char	*trim;
-	t_word	*word;
 
 	trim = ft_strtrim(str, " ");
 	if (syntax_multline(trim))
