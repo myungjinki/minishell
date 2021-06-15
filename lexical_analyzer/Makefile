@@ -6,13 +6,14 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2021/06/15 12:22:11 by mki              ###   ########.fr        #
+#    Updated: 2021/06/15 12:58:17 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	liblex.a
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -I ../
+ASAN		=	-fsanitize=address -g2
+CFLAGS		=	-Wall -Wextra -Werror -I ../ $(ASAN)
 AR			=	ar -rcs
 RM			=	rm -rf
 
@@ -26,7 +27,6 @@ LEX			=	ft_isall\
 				parser_backslash\
 				parser_env\
 				parser_quotes\
-				parser_redirection\
 				parser\
 				syntax_backslash\
 				syntax_error\
