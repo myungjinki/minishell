@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:31:42 by mki               #+#    #+#             */
-/*   Updated: 2021/06/14 22:36:37 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:29:04 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_word		*make_word(t_list *lst);
 void		malloc_argv(t_word *word, int *i, int *j, int size);
 t_token		*left_angle_bracket(t_list **lst, t_word *word, int *i, int *j);
 void		right_angle_bracket(t_list **lst, t_word *word, int *i);
+//t_list		*make_word_list(t_list *lst, t_word *word);
 t_list		*make_word_list(t_list *lst, t_word *word);
 
 #endif
