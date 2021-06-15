@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:50 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 15:55:25 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 16:05:46 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	string_tokens_join(t_list *lst_begin)
 	t_token	*token;
 	t_token	*token_next;
 	char	*tmp;
-	
+
 	lst = lst_begin;
 	while (lst && lst->next)
 	{
@@ -65,7 +65,7 @@ int	turn_into_string_except_pss(t_list *lst_begin)
 	t_list	*lst;
 	t_token	*token;
 	char	c;
-	
+
 	lst = lst_begin;
 	while (lst)
 	{
