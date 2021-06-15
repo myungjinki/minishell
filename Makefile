@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/15 12:12:32 by mki              ###   ########.fr        #
+#    Updated: 2021/06/15 12:21:25 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = minishell
 CC = gcc
 ASAN = -fsanitize=address -g2
 CFLAGS = -Wall -Wextra -Werror -I . $(ASAN)
-LFLAGS = -Llibft -lft -lncurses -Lsrcs/lexical_analyzer -llex
+LFLAGS = -Llibft -lft -lncurses -Llexical_analyzer -llex
 AR = ar rcs
 RM = rm -f
 
@@ -62,7 +62,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS)
 	make -C libft
 	make -C libft bonus
-	make -C srcs/lexical_analyzer
+	make -C lexical_analyzer
 	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS) -o $@
 
 all: $(NAME)
@@ -70,11 +70,11 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
 	make clean -C libft
-	make clean -C srcs/lexical_analyzer
+	make clean -C lexical_analyzer
 
 fclean: clean
 	$(RM) $(NAME)
-	rm srcs/lexical_analyzer/liblex.a
+	rm lexical_analyzer/liblex.a
 	rm libft/libft.a
 
 re: clean all
