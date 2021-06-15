@@ -89,7 +89,6 @@ int			syntax_multline(char *str);
 int			syntax_pipeline(t_list *lst_begin);
 int			syntax_quotes(t_list *lst_begin);
 int			syntax_redirection(t_list *lst_begin);
-int			syntax_semicolon(t_list *lst_begin);
 t_list		*token_find(t_list *lst, char c);
 void		token_free(t_list *lst);
 void		lst_token_free(t_list *start, t_list *end);
