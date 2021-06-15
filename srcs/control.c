@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 13:08:08 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 13:47:28 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 20:20:10 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	sig(int signo)
 		g_mini.history = g_mini.head;
 		if (g_mini.pid == 0)
 			ft_putstr_fd("\nminishell$ ", 1);
+		else
+			write(1, "\n", 1);
 	}
 	else if (signo == SIGQUIT && g_mini.pid != 0)
 	{

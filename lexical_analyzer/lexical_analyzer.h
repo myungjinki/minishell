@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:28:04 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 15:55:09 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 18:39:53 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int						syntax_quotes(t_list *lst_begin);
 int						syntax_redirection(t_list *lst_begin);
 t_list					*token_find(t_list *lst, char c);
 void					token_free(t_list *lst);
-void					lst_token_free(t_list *start, t_list *end);
+void					lst_token_free(t_list *start);
 t_list					*lst_next_free(t_list *lst);
 t_word					*make_word(t_list *lst);
 void					print_lst_token(t_list *lst);
@@ -80,6 +80,6 @@ t_token					*left_angle_bracket
 (t_list **lst, t_word *word, int *i, int *j);
 void					right_angle_bracket
 (t_list **lst, t_word *word, int *i);
-t_list					*make_word_list(t_list *lst, t_word *word);
+t_list					*make_word_list(t_list *lst, t_word **word);
 
 #endif

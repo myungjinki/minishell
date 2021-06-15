@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 16:12:16 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 18:43:17 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ t_word	*make_word(t_list *lst_begin)
 			malloc_argv(word, &i, &j, str_size[i + 1]);
 		lst_begin = lst_begin->next;
 	}
+	free(str_size);
 	return (word);
 }

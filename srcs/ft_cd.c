@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/19 13:49:07 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 21:05:02 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,31 @@ static void	ft_pwd_set(t_envp_list *lst, char *oldpwd)
 		free(lst->value);
 		str = getcwd(0, 0);
 		lst->value = ft_strdup(str);
+		free(str);
 	}
 }
 
 void		ft_cd(t_envp_list *lst, char *str)
 {
-	char		*path;
 	int			boolean;
 	t_envp_list	*lst_temp;
 	char		*oldpwd;
 
-	path = ft_strtrim(str, " ");
-	if (*str == 0)
+	if (str == 0)
 	{
 		lst_temp = ft_find_env(lst, "HOME");
 		str = lst_temp->value;
 	}
 	oldpwd = getcwd(0, 0);
-	boolean = chdir(path);
+	boolean = chdir(str);
 	if (boolean == -1)
 	{
 		g_mini.status = 1;
 		write(2, "cd: no such file or directory: ", 31);
-		write(2, path, ft_strlen(path));
+		write(2, str, ft_strlen(str));
 		write(2, "\n", 1);
 	}
 	else
 		ft_pwd_set(lst, oldpwd);
 	free(oldpwd);
-	free(path);
 }

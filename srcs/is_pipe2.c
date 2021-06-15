@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:07:08 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 21:13:15 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 21:41:53 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	pipe_exe(t_mini *mini, char **split)
 			ft_strcmp(split[0], "export") == 0)
 		ft_env(*mini, split[0]);
 	else if (ft_strcmp(split[0], "exit") == 0)
-		ft_exit(mini, split[0]);
+		ft_exit(mini, split);
 }

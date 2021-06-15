@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 16:58:20 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 21:41:05 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_mini
 	int				flag;
 	char			*cm;
 	char			*ce;
+	int				col_size;
 
 	t_list			*lst_parsed;
 }					t_mini;
@@ -84,7 +85,7 @@ void				enter(t_mini *mini, char *envp[]);
 void				mini_init(t_mini *mini, char *envp[]);
 void				free_split(char **str);
 void				ft_env(t_mini mini, char *str);
-void				ft_exit(t_mini *mini, char *temp);
+void				ft_exit(t_mini *mini, char **temp);
 void				ft_add_export(t_mini *mini, char **temp);
 void				control_d(t_mini *mini);
 void				backup_term(t_mini *mini);
@@ -101,5 +102,7 @@ void				enter_end(t_mini *mini);
 void				parent(t_mini *mini, t_word **word, t_list *lst);
 void				pipe_exe(t_mini *mini, char **split);
 void				ft_echo(char **str);
+
+void				get_cursor_position(int *col, int *row);
 
 #endif
