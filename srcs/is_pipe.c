@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 17:28:59 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/14 21:17:23 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 16:58:52 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	exe(t_mini *mini, char *envp[], t_list *temp, int i)
 			pipe_exe(mini, split);
 		else if (ft_strcmp(split[0], "unset") == 0)
 			unset(&mini->env, split);
+		else if (!ft_strcmp(split[0], "echo"))
+			ft_echo(split);
 		else
 			not_builtin(mini, envp, temp);
 		exit(mini->status);
