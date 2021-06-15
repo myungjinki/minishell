@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:28:04 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 12:52:31 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 15:55:09 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,8 @@
 # define BACKSLASH_MULTI		0x0001
 # define DQUOTES_MULTI			0x0002
 # define QUOTES_MULTI			0x0004
-# define SEMICOLON_SYNTAX		0x0008
-# define SEMICOLONS_SYNTAX		0x0010
-# define PIPELINE_SYNTAX		0x0020
-# define PIPELINES_SYNTAX		0x0040
+# define SYNTAX					0x0008
 # define PIPELINE_MULTI			0x0080
-# define R_REDIRECTION_SYNTAX	0x0100
-# define R_REDIRECTIONS_SYNTAX	0x0200
-# define L_REDIRECTION_SYNTAX	0x0400
 # define FIRST					1
 # define LAST					1
 

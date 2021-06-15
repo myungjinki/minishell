@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 11:04:05 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 12:53:29 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 15:55:59 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,7 @@ int		syntax_error(int num)
 		printf("\' Multiline Command doesn't work\n");
 	else if (num == PIPELINE_MULTI)
 		printf("| Multiline Command doesn't work\n");
-	else if (num == L_REDIRECTION_SYNTAX)
-		printf("bash: syntax error near unexpected token `<'\n");
-	else if (num == R_REDIRECTION_SYNTAX)
-		printf("bash: syntax error near unexpected token `>'\n");
-	else if (num == R_REDIRECTIONS_SYNTAX)
-		printf("bash: syntax error near unexpected token `>>'\n");
-	else if (num == PIPELINE_SYNTAX)
-		printf("bash: syntax error near unexpected token `|'\n");
-	else if (num == PIPELINES_SYNTAX)
-		printf("bash: syntax error near unexpected token `||'\n");
-	else if (num == SEMICOLON_SYNTAX)
-		printf("bash: syntax error near unexpected token `;'\n");
-	else if (num == SEMICOLONS_SYNTAX)
-		printf("bash: syntax error near unexpected token `;;'\n");
+	else if (num == SYNTAX)
+		printf("syntax error near unexpected token\n");
 	return (1);
 }
