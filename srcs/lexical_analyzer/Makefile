@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 22:30:00 by mki               #+#    #+#              #
-#    Updated: 2021/06/11 18:12:46 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/15 11:40:49 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ AR			=	ar -rcs
 RM			=	rm -f
 .SUFFIXES	=	.c.o
 
-LEX			=	executor\
-				ft_isall\
+LEX			=	ft_isall\
 				ft_ismeta\
 				ft_isquotes\
 				ft_isspace\
