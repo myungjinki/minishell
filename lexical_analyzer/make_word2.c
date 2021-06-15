@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:05:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 12:47:52 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 16:01:22 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@ void	malloc_argv(t_word *word, int *i, int *j, int size)
 {
 	(*i)++;
 	*j = -1;
-	word[*i].argv = (char **)malloc(sizeof(char *) * (size + 1));
-	word[*i].argv[size] = 0;
+	if (size == 0)
+		word[*i].argv = NULL;
+	else
+	{
+		word[*i].argv = (char **)malloc(sizeof(char *) * (size + 1));
+		word[*i].argv[size] = 0;
+	}
 }
 
 void	open_fail(t_list **lst, t_word *word, int *i, int *j)

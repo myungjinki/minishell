@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:54:15 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 12:47:34 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/15 16:01:12 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ int		*string_size(t_list *lst, t_word **word)
 	return (str_size);
 }
 
+void	make_word_init(t_list *lst, t_word **word, int **str_size)
+{
+	*str_size = string_size(lst, word);
+	if (str_size[0])
+		word[0][0].argv = NULL;
+	else
+	{
+		word[0][0].argv = (char **)malloc(sizeof(char *) * (str_size[0][0] + 1));
+		word[0][0].argv[str_size[0][0]] = 0;
+	}
+}
+
 t_word	*make_word(t_list *lst_begin)
 {
 	t_token	*token;
@@ -78,11 +90,12 @@ t_word	*make_word(t_list *lst_begin)
 	int		i;
 	int		j;
 
-	str_size = string_size(lst_begin, &word);
+	make_word_init(lst_begin, &word, &str_size);
+//	str_size = string_size(lst_begin, &word);
 	i = 0;
 	j = -1;
-	word[i].argv = (char **)malloc(sizeof(char *) * (str_size[i] + 1));
-	word[i].argv[str_size[i]] = 0;
+//	word[i].argv = (char **)malloc(sizeof(char *) * (str_size[i] + 1));
+//	word[i].argv[str_size[i]] = 0;
 	while (lst_begin)
 	{
 		token = lst_begin->content;

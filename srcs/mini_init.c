@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:56:32 by sehan             #+#    #+#             */
-/*   Updated: 2021/05/28 17:07:43 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/15 13:19:38 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	mini_init(t_mini *mini, char *envp[])
 {
-	write(1, ">", 1);
+	write(1, "minishell$ ", 11);
 	mini->env = NULL;
 	mini->history = NULL;
 	ft_envp_lstinit(&mini->env, envp);
