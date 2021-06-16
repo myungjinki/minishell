@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 10:12:47 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 12:46:51 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/16 12:05:28 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		space_token_compress(t_list *lst_begin)
 {
 	t_token	*token;
 	t_list	*lst;
+	t_list	*tmp;
 	char	c;
 
 	lst = lst_begin;
@@ -58,6 +59,16 @@ int		space_token_compress(t_list *lst_begin)
 	{
 		token = lst->content;
 		c = token->name;
+		if (token->name == '\"' && (tmp = dquotes_token_find(lst)))
+		{
+			lst = tmp->next;
+			continue ;
+		}
+		if (token->name == '\'' && (tmp = token_find(lst, '\'')))
+		{
+			lst = tmp->next;
+			continue ;
+		}
 		while (c == ' ' && lst->next)
 		{
 			token = lst->next->content;

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:28:04 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 18:39:53 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/16 11:34:53 by mki              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ t_token					*left_angle_bracket
 void					right_angle_bracket
 (t_list **lst, t_word *word, int *i);
 t_list					*make_word_list(t_list *lst, t_word **word);
+t_list					*dquotes_token_find(t_list *lst);
 
 #endif
