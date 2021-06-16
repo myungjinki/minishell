@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 22:13:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/16 16:44:00 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 
 	word = lst->content;
 	mini->env_temp = ft_find_env(mini->env, "PATH");
-	if (!mini->env_temp || word->argv[0][0] == '<')
+	if (!mini->env_temp || (word->argv[0][0] == '<' && word->fd_in == -1))
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(&word->argv[0][1], 2);
