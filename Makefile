@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/15 21:01:18 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/16 10:20:15 by mki              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,10 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	rm lexical_analyzer/liblex.a
-	rm libft/libft.a
+	if [ -e "lexical_analyzer/liblex.a" ]; then rm lexical_analyzer/liblex.a; fi
+	if [ -e "libft/libft.a" ]; then rm libft/libft.a; fi
+	if [ -d "minishell.dSYM/" ]; then rm -rf minishell.dSYM/; fi
+	if [ -d ".vscode/" ]; then rm -rf .vscode/; fi
 
 re: clean all
 
