@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:51:07 by mki               #+#    #+#             */
-/*   Updated: 2021/06/16 18:08:32 by mki              ###   ########.fr       */
+/*   Updated: 2021/06/16 20:00:36 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 static int	check(t_list *lst, t_token *token)
 {
 	lst = lst->next;
-	token = lst->content;
-	if (token->name == '>')
-		lst = lst->next;
-	if (lst == NULL)
-		return (syntax_error(SYNTAX));
-	token = lst->content;
-	if (token->name == ' ')
-		lst = lst->next;
-	if (lst == NULL)
-		return (syntax_error(SYNTAX));
-	token = lst->content;
-	if (token->name != 's' && !ft_isdigit(token->name) &&
-	!ft_isspecial(token->name) && !ft_isquotes(token->name))
+	if (lst)
+	{
+		token = lst->content;
+		if (token->name == '>')
+			lst = lst->next;
+		if (lst == NULL)
+			return (syntax_error(SYNTAX));
+		token = lst->content;
+		if (token->name == ' ')
+			lst = lst->next;
+		if (lst == NULL)
+			return (syntax_error(SYNTAX));
+		token = lst->content;
+		if (token->name != 's' && !ft_isdigit(token->name) &&
+				!ft_isspecial(token->name) && !ft_isquotes(token->name))
+			return (syntax_error(SYNTAX));
+	}
+	else
 		return (syntax_error(SYNTAX));
 	return (0);
 }
@@ -38,8 +43,6 @@ int			syntax_redirection(t_list *lst_begin)
 	t_token	*token;
 
 	lst = lst_begin;
-	if (!lst->next)
-		return (1);
 	while (lst)
 	{
 		token = lst->content;
