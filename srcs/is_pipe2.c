@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:07:08 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 21:41:53 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/22 18:27:12 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	pipe_exe(t_mini *mini, char **split)
 {
 	if (ft_strcmp(split[0], "pwd") == 0)
 		ft_pwd();
-	else if (ft_strncmp(split[0], "cd", 2) == 0)
+	else if (!ft_strncmp(split[0], "cd", 2) && split[1])
 		ft_cd(mini->env, split[1]);
 	else if (ft_strcmp(split[0], "export") == 0 && split[1])
 		ft_add_export(mini, split);

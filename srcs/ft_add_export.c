@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:59:01 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 22:31:36 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/21 21:05:44 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void		ft_add_export(t_mini *mini, char **temp)
 		export_check(temp, i, &j);
 		if (!temp[i][j] || temp[i][j] == '=')
 			ft_envp_lstadd(&mini->env, temp[i]);
+		else
+			mini->status = 1;
 		i++;
 	}
 }

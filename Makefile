@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/16 10:20:15 by mki              ###   ########.fr        #
+#    Updated: 2021/06/22 18:35:13 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 ASAN = -fsanitize=address -g2
-CFLAGS = -Wall -Wextra -Werror -I . $(ASAN)
+CFLAGS = -Wall -Wextra -Werror -I . #$(ASAN)
 LFLAGS = -Llibft -lft -lncurses -Llexical_analyzer -llex
 AR = ar rcs
 RM = rm -f
@@ -49,7 +49,24 @@ FILES =	main \
 		srcs/enter_end \
 		srcs/is_pipe2 \
 		srcs/ft_lst_free \
-		srcs/ft_echo
+		srcs/ft_echo \
+		lexical_analyzer/ft_isall \
+		lexical_analyzer/lexer \
+		lexical_analyzer/lexical_analyzer \
+		lexical_analyzer/make_string \
+		lexical_analyzer/make_word \
+		lexical_analyzer/make_word2 \
+		lexical_analyzer/make_word_list \
+		lexical_analyzer/parser \
+		lexical_analyzer/parser_backslash \
+		lexical_analyzer/parser_env \
+		lexical_analyzer/parser_quotes \
+		lexical_analyzer/syntax_backslash \
+		lexical_analyzer/syntax_error \
+		lexical_analyzer/syntax_multiline \
+		lexical_analyzer/syntax_quotes \
+		lexical_analyzer/syntax_redirection \
+		lexical_analyzer/token
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
@@ -63,7 +80,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS)
 	make -C libft
 	make -C libft bonus
-	make -C lexical_analyzer
+#	make -C lexical_analyzer
 	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS) -o $@
 
 all: $(NAME)
@@ -71,14 +88,14 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
 	make clean -C libft
-	make clean -C lexical_analyzer
+#	make clean -C lexical_analyzer
 
 fclean: clean
 	$(RM) $(NAME)
-	if [ -e "lexical_analyzer/liblex.a" ]; then rm lexical_analyzer/liblex.a; fi
-	if [ -e "libft/libft.a" ]; then rm libft/libft.a; fi
-	if [ -d "minishell.dSYM/" ]; then rm -rf minishell.dSYM/; fi
-	if [ -d ".vscode/" ]; then rm -rf .vscode/; fi
+#	if [ -e "lexical_analyzer/liblex.a" ]; then rm lexical_analyzer/liblex.a; fi
+#	if [ -e "libft/libft.a" ]; then rm libft/libft.a; fi
+#	if [ -d "minishell.dSYM/" ]; then rm -rf minishell.dSYM/; fi
+#	if [ -d ".vscode/" ]; then rm -rf .vscode/; fi
 
 re: clean all
 

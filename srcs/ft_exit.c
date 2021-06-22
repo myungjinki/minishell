@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:31:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/16 11:57:10 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:35:20 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	exit_free(t_mini *mini, int i)
 	ft_d_lstclear(&mini->head);
 	ft_envp_lstclear(&mini->env);
 	free(mini->str);
+	backup_term(mini);
 	exit(i);
 }
 

@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   make_word2.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 18:05:13 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 22:11:55 by sehan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
@@ -37,10 +26,10 @@ void	open_fail(t_list **lst, t_word *word, int *i, int *j)
 		(*lst) = (*lst)->next;
 		token = (*lst)->content;
 	}
-	if (*j > 0)
+	while (*j >= 0)
 	{
-		while ((*j)--)
-			free(word[*i].argv[*j]);
+		free(word[*i].argv[*j]);
+		(*j)--;
 	}
 	free(word[*i].argv);
 	word[*i].argv = NULL;
