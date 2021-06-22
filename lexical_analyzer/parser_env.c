@@ -1,5 +1,5 @@
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	parser_dollar_question_mark(t_list *lst_begin, int status)
 {

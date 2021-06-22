@@ -6,7 +6,7 @@
 #    By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/14 19:42:00 by sehan             #+#    #+#              #
-#    Updated: 2021/06/22 18:35:13 by sehan            ###   ########.fr        #
+#    Updated: 2021/06/22 20:23:32 by sehan            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = minishell
 
 CC = gcc
 ASAN = -fsanitize=address -g2
-CFLAGS = -Wall -Wextra -Werror -I . #$(ASAN)
-LFLAGS = -Llibft -lft -lncurses -Llexical_analyzer -llex
+CFLAGS = -Wall -Wextra -Werror $(ASAN)
+LFLAGS = -Llibft -lft -lncurses
 AR = ar rcs
 RM = rm -f
 
@@ -80,7 +80,6 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 $(NAME): $(OBJS)
 	make -C libft
 	make -C libft bonus
-#	make -C lexical_analyzer
 	$(CC) $(CFLAGS) $(LFLAGS) $(SRCS) -o $@
 
 all: $(NAME)
@@ -88,14 +87,10 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
 	make clean -C libft
-#	make clean -C lexical_analyzer
 
 fclean: clean
 	$(RM) $(NAME)
-#	if [ -e "lexical_analyzer/liblex.a" ]; then rm lexical_analyzer/liblex.a; fi
-#	if [ -e "libft/libft.a" ]; then rm libft/libft.a; fi
-#	if [ -d "minishell.dSYM/" ]; then rm -rf minishell.dSYM/; fi
-#	if [ -d ".vscode/" ]; then rm -rf .vscode/; fi
+	if [ -e "libft/libft.a" ]; then rm libft/libft.a; fi
 
 re: clean all
 
