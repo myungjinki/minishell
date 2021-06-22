@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   syntax_multiline.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yujeon <yujeon@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/22 19:36:22 by yujeon            #+#    #+#             */
+/*   Updated: 2021/06/22 19:39:15 by yujeon           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
@@ -57,7 +68,7 @@ int	syntax_multline(char *str)
 		if (str[i] == '|')
 			if (str[i + 1] == 0)
 				return (syntax_error(PIPELINE_MULTI));
-		if (str[i] == ';' )
+		if (str[i] == ';')
 			if (double_semi(str, &i))
 				return (syntax_error(SYNTAX));
 		i++;

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexical_analyzer.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yujeon <yujeon@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/22 19:33:41 by yujeon            #+#    #+#             */
+/*   Updated: 2021/06/22 19:44:01 by yujeon           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef LEXICAL_ANALYZER_H
 # define LEXICAL_ANALYZER_H
@@ -71,5 +82,7 @@ void					right_angle_bracket
 (t_list **lst, t_word *word, int *i);
 t_list					*make_word_list(t_list *lst, t_word **word);
 t_list					*dquotes_token_find(t_list *lst);
+int						space_token_compress(t_list *lst_begin);
+void					space_helper(t_list *lst, char c);
 
 #endif
