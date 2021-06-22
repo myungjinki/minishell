@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/22 17:45:36 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/22 20:31:14 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	not_builtin_exe(char *envp[], char **split, char **argv)
 		free(path);
 		i++;
 	}
+	execve(argv[0], argv, envp);
 	str = getcwd(0, 0);
 	temp = ft_strjoin(str, "/");
 	path = ft_strjoin(temp, argv[0]);
