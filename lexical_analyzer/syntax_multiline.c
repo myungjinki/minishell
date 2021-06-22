@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   syntax_multiline.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 11:48:52 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 21:30:27 by sehan            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "lexical_analyzer.h"
 
@@ -42,6 +31,16 @@ int	dquote(char *str, int *i)
 	return (0);
 }
 
+int	double_semi(char *str, int *i)
+{
+	(*i)++;
+	while (str[*i] == ' ')
+		(*i)++;
+	if (str[*i] == ';')
+		return (1);
+	return (0);
+}
+
 int	syntax_multline(char *str)
 {
 	int i;
@@ -58,7 +57,12 @@ int	syntax_multline(char *str)
 		if (str[i] == '|')
 			if (str[i + 1] == 0)
 				return (syntax_error(PIPELINE_MULTI));
+		if (str[i] == ';' )
+			if (double_semi(str, &i))
+				return (syntax_error(SYNTAX));
 		i++;
 	}
+	if (str[0] == ';')
+		return (syntax_error(SYNTAX));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 10:43:25 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/16 16:44:00 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/22 17:45:36 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,13 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	if (!mini->env_temp || (word->argv[0][0] == '<' && word->fd_in == -1))
 	{
 		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(&word->argv[0][1], 2);
+		if (word->fd_in == -1)
+			ft_putstr_fd(&word->argv[0][1], 2);
+		else
+			ft_putstr_fd(word->argv[0], 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
+		if (word->fd_in == -1)
+			exit(1);
 		exit(127);
 	}
 	split = ft_split(mini->env_temp->value, ':');
@@ -60,7 +65,7 @@ void		not_builtin(t_mini *mini, char *envp[], t_list *lst)
 	exit(127);
 }
 
-static void	builtin(t_mini *mini, char *envp[])
+void		builtin(t_mini *mini, char *envp[])
 {
 	int			i;
 	t_f_list	*f_lst_temp;
@@ -81,7 +86,7 @@ static void	builtin(t_mini *mini, char *envp[])
 	mini->pid = 0;
 }
 
-static void	history(t_mini *mini)
+void		history(t_mini *mini)
 {
 	char *temp;
 
@@ -114,12 +119,7 @@ void		enter(t_mini *mini, char *envp[])
 				lexical_analyzer(mini->history->content,
 						mini->env, mini->status);
 		mini->status = 0;
-		if (mini->lst_parsed && *str != 0)
-			builtin(mini, envp);
-		else if (*str != 0)
-			mini->status = 127;
-		if (*str != 0 && mini->lst_parsed)
-			ft_lst_free(mini->lst_parsed);
+		enter_mid(mini, envp, str);
 		history(mini);
 		free(str);
 	}

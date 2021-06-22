@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_env.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 12:30:01 by mki               #+#    #+#             */
-/*   Updated: 2021/06/15 14:15:35 by mki              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -22,6 +11,7 @@ void	parser_dollar_question_mark(t_list *lst_begin, int status)
 	lst_begin->next = lst_next->next;
 	token_free(lst_next);
 	token->name = 's';
+	free(token->value);
 	token->value = ft_itoa(status);
 }
 
@@ -70,14 +60,21 @@ void	parser_env_var(t_list *lst_begin, t_envp_list *lst_envp)
 int		parser_env(t_list *lst_begin, t_envp_list *lst_envp, int status)
 {
 	t_token	*token;
+	char	c;
 
 	if (lst_begin->next)
 	{
 		token = lst_begin->next->content;
+		c = token->name;
 		if (token->name == 's' || token->name == '_')
 			parser_env_var(lst_begin, lst_envp);
 		else if (token->name == '?')
 			parser_dollar_question_mark(lst_begin, status);
+		else if (ft_isspace(c) || ft_ismeta(c) || ft_isquotes(c))
+		{
+			token = lst_begin->content;
+			token->name = 's';
+		}
 		else
 			return (1);
 	}

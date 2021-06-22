@@ -6,7 +6,7 @@
 /*   By: mki <mki@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 13:42:57 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 22:32:16 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/22 17:44:52 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void				t_f_lstclear(t_f_list **lst);
 void				is_pipe(t_mini *mini, char *envp[], t_list *lst);
 void				not_builtin(t_mini *mini, char *envp[], t_list *lst);
 void				is_not_pipe(t_mini *mini, char *envp[], t_list *lst);
-void				unset(t_envp_list **lst, char **str);
+void				unset(t_mini *mini, t_envp_list **lst, char **str);
 void				ft_lst_free(t_list *lst);
 void				enter_end(t_mini *mini);
 void				parent(t_mini *mini, t_word **word, t_list *lst);
@@ -105,5 +105,8 @@ void				ft_echo(char **str);
 
 void				get_cursor_position(int *col, int *row);
 void				export_check(char **temp, int i, int *j);
+void				history(t_mini *mini);
+void				enter_mid(t_mini *mini, char *envp[], char *str);
+void				builtin(t_mini *mini, char *envp[]);
 
 #endif

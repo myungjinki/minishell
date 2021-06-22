@@ -6,7 +6,7 @@
 /*   By: sehan <sehan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 12:38:11 by sehan             #+#    #+#             */
-/*   Updated: 2021/06/15 21:05:02 by sehan            ###   ########.fr       */
+/*   Updated: 2021/06/22 18:27:40 by sehan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,8 @@ static void	ft_pwd_set(t_envp_list *lst, char *oldpwd)
 void		ft_cd(t_envp_list *lst, char *str)
 {
 	int			boolean;
-	t_envp_list	*lst_temp;
 	char		*oldpwd;
 
-	if (str == 0)
-	{
-		lst_temp = ft_find_env(lst, "HOME");
-		str = lst_temp->value;
-	}
 	oldpwd = getcwd(0, 0);
 	boolean = chdir(str);
 	if (boolean == -1)
