@@ -1,7 +1,0 @@
-.vscode/*
-libft/*.o
-*.o
-minishell
-test.cpp
-a.out
-input.txt
